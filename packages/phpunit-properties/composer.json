@@ -1,0 +1,38 @@
+{
+    "name": "php-tailors/phpunit-properties",
+    "description": "Assertions on object properties for PHPUnit-based tests",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+      "issues": "https://github.com/php-tailors/phpunit-extensions/issues",
+      "source": "https://github.com/php-tailors/phpunit-extensions"
+    },
+    "authors": [
+        {
+            "name": "Paweł Tomulik",
+            "email": "ptomulik@meil.pw.edu.pl"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "php-tailors/phpunit-common": "*",
+        "sebastian/recursion-context": "^4.0.3",
+        "sebastian/exporter": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=9.3",
+        "php-tailors/phpunit-inheritance": "*"
+    },
+    "autoload": {
+      "psr-4" : {
+        "PHPTailors\\PHPUnit\\" : "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4" : {
+        "PHPTailors\\PHPUnit\\" : "tests/src/"
+      }
+    }
+}

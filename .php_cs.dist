@@ -1,0 +1,43 @@
+<?php declare(strict_types=1);
+
+$header = <<<'EOF'
+This file is part of php-tailors/phpunit-extensions.
+
+(c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+
+Distributed under MIT license.
+EOF;
+
+$finder = PhpCsFixer\Finder::create()
+    ->files()
+    ->in(__DIR__ . '/packages/*/src')
+    ->in(__DIR__ . '/packages/*/tests')
+    ->name('*.php')
+;
+
+return PhpCsFixer\Config::create()
+    ->setFinder($finder)
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR2' => true,
+        '@PhpCsFixer' => true,
+        'blank_line_after_opening_tag' => false,
+        'declare_strict_types' => true,
+        'header_comment' => [
+            'header' => $header,
+            'location' => 'after_declare_strict',
+        ],
+        'array_syntax' => ['syntax' => 'short'],
+        'psr4' => true,
+        'binary_operator_spaces' => [
+            'operators' => [
+                '=>' => 'align_single_space_minimal',
+                '='  => 'single_space'
+            ],
+        ],
+        // 'phpdoc_to_comment' => true, didn't play well with annotations we
+        // needed for psalm
+        'phpdoc_to_comment' => false,
+    ])
+;
+// vim: syntax=php sw=4 ts=4 et:

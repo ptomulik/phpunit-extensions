@@ -1,0 +1,43 @@
+{
+    "name": "php-tailors/phpunit-extensions",
+    "autoload": {
+        "psr-4": {
+            "PHPTailors\\PHPUnit\\": [
+                "packages/phpunit-common/src/",
+                "packages/phpunit-inheritance/src/",
+                "packages/phpunit-pcre/src/",
+                "packages/phpunit-properties/src/"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPTailors\\PHPUnit\\": [
+                "packages/phpunit-common/tests/src/",
+                "packages/phpunit-inheritance/tests/src/",
+                "packages/phpunit-pcre/tests/src/",
+                "packages/phpunit-properties/tests/src/"
+            ],
+            "PHPTailors\\PHPUnit\\Docs\\Behat\\": "docs/sphinx/behat/"
+        }
+    },
+    "replace": {
+        "php-tailors/phpunit-common": "self.version",
+        "php-tailors/phpunit-inheritance": "self.version",
+        "php-tailors/phpunit-pcre": "self.version",
+        "php-tailors/phpunit-properties": "self.version"
+    },
+    "description": "Extensions to PHPUnit framework",
+    "require": {
+        "php": ">=7.3"
+    },
+    "license": "MIT",
+    "require-dev": {
+        "behat/behat": "^3.4",
+        "phpunit/phpunit": ">=9.3",
+        "psy/psysh": "dev-master",
+        "symplify/monorepo-builder": "^8.0.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
