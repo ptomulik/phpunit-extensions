@@ -1,0 +1,71 @@
+# Locally installed binaries
+/composer
+/phpdoc
+/circleci
+/docker-compose
+/sami
+/tmp
+/tests/cache
+/tools
+*.phar
+
+# Files generated locally
+/build/
+/docs/build/
+/docs/cache/
+/docs/_build/
+/docs/_cache/
+
+# Config
+/.env
+/docker/.env
+
+# composer.lock
+composer.lock
+
+# phpunit (we only commit phpunit.xml.dist)
+/phpunit.xml
+
+# phpunit temporary files
+.phpunit.result.cache
+
+# php-cs-fixer temporary files
+/.php_cs.cache
+
+# phpdoc (we only commit phpdoc.xml.dist)
+/phpdoc.xml
+
+# vimeo/psalm
+.psalm/cache
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+*.bkp
+*.bak
+*~
+.~lock.*
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Lumen generated
+/storage/logs/
+
+# Others
+/vendor
+/.vagrant
+/core
+Homestead.json
+Homestead.yaml
+yarn-error.log
