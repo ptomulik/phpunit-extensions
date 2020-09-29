@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    cacheDirectory=".psalm/cache"
+    errorBaseline=".psalm/baseline.xml"
+    errorLevel="1"
+>
+    <projectFiles>
+        <directory name="packages/phpunit-common" />
+        <directory name="packages/phpunit-inheritance" />
+        <directory name="packages/phpunit-pcre" />
+        <directory name="packages/phpunit-properties" />
+        <directory name="docs/sphinx/examples" />
+        <ignoreFiles>
+          <directory name="packages/phpunit-common/tests" />
+          <directory name="packages/phpunit-inheritance/tests" />
+          <directory name="packages/phpunit-pcre/tests" />
+          <directory name="packages/phpunit-properties/tests" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>

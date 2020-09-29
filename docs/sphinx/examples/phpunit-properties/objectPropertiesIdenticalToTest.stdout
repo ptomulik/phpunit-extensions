@@ -1,0 +1,26 @@
+PHPUnit 9.3.11 by Sebastian Bergmann and contributors.
+
+.F                                                                  2 / 2 (100%)
+
+Time: 00:00.090, Memory: 28.13 MB
+
+There was 1 failure:
+
+1) ObjectPropertiesIdenticalToTest::testFailure
+Failed asserting that object ObjectPropertiesIdenticalToTest is an object with properties identical to specified.
+--- Expected
++++ Actual
+@@ @@
+-Properties <Expect> (
+-    'attribute' => '123'
+-    'getValue()' => null
++Properties <Actual> (
++    'attribute' => 123
++    'getValue()' => 321
+ )
+
+/code/packages/testing/testing/Constraint/AbstractPropertiesComparator.php:207
+/code/docs/sphinx/examples/testing/objectPropertiesIdenticalToTest.php:28
+
+FAILURES!
+Tests: 2, Assertions: 4, Failures: 1.

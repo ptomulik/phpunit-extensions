@@ -1,0 +1,36 @@
+<?php declare(strict_types=1);
+
+$header = <<<'EOF'
+This file is part of php-extensions project.
+
+(c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+
+Distributed under MIT license.
+EOF;
+
+$finder = PhpCsFixer\Finder::create()
+    ->files()
+    ->in(__DIR__ . '/packages/*/src')
+    ->in(__DIR__ . '/packages/*/tests')
+    ->in(__DIR__ . '/packages/*/behat')
+    ->in(__DIR__ . '/packages/*/config')
+    ->in(__DIR__ . '/docs/sphinx/examples/phpunit-*')
+    ->name('*.php')
+;
+
+return PhpCsFixer\Config::create()
+    ->setFinder($finder)
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR2' => true,
+        '@PhpCsFixer' => true,
+        'declare_strict_types' => true,
+        'header_comment' => [
+            'header' => $header,
+            'location' => 'after_open',
+        ],
+        'array_syntax' => ['syntax' => 'short'],
+        'psr4' => true,
+    ])
+;
+// vim: syntax=php sw=4 ts=4 et:

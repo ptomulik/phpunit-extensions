@@ -1,0 +1,29 @@
+version: '3.2'
+services:
+  sphinx:
+    build:
+      context: default
+      args:
+        FOX_IMG: "korowai/sphinx:${FOX_SPHINX_TAG:-latest}"
+        FOX_UID: "${FOX_UID:-6789}"
+        FOX_GID: "${FOX_GID:-6789}"
+    ports:
+      - "${FOX_SPHINX_PORT:-8002}:8000"
+    volumes:
+      - ../:${FOX_CODE:-/code}
+    user: "${FOX_UID:-6789}:${FOX_GID:-6789}"
+
+  sami:
+    build:
+      context: default
+      args:
+        FOX_IMG: "korowai/sami:${FOX_SAMI_TAG:-latest}"
+        FOX_UID: "${FOX_UID:-6789}"
+        FOX_GID: "${FOX_GID:-6789}"
+    environment:
+      - SAMI_SOURCE_DIR=${SAMI_SOURCE_DIR:-'packages/*'}
+    ports:
+      - "${FOX_SAMI_PORT:-8001}:8001"
+    volumes:
+      - ../:${FOX_CODE:-/code}
+    user: "${FOX_UID:-6789}:${FOX_GID:-6789}"
