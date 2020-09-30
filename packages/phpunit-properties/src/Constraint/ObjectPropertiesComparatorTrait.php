@@ -17,13 +17,13 @@ use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 
 trait ObjectPropertiesComparatorTrait
 {
-    /**
-     * Returns short description of subject type supported by this constraint.
-     */
-    public function subject(): string
-    {
-        return 'an object';
-    }
+//    /**
+//     * Returns short description of subject type supported by this constraint.
+//     */
+//    public function subject(): string
+//    {
+//        return 'an object';
+//    }
 
     /**
      * Creates instance of ObjectPropertySelector.

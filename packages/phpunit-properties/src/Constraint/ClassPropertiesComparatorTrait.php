@@ -17,13 +17,13 @@ use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 
 trait ClassPropertiesComparatorTrait
 {
-    /**
-     * Returns short description of subject type supported by this constraint.
-     */
-    public function subject(): string
-    {
-        return 'a class';
-    }
+//    /**
+//     * Returns short description of subject type supported by this constraint.
+//     */
+//    public function subject(): string
+//    {
+//        return 'a class';
+//    }
 
     /**
      * Creates instance of ClassPropertySelector.

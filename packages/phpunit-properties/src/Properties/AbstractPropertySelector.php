@@ -32,8 +32,6 @@ abstract class AbstractPropertySelector implements PropertySelectorInterface
         }
 
         return $this->selectWithAttribute($subject, $key, $retval);
-
-        return false;
     }
 
     /**

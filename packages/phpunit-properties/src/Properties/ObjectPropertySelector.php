@@ -66,6 +66,14 @@ final class ObjectPropertySelector extends AbstractPropertySelector
 
         return true;
     }
+
+    /**
+     * Returns short description of subject type supported by this constraint.
+     */
+    public function subject(): string
+    {
+        return 'an object';
+    }
 }
 
 // vim: syntax=php sw=4 ts=4 et:

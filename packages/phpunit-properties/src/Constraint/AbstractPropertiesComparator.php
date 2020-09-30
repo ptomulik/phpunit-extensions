@@ -73,37 +73,6 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
     }
 
     /**
-     * Returns short description of subject type supported by this constraint.
-     */
-    abstract public function subject(): string;
-
-//    /**
-//     * Creates constraint using array of expected property values as specification.
-//     *
-//     * @psalm-return Subclass
-//     */
-//    public static function fromArray(array $expected, RecursivePropertiesUnwrapperInterface $unwrapper = null): self
-//    {
-//        $valid = array_filter($expected, 'is_string', ARRAY_FILTER_USE_KEY);
-//        if (($count = count($expected) - count($valid)) > 0) {
-//            $message = 'The array of expected properties contains '.$count.' invalid key(s)';
-//
-//            throw new \PHPFox\PHPUnit\Exception\InvalidArgumentException($message);
-//        }
-//
-//        $comparator = static::makeComparator();
-//        $selector   = static::makePropertySelector();
-//        if (null === $unwrapper) {
-//            $unwrapper = new RecursivePropertiesUnwrapper();
-//        }
-//
-//        /** @psalm-var Subclass */
-//        $constraint = new static($comparator, new ExpectedProperties($selector, $expected), $unwrapper);
-//
-//        return $constraint;
-//    }
-
-    /**
      * Returns an instance of ComparatorInterface which provides comparison
      * operator (equality or identity).
      */
@@ -137,7 +106,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
     {
         return sprintf(
             'is %s with properties %s specified',
-            $this->subject(),
+            $this->expected->getPropertySelector()->subject(),
             $this->comparator->adjective()
         );
     }
@@ -162,7 +131,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
         if ($operator instanceof LogicalNot) {
             return sprintf(
                 'fails to be %s with properties %s specified',
-                $this->subject(),
+                $this->expected->getPropertySelector()->subject(),
                 $this->comparator->adjective()
             );
         }

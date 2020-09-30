@@ -14,6 +14,7 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
+use PHPunit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -29,11 +30,35 @@ final class ClassPropertiesEqualToTest extends TestCase
     use PropertiesComparatorTestTrait;
     use ImplementsInterfaceTrait;
     use ExtendsClassTrait;
+    use ClassPropertiesProvTrait;
 
     // required by PropertiesComparatorTestTrait
     public function getPropertiesComparatorClass(): string
     {
         return ClassPropertiesEqualTo::class;
+    }
+
+    /**
+     * @dataProvider provClassPropertiesIdenticalTo
+     * @dataProvider provClassPropertiesEqualButNotIdenticalTo
+     */
+    public function testClassPropertiesEqualToSucceeds(array $expect, string $class): void
+    {
+        $constraint = ClassPropertiesEqualTo::fromArray($expect);
+        self::assertThat($class, $constraint);
+    }
+
+    /**
+     * @dataProvider provClassPropertiesNotEqualTo
+     */
+    public function testClassPropertiesEqualToFails(array $expect, string $class): void
+    {
+        $constraint = ClassPropertiesEqualTo::fromArray($expect);
+
+        $this->expectException(ExpectationFailedException::class);
+        $this->expectExceptionMessage(sprintf('%s is a class with properties equal to', $class));
+
+        $constraint->evaluate($class);
     }
 }
 
