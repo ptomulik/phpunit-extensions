@@ -47,6 +47,7 @@ trait NamedPropertiesComparatorTrait
 
     /**
      * @psalm-assert array<string, mixed> $array
+     *
      * @throws InvalidArgumentException
      */
     private static function assertStringKeysOnly(array $array, int $argument, int $depth = 1): void
