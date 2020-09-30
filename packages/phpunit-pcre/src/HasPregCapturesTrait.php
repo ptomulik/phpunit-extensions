@@ -20,7 +20,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-trait PregAssertionsTrait
+trait HasPregCapturesTrait
 {
     /**
      * Evaluates a \PHPUnit\Framework\Constraint matcher object.

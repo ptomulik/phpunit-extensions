@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\InheritanceAssertionsTrait;
+use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class RecursivePropertiesUnwrapperTest extends TestCase
 {
-    use InheritanceAssertionsTrait;
+    use ImplementsInterfaceTrait;
 
     public const UNIQUE_TAG = RecursivePropertiesUnwrapper::UNIQUE_TAG;
 

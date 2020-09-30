@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\InheritanceAssertionsTrait;
+use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
 
@@ -24,7 +24,7 @@ use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
  */
 final class ExporterTest extends TestCase
 {
-    use InheritanceAssertionsTrait;
+    use ExtendsClassTrait;
 
     public function createActualProperties(...$args): ActualProperties
     {

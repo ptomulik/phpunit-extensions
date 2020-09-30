@@ -17,13 +17,13 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \PHPFox\PHPUnit\PregAssertionsTrait
+ * @covers \PHPFox\PHPUnit\HasPregCapturesTrait
  *
  * @internal
  */
-final class PregAssertionsTraitTest extends TestCase
+final class HasPregCapturesTraitTest extends TestCase
 {
-    use PregAssertionsTrait;
+    use HasPregCapturesTrait;
 
     public function provHasPregCapturesSuccess(): array
     {

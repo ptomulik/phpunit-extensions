@@ -22,7 +22,7 @@ Failed asserting that array has expected PCRE capture groups.
  )
 
 packages/phpunit-pcre/src/Constraint/HasPregCaptures.php:97
-packages/phpunit-pcre/src/PregAssertionsTrait.php:61
+packages/phpunit-pcre/src/HasPregCapturesTrait.php:61
 docs/sphinx/examples/phpunit-pcre/AssertHasPregCapturesTest.php:37
 
 FAILURES!

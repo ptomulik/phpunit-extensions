@@ -12,7 +12,8 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\InheritanceAssertionsTrait;
+use PHPFox\PHPUnit\ImplementsInterfaceTrait;
+use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,7 +27,8 @@ use PHPUnit\Framework\TestCase;
 final class ObjectPropertiesIdenticalToTest extends TestCase
 {
     use PropertiesComparatorTestTrait;
-    use InheritanceAssertionsTrait;
+    use ImplementsInterfaceTrait;
+    use ExtendsClassTrait;
 
     // required by PropertiesComparatorTestTrait
     public function getPropertiesComparatorClass(): string

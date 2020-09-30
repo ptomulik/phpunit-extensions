@@ -12,7 +12,8 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\InheritanceAssertionsTrait;
+use PHPFox\PHPUnit\ImplementsInterfaceTrait;
+use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +24,8 @@ use PHPUnit\Framework\TestCase;
  */
 final class ActualPropertiesTest extends TestCase
 {
-    use InheritanceAssertionsTrait;
+    use ImplementsInterfaceTrait;
+    use ExtendsClassTrait;
 
     //
     //
