@@ -16,6 +16,10 @@ jobs:
           - 7.3
           - 7.4
           - 8.0
+        dependencies:
+          - lowest
+          - highest
+
     name: phpunit-extensions (${{ matrix.os }}:PHP-${{ matrix.php-version }})
     steps:
       - uses: actions/checkout@v2
@@ -23,8 +27,15 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           coverage: none
+
+      - if: matrix.dependencies == 'highest'
       - run: |
-          composer install --no-interaction --no-progress --no-ansi
+          composer update --no-interaction --no-progress --no-ansi
+
+      - if: matrix.dependencies == 'lowest'
+      - run: |
+          composer update --no-interaction --no-progress --no-ansi --prefer-lowest
+
       - run: |
           vendor/bin/phpunit --no-coverage
 
@@ -60,7 +71,7 @@ jobs:
 
       - if: matrix.dependencies == 'highest'
         run: |
-          composer install --no-interaction --no-progress --no-ansi
+          composer update --no-interaction --no-progress --no-ansi
           vendor/bin/monorepo-builder localize-composer-paths --ansi
 
           cd packages/${{ matrix.package_name }}
@@ -68,7 +79,7 @@ jobs:
 
       - if: matrix.dependencies == 'lowest'
         run: |
-          composer install --no-interaction --no-progress --no-ansi --prefer-lowest
+          composer update --no-interaction --no-progress --no-ansi --prefer-lowest
           vendor/bin/monorepo-builder localize-composer-paths --ansi --prefer-lowest
 
           cd packages/${{ matrix.package_name }}
