@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace PHPFox\PHPUnit\Constraint;
 
 use PHPUnit\Framework\Constraint\Constraint;
-use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 
 /**
@@ -70,7 +69,7 @@ final class HasPregCaptures extends Constraint
      *
      * @param mixed $other
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function evaluate($other, string $description = '', bool $returnResult = false): ?bool
@@ -106,7 +105,7 @@ final class HasPregCaptures extends Constraint
      *
      * @param mixed $other value or object to evaluate
      */
-    public function matches($other): bool
+    protected function matches($other): bool
     {
         if (!is_array($other)) {
             return false;
@@ -124,7 +123,7 @@ final class HasPregCaptures extends Constraint
      *
      * @param mixed $other evaluated value or object
      */
-    public function failureDescription($other): string
+    protected function failureDescription($other): string
     {
         if (is_object($other)) {
             $what = 'object '.get_class($other);

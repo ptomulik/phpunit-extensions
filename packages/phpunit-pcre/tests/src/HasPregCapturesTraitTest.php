@@ -12,11 +12,13 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit;
 
+use PHPFox\PHPUnit\Constraint\HasPregCapturesProvTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+ * @covers \PHPFox\PHPUnit\Constraint\HasPregCapturesProvTrait
  * @covers \PHPFox\PHPUnit\HasPregCapturesTrait
  *
  * @internal
@@ -24,171 +26,75 @@ use PHPUnit\Framework\TestCase;
 final class HasPregCapturesTraitTest extends TestCase
 {
     use HasPregCapturesTrait;
+    use HasPregCapturesProvTrait;
 
-    public function provHasPregCapturesSuccess(): array
+    /**
+     * @dataProvider provHasPregCaptures
+     *
+     * @param mixed $actual
+     */
+    public function testAssertHasPregCapturesSucceeds(array $expect, $actual): void
     {
-        return [
-            [[],                                                            []],
-            [[0 => false],                                                  []],
-            [[0 => false],                                                  [0 => null]],
-            [[0 => false],                                                  [0 => [null, -1]]],
-            [[0 => false, 'foo' => false, 'bar' => false, 'gez' => false],  []],
-
-            [[],                                                            [0 => 'FOO']],
-            [[0 => 'FOO'],                                                  [0 => 'FOO']],
-            [[0 => true],                                                   [0 => 'FOO']],
-            [[0 => true, 'foo' => false],                                   [0 => 'FOO']],
-            [[0 => true, 'bar' => false],                                   [0 => 'FOO']],
-            [[0 => true, 'gez' => false],                                   [0 => 'FOO']],
-            [[0 => true, 'foo' => false, 'bar' => false],                   [0 => 'FOO']],
-            [[0 => true, 'foo' => false, 'gez' => false],                   [0 => 'FOO']],
-            [[0 => true, 'foo' => false, 'bar' => false, 'gez' => false],   [0 => 'FOO']],
-
-            [[],                                                            [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true],                                                   [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true, 'foo' => false],                                   [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true, 'bar' => true],                                    [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true, 'gez' => false],                                   [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true, 'foo' => false, 'bar' => true],                    [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true, 'foo' => false, 'gez' => false],                   [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => true, 'foo' => false, 'bar' => true, 'gez' => false],    [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => 'FOO BAR'],                                              [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [['bar' => 'BAR'],                                              [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => 'FOO BAR', 'bar' => 'BAR'],                              [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => 'FOO BAR', 'bar' => 'BAR', 'gez' => false],              [0 => 'FOO BAR', 'bar' => 'BAR']],
-            [[0 => 'FOO BAR', 'bar' => 'BAR', 'gez' => false],              [0 => 'FOO BAR', 'bar' => 'BAR', 'gez' => null]],
-
-            //
-            // PREG_OFFSET_CAPTURE
-            //
-
-            [[],                                                            [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true],                                                   [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'foo' => false],                                   [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'bar' => true],                                    [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'gez' => false],                                   [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'foo' => false, 'bar' => true],                    [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'foo' => false, 'gez' => false],                   [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'foo' => false, 'bar' => true, 'gez' => false],    [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => 'FOO BAR'],                                              [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [['bar' => ['BAR', 4]],                                         [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [['bar' => true],                                               [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => 'FOO BAR', 'bar' => ['BAR', 4]],                         [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => true, 'bar' => true],                                    [0 => 'FOO BAR', 'bar' => ['BAR', 4]]],
-            [[0 => 'FOO BAR', 'bar' => ['BAR', 4], 'gez' => false],         [0 => 'FOO BAR', 'bar' => ['BAR', 4], 'gez' => [null, -1]]],
-
-            // other corner cases
-            [['foo' => null],                                               ['foo' => null]],
-            [['foo' => [null, -1]],                                          ['foo' => [null, -1]]],
-        ];
+        self::assertHasPregCaptures($expect, $actual);
     }
 
     /**
-     * @dataProvider provHasPregCapturesSuccess
+     * @dataProvider provNotHasPregCaptures
      *
-     * @param mixed $other
+     * @param mixed $actual
      */
-    public function testHasPregCapturesSuccess(array $expected, $other): void
-    {
-        $constraint = $this->hasPregCaptures($expected);
-        $this->assertTrue($constraint->matches($other));
-    }
-
-    /**
-     * @dataProvider provHasPregCapturesSuccess
-     *
-     * @param mixed $other
-     */
-    public function testAssertHasPregCapturesSuccess(array $expected, $other): void
-    {
-        $this->assertHasPregCaptures($expected, $other);
-    }
-
-    /**
-     * @dataProvider provHasPregCapturesSuccess
-     *
-     * @param mixed $other
-     */
-    public function testAssertNotHasPregCaptureFailing(array $expected, $other): void
+    public function testAssertHasPregCapturesFails(array $expect, $actual, string $message): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessageMatches('/^Failed asserting that array does not have expected PCRE capture groups.$/sD');
-        $this->assertNotHasPregCaptures($expected, $other);
-    }
+        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
 
-    public function provHasPregCapturesFailing(): array
-    {
-        $re = 'array has expected PCRE capture groups';
-
-        return [
-            [['foo' => true],                       [],                     $re],
-            [['foo' => true],                       ['foo' => [null, -1]],   $re],
-
-            [['foo' => 'FOO'],                      [],                     $re],
-            [['foo' => 'FOO'],                      ['bar' => 'FOO'],       $re],
-            [['foo' => 'FOO'],                      ['foo' => [null, -1]],   $re],
-            [['foo' => 'FOO'],                      ['foo' => ['FOO', -1]],  $re],
-
-            [['foo' => false],                      ['foo' => 'FOO'],       $re],
-            [['foo' => 'BAR'],                      ['foo' => 'FOO'],       $re],
-            [['foo' => 'BAR'],                      ['foo' => ['FOO', -1]],  $re],
-
-            // other corner cases
-            [['foo' => null],                       [],                     $re],
-            [['foo' => [null, -1]],                  ['foo' => null],        $re],
-            [['foo' => [null, -1]],                  [],                     $re],
-        ];
-    }
-
-    public function provHasPregCapturesNonArray(): array
-    {
-        $re = 'string has expected PCRE capture groups';
-
-        return [
-            [['foo' => false],  'stuff', $re],
-        ];
+        self::assertHasPregCaptures($expect, $actual);
     }
 
     /**
-     * @dataProvider provHasPregCapturesFailing
-     * @dataProvider provHasPregCapturesNonArray
+     * @dataProvider provNotHasPregCaptures
      *
-     * @param mixed $other
+     * @param mixed $actual
      */
-    public function testHasPregCapturesFailing(array $expected, $other, string $regexp): void
+    public function testAssertNotHasPregCaptureSucceeds(array $expect, $actual): void
     {
-        $constraint = $this->hasPregCaptures($expected);
-        $this->assertFalse($constraint->matches($other));
-
-        if (method_exists($this, 'assertMatchesRegularExpression')) {
-            // phpunit >= 9.1
-            $this->assertMatchesRegularExpression('/^'.$regexp.'$/sD', $constraint->failureDescription($other));
-        } else {
-            // phpunit < 9.1
-            $this->assertRegExp('/^'.$regexp.'$/sD', $constraint->failureDescription($other));
-        }
+        self::assertNotHasPregCaptures($expect, $actual);
     }
 
     /**
-     * @dataProvider provHasPregCapturesFailing
+     * @dataProvider provHasPregCaptures
      *
-     * @param mixed $other
+     * @param mixed $actual
      */
-    public function testAssertHasPregCapturesFailing(array $expected, $other, string $regexp): void
+    public function testAssertNotHasPregCaptureFails(array $expect, $actual, string $message): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessageMatches('/^Failed asserting that '.$regexp.'.$/sD');
-        $this->assertHasPregCaptures($expected, $other);
+        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+        $this->assertNotHasPregCaptures($expect, $actual);
     }
 
     /**
-     * @dataProvider provHasPregCapturesFailing
+     * @dataProvider provHasPregCaptures
      *
-     * @param mixed $other
+     * @param mixed $actual
      */
-    public function testAssertNotHasPregCaptureSuccess(array $expected, $other, string $regexp): void
+    public function testHasPregCapturesSucceeds(array $expect, $actual): void
     {
-        $this->assertNotHasPregCaptures($expected, $other);
+        self::assertThat($actual, self::hasPregCaptures($expect));
+    }
+
+    /**
+     * @dataProvider provNotHasPregCaptures
+     * @dataProvider provNotHasPregCapturesNonArray
+     *
+     * @param mixed $actual
+     */
+    public function testHasPregCapturesFails(array $expect, $actual, string $message): void
+    {
+        $this->expectException(ExpectationFailedException::class);
+        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+
+        self::assertThat($actual, self::hasPregCaptures($expect));
     }
 }
 
