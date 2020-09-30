@@ -20,7 +20,7 @@ jobs:
           - lowest
           - highest
 
-    name: phpunit-extensions (${{ matrix.os }}:PHP-${{ matrix.php-version }})
+    name: phpunit-extensions (${{ matrix.os }}:PHP-${{ matrix.php-version }}:${{ matrix.dependencies }})
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
