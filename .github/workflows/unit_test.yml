@@ -74,13 +74,15 @@ jobs:
           composer update --no-interaction --no-progress --no-ansi
           vendor/bin/monorepo-builder localize-composer-paths --ansi
 
-          cd packages/${{ matrix.package_name }}
-
       - if: matrix.dependencies == 'highest'
-        run: composer update --no-interaction --no-progress --no-ansi
+        run: |
+          cd packages/${{ matrix.package_name }}
+          composer update --no-interaction --no-progress --no-ansi
 
       - if: matrix.dependencies == 'lowest'
-        run: composer update --no-interaction --no-progress --no-ansi --prefer-lowest
+        run: |
+          cd packages/${{ matrix.package_name }}
+          composer update --no-interaction --no-progress --no-ansi --prefer-lowest
 
       - run: |
           cd packages/${{ matrix.package_name }}
