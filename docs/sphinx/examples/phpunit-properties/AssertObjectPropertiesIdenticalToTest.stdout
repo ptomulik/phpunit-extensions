@@ -2,7 +2,7 @@ PHPUnit 9.3.11 by Sebastian Bergmann and contributors.
 
 .F                                                                  2 / 2 (100%)
 
-Time: 00:00.080, Memory: 28.13 MB
+Time: 00:00.014, Memory: 6.00 MB
 
 There was 1 failure:
 
@@ -19,9 +19,9 @@ Failed asserting that object AssertObjectPropertiesIdenticalToTest is an object 
 +    'getValue()' => 321
  )
 
-/code/packages/testing/testing/Constraint/AbstractPropertiesComparator.php:207
-/code/packages/testing/testing/Assertions/PropertiesAssertionsTrait.php:57
-/code/docs/sphinx/examples/testing/AssertObjectPropertiesIdenticalToTest.php:28
+packages/phpunit-properties/src/Constraint/AbstractPropertiesComparator.php:213
+packages/phpunit-properties/src/Assertions/PropertiesAssertionsTrait.php:58
+docs/sphinx/examples/phpunit-properties/AssertObjectPropertiesIdenticalToTest.php:27
 
 FAILURES!
 Tests: 2, Assertions: 4, Failures: 1.

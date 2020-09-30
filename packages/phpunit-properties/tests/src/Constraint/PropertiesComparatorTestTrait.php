@@ -1,18 +1,18 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Constraint\AbstractPropertiesComparator;
 use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
@@ -74,18 +74,18 @@ trait PropertiesComparatorTestTrait
 
         return [
             'PropertiesComparatorTestTrait.php:'.__LINE__ => [
-                'args' => [['foo' => 'FOO']],
+                'args'   => [['foo' => 'FOO']],
                 'expect' => [
                     'properties' => ['foo' => 'FOO'],
-                    'unwrapper' => static::isInstanceOf(RecursivePropertiesUnwrapper::class),
+                    'unwrapper'  => static::isInstanceOf(RecursivePropertiesUnwrapper::class),
                 ],
             ],
 
             'PropertiesComparatorTestTrait.php:'.__LINE__ => [
-                'args' => [['foo' => 'FOO'], $unwrapper],
+                'args'   => [['foo' => 'FOO'], $unwrapper],
                 'expect' => [
                     'properties' => ['foo' => 'FOO'],
-                    'unwrapper' => static::identicalTo($unwrapper),
+                    'unwrapper'  => static::identicalTo($unwrapper),
                 ],
             ],
         ];
@@ -98,7 +98,7 @@ trait PropertiesComparatorTestTrait
      */
     public function testFromArray(array $args, array $expect): void
     {
-        $class = $this->getPropertiesComparatorClass();
+        $class      = $this->getPropertiesComparatorClass();
         $constraint = $class::fromArray(...$args);
         $this->assertThat($constraint->getPropertiesUnwrapper(), $expect['unwrapper']);
         $this->assertSame($expect['properties'], $constraint->getArrayCopy());

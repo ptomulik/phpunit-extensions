@@ -9,7 +9,6 @@ PHP-Fox Extensions to PHPUnit
    :maxdepth: 3
    :numbered: 2
 
-   install
    packages/phpunit-common/index
    packages/phpunit-inheritance/index
    packages/phpunit-pcre/index

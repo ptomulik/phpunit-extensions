@@ -1,27 +1,20 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Properties\ActualProperties;
-use PHPFox\PHPUnit\Properties\ActualPropertiesInterface;
-use PHPFox\PHPUnit\Properties\CircularDependencyException;
-use PHPFox\PHPUnit\Properties\ExpectedProperties;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
-use PHPFox\PHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
+use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -31,6 +24,8 @@ use PHPFox\PHPUnit\TestCase;
  */
 final class RecursivePropertiesUnwrapperTest extends TestCase
 {
+    use InheritanceAssertionsTrait;
+
     public const UNIQUE_TAG = RecursivePropertiesUnwrapper::UNIQUE_TAG;
 
     public function createExpectedProperties(...$args): ExpectedPropertiesInterface
@@ -67,21 +62,21 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
     {
         return [
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'   => [],
                 'expect' => [
                     'tagging' => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [true],
+                'args'   => [true],
                 'expect' => [
                     'tagging' => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [false],
+                'args'   => [false],
                 'expect' => [
                     'tagging' => false,
                 ],
@@ -106,11 +101,11 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
     {
         $actualProperties['[baz => BAZ]'] = $this->createActualProperties(['baz' => 'BAZ']);
         $expectProperties['[baz => BAZ]'] = $this->createExpectedProperties(['baz' => 'BAZ']);
-        $arrayObject['[baz => BAZ]'] = new \ArrayObject(['baz' => 'BAZ']);
+        $arrayObject['[baz => BAZ]']      = new \ArrayObject(['baz' => 'BAZ']);
 
         return [
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                 ]),
                 'expect' => [
@@ -119,18 +114,18 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                 ]),
                 'expect' => [
-                    'foo' => 'FOO',
+                    'foo'            => 'FOO',
                     self::UNIQUE_TAG => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => [
@@ -149,7 +144,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => $this->createExpectedProperties([
@@ -159,7 +154,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
                 'expect' => [
                     'foo' => 'FOO',
                     'bar' => [
-                        'baz' => 'BAZ',
+                        'baz'            => 'BAZ',
                         self::UNIQUE_TAG => true,
                     ],
                     self::UNIQUE_TAG => true,
@@ -167,7 +162,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => $this->createExpectedProperties([
@@ -179,11 +174,11 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
                     'foo' => 'FOO',
                     'bar' => [
                         'qux' => [
-                            'baz' => 'BAZ',
+                            'baz'            => 'BAZ',
                             self::UNIQUE_TAG => true,
                         ],
                         0 => [
-                            'fred' => 'FRED',
+                            'fred'           => 'FRED',
                             self::UNIQUE_TAG => true,
                         ],
                         self::UNIQUE_TAG => true,
@@ -193,59 +188,59 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => $actualProperties['[baz => BAZ]'],
                 ]),
                 'expect' => [
-                    'foo' => 'FOO',
-                    'bar' => $actualProperties['[baz => BAZ]'],
+                    'foo'            => 'FOO',
+                    'bar'            => $actualProperties['[baz => BAZ]'],
                     self::UNIQUE_TAG => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createActualProperties([
                     'foo' => 'FOO',
                     'bar' => $expectProperties['[baz => BAZ]'],
                 ]),
                 'expect' => [
-                    'foo' => 'FOO',
-                    'bar' => $expectProperties['[baz => BAZ]'],
+                    'foo'            => 'FOO',
+                    'bar'            => $expectProperties['[baz => BAZ]'],
                     self::UNIQUE_TAG => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => $arrayObject['[baz => BAZ]'],
                 ]),
                 'expect' => [
-                    'foo' => 'FOO',
-                    'bar' => $arrayObject['[baz => BAZ]'],
+                    'foo'            => 'FOO',
+                    'bar'            => $arrayObject['[baz => BAZ]'],
                     self::UNIQUE_TAG => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'       => [],
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => $arrayObject['[baz => BAZ]'],
                 ]),
                 'expect' => [
-                    'foo' => 'FOO',
-                    'bar' => $arrayObject['[baz => BAZ]'],
+                    'foo'            => 'FOO',
+                    'bar'            => $arrayObject['[baz => BAZ]'],
                     self::UNIQUE_TAG => true,
                 ],
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [false], // no tagging
+                'args'       => [false], // no tagging
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                 ]),
@@ -255,7 +250,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
-                'args' => [false], // no tagging
+                'args'       => [false], // no tagging
                 'properties' => $this->createExpectedProperties([
                     'foo' => 'FOO',
                     'bar' => $this->createExpectedProperties([
@@ -312,28 +307,28 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
                 'baz' => $this->createActualProperties([]),
             ],
         ]);
-        $properties['#3']['foo']['bar']['qux'] = $properties['#3']['foo']['baz'];
+        $properties['#3']['foo']['bar']['qux']  = $properties['#3']['foo']['baz'];
         $properties['#3']['foo']['baz']['fred'] = $properties['#3']['foo']['bar'];
 
         return [
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
                 'properties' => $properties['#0'],
-                'key' => 'bar',
+                'key'        => 'bar',
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
                 'properties' => $properties['#1'],
-                'key' => 'baz',
+                'key'        => 'baz',
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
                 'properties' => $properties['#2'],
-                'key' => 'qux',
+                'key'        => 'qux',
             ],
 
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
                 'properties' => $properties['#3'],
-                'key' => 'fred',
+                'key'        => 'fred',
             ],
         ];
     }

@@ -15,7 +15,7 @@ class DocExampleContext implements Context
 
     protected function getExamplePath(string $file)
     {
-        return realpath(__dir__.'/../examples/'.$file);
+        return realpath(__DIR__.'/../examples/'.$file);
     }
 
     protected function getExampleFilePath(string $file)
@@ -27,9 +27,9 @@ class DocExampleContext implements Context
         return $path;
     }
 
-    protected function getTopPath(string $file)
+    protected function getTopPath(string $file = '')
     {
-        return realpath(__dir__.'/../../../'.$file);
+        return realpath(__DIR__.'/../../..'.($file ? '/'.$file : ''));
     }
 
     protected function getExampleFileContents(string $file, $default = '')
@@ -70,10 +70,10 @@ class DocExampleContext implements Context
     protected function sanitizeOutput(string $string)
     {
         //$lines = explode(PHP_EOL, $string);
-        static $patterns = [
+        $patterns = [
             '/\r/',
         ];
-        static $replaces = [
+        $replaces = [
             '',
         ];
         return preg_replace($patterns, $replaces, $string);
@@ -81,18 +81,22 @@ class DocExampleContext implements Context
 
     protected function sanitizePhpUnitOutput(string $string)
     {
+        $top = preg_quote($this->getTopPath(), '/');
+
         //$lines = explode(PHP_EOL, $string);
-        static $patterns = [
+        $patterns = [
             '/\r/',
             '/^(PHPUnit )(?:\$version|\d+(?:\.\w+)*)( by Sebastian Bergmann and contributors\.)$/m',
             '/^(Time: )(?:(?:\d+)(?::\d+)?(?:\.\d+)?(?: \w+)?)(, Memory: )(?:\d+(?:\.\d+)?(?: \d+)?( \w+)?)$/m',
-            '/^(\/code\/packages\/testing\/testing(?:\/\w+)+\.php):\d+$/m',
+            '/^(?:'.$top.'\/)?(packages(?:\/[\w-]+)+\.php):\d+$/m',
+            '/^(?:'.$top.'\/)?(docs\/sphinx\/examples(?:\/[\w-]+)+\.php):(\d+)$/m',
         ];
-        static $replaces = [
+        $replaces = [
             '',
             '\1$version\2',
             '\1$time\2$memory',
             '\1:##',
+            '\1:\2',
         ];
         return preg_replace($patterns, $replaces, $string);
     }
@@ -104,7 +108,7 @@ class DocExampleContext implements Context
             1 => ["pipe", "w"],
             2 => ["pipe", "w"]
         ];
-        $cwd = realpath(__dir__ . "/../../..");
+        $cwd = realpath($this->getTopPath());
 
         $proc = proc_open($cmd, $descriptorspec, $pipes, $cwd);
 

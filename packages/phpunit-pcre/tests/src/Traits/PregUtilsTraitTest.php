@@ -1,18 +1,18 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Traits;
 
-use PHPFox\PHPUnit\Traits\PregUtilsTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,49 +30,49 @@ final class PregUtilsTraitTest extends TestCase
         return [
             // #0
             'pregTupleKeysAt([], [0, 1])' => [
-                'args' => [[], [0, 1]],
+                'args'   => [[], [0, 1]],
                 'expect' => [0, 1],
             ],
 
             // #1
             'pregTupleKeysAt(["A"], [0, 1])' => [
-                'args' => [['A'], [0, 1]],
+                'args'   => [['A'], [0, 1]],
                 'expect' => [0, 1],
             ],
 
             // #2
             'pregTupleKeysAt(["A", "B"], [0, 1])' => [
-                'args' => [['A', 'B'], [0, 1]],
+                'args'   => [['A', 'B'], [0, 1]],
                 'expect' => [0, 1],
             ],
 
             // #3
             'pregTupleKeysAt(["a" => "A"], [0, 1])' => [
-                'args' => [['a' => 'A'], [0, 1]],
+                'args'   => [['a' => 'A'], [0, 1]],
                 'expect' => ['a', 1],
             ],
 
             // #4
             'pregTupleKeysAt(["a" => "A", "B"], [0, 1])' => [
-                'args' => [['a' => 'A', 'B'], [0, 1]],
+                'args'   => [['a' => 'A', 'B'], [0, 1]],
                 'expect' => ['a', 0],
             ],
 
             // #5
             'pregTupleKeysAt(["a" => "A", 8 => "B"], [0, 1])' => [
-                'args' => [['a' => 'A', 8 => 'B'], [0, 1]],
+                'args'   => [['a' => 'A', 8 => 'B'], [0, 1]],
                 'expect' => ['a', 8],
             ],
 
             // #6
             'pregTupleKeysAt(["a" => "A", 8 => "B"], [0, 1, 2, 5])' => [
-                'args' => [['a' => 'A', 8 => 'B'], [0, 1, 2, 5]],
+                'args'   => [['a' => 'A', 8 => 'B'], [0, 1, 2, 5]],
                 'expect' => ['a', 8, 2, 5],
             ],
 
             // #7
             'pregTupleKeysAt(["a" => "A", 8 => "B"], ["x" => 0, "y" => 1, "z" => 2])' => [
-                'args' => [['a' => 'A', 8 => 'B'], ['x' => 0, 'y' => 1, 'z' => 2]],
+                'args'   => [['a' => 'A', 8 => 'B'], ['x' => 0, 'y' => 1, 'z' => 2]],
                 'expect' => ['a', 8, 2],
             ],
         ];
@@ -91,19 +91,19 @@ final class PregUtilsTraitTest extends TestCase
         return [
             // #0
             'stringsToPregTuples(["a", "b"])' => [
-                'args' => [['a', 'b']],
+                'args'   => [['a', 'b']],
                 'expect' => [['a'], ['b']],
             ],
 
             // #1
             'stringsToPregTuples(["a", "b"], "key")' => [
-                'args' => [['a', 'b'], 'key'],
+                'args'   => [['a', 'b'], 'key'],
                 'expect' => [['a', ['key' => ['a', 0]]], ['b', ['key' => ['b', 0]]]],
             ],
 
             // #2
             'stringsToPregTuples(["a", "b"], "key", 3)' => [
-                'args' => [['a', 'b'], 'key', 3],
+                'args'   => [['a', 'b'], 'key', 3],
                 'expect' => [['a', ['key' => ['a', 3]]], ['b', ['key' => ['b', 3]]]],
             ],
         ];
@@ -122,31 +122,31 @@ final class PregUtilsTraitTest extends TestCase
         return [
             // #1
             'shiftPregCaptures([], 1)' => [
-                'args' => [[], 1],
+                'args'   => [[], 1],
                 'expect' => [],
             ],
 
             // #2
             'shiftPregCaptures(["whole string"], 1)' => [
-                'args' => [['whole string'], 1],
+                'args'   => [['whole string'], 1],
                 'expect' => ['whole string'],
             ],
 
             // #3
             'shiftPregCaptures(["whole string", "second" => "string"], 5)' => [
-                'args' => [['whole string', 'second' => 'string'], 5],
+                'args'   => [['whole string', 'second' => 'string'], 5],
                 'expect' => ['whole string', 'second' => 'string'],
             ],
 
             // #4
             'shiftPregCaptures(["whole string", "second" => ["string", 6]], 5)' => [
-                'args' => [['whole string', 'second' => ['string',  6]], 5],
+                'args'   => [['whole string', 'second' => ['string',  6]], 5],
                 'expect' => ['whole string', 'second' => ['string', 11]],
             ],
 
             // #5
             'shiftPregCaptures([["whole string", 2], "second" => ["string", 8]], 5)' => [
-                'args' => [[['whole string', 2], 'second' => ['string',  8]], 5],
+                'args'   => [[['whole string', 2], 'second' => ['string',  8]], 5],
                 'expect' => [['whole string', 7], 'second' => ['string', 13]],
             ],
         ];
@@ -362,7 +362,7 @@ final class PregUtilsTraitTest extends TestCase
                 'expect' => [
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
-                    0 => ['RGHT', 3],
+                    0      => ['RGHT', 3],
                     'rght' => ['RGHT', 4],
                 ],
             ],
@@ -374,7 +374,7 @@ final class PregUtilsTraitTest extends TestCase
                     ['rght' => ['RGHT', 4], 'both' => ['RGHT', 5]],
                 ],
                 'expect' => [
-                    0 => ['LEFT', 0],
+                    0      => ['LEFT', 0],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -388,10 +388,10 @@ final class PregUtilsTraitTest extends TestCase
                     [0 => ['RGHT', 3], 'rght' => ['RGHT', 4], 'both' => ['RGHT', 5]],
                 ],
                 'expect' => [
-                    0 => ['LEFT', 0],
+                    0      => ['LEFT', 0],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
-                    1 => ['RGHT', 3],
+                    1      => ['RGHT', 3],
                     'rght' => ['RGHT', 4],
                 ],
             ],
@@ -418,7 +418,7 @@ final class PregUtilsTraitTest extends TestCase
                     true,
                 ],
                 'expect' => [
-                    0 => ['LEFT', 0],
+                    0      => ['LEFT', 0],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -433,7 +433,7 @@ final class PregUtilsTraitTest extends TestCase
                     true,
                 ],
                 'expect' => [
-                    0 => ['RGHT', 3],
+                    0      => ['RGHT', 3],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -448,7 +448,7 @@ final class PregUtilsTraitTest extends TestCase
                     true,
                 ],
                 'expect' => [
-                    0 => ['RGHT', 3],
+                    0      => ['RGHT', 3],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -463,7 +463,7 @@ final class PregUtilsTraitTest extends TestCase
                     ['FOO', 6],
                 ],
                 'expect' => [
-                    0 => ['FOO', 6],
+                    0      => ['FOO', 6],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -478,7 +478,7 @@ final class PregUtilsTraitTest extends TestCase
                     ['FOO', 6],
                 ],
                 'expect' => [
-                    0 => ['FOO', 6],
+                    0      => ['FOO', 6],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -493,7 +493,7 @@ final class PregUtilsTraitTest extends TestCase
                     ['FOO', 6],
                 ],
                 'expect' => [
-                    0 => ['FOO', 6],
+                    0      => ['FOO', 6],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -508,7 +508,7 @@ final class PregUtilsTraitTest extends TestCase
                     ['FOO', 6],
                 ],
                 'expect' => [
-                    0 => ['FOO', 6],
+                    0      => ['FOO', 6],
                     'left' => ['LEFT', 1],
                     'both' => ['RGHT', 5],
                     'rght' => ['RGHT', 4],
@@ -732,12 +732,12 @@ final class PregUtilsTraitTest extends TestCase
     {
         return [
             [ // #0
-                'args' => [['first'], ['second']],
+                'args'   => [['first'], ['second']],
                 'expect' => ['firstsecond'],
             ],
 
             [ // #0
-                'args' => [['first'], ['second'], ['glue' => ' ']],
+                'args'   => [['first'], ['second'], ['glue' => ' ']],
                 'expect' => ['first second'],
             ],
 

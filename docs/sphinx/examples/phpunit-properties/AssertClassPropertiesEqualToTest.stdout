@@ -2,7 +2,7 @@ PHPUnit 9.3.11 by Sebastian Bergmann and contributors.
 
 .F                                                                  2 / 2 (100%)
 
-Time: 00:00.081, Memory: 28.13 MB
+Time: 00:00.027, Memory: 6.00 MB
 
 There was 1 failure:
 
@@ -19,9 +19,9 @@ Failed asserting that 'AssertClassPropertiesEqualToTest' is a class with propert
 +    'getValue()' => 321
  )
 
-/code/packages/testing/testing/Constraint/AbstractPropertiesComparator.php:207
-/code/packages/testing/testing/Assertions/PropertiesAssertionsTrait.php:228
-/code/docs/sphinx/examples/testing/AssertClassPropertiesEqualToTest.php:30
+packages/phpunit-properties/src/Constraint/AbstractPropertiesComparator.php:213
+packages/phpunit-properties/src/Assertions/PropertiesAssertionsTrait.php:229
+docs/sphinx/examples/phpunit-properties/AssertClassPropertiesEqualToTest.php:29
 
 FAILURES!
 Tests: 2, Assertions: 4, Failures: 1.

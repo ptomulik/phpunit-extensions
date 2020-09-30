@@ -1,37 +1,38 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPUnit\Framework\InvalidArgumentException;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * Constraint that accepts classes that implement given interface.
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @extends AbstractInheritanceConstraint<ImplementsInterfaceConstraint>
  */
-final class ImplementsInterfaceConstraint extends AbstractInheritanceConstraint
+final class ImplementsInterface extends AbstractInheritanceConstraint
 {
     /**
      * @throws InvalidArgumentException
      *
      * @psalm-assert class-string $expected
      */
-    public static function fromString(string $expected): self
+    public static function fromInterfaceString(string $expected): self
     {
         if (!interface_exists($expected)) {
-            throw InvalidArgumentException::create(1, 'interface-string');
+            $provided = sprintf("'%s'", addslashes($expected));
+
+            throw InvalidArgumentException::fromBackTrace(1, 'an interface-string', $provided);
         }
 
         return new self($expected);

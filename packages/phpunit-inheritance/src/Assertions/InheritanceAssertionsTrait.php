@@ -1,20 +1,21 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Assertions;
 
 use PHPFox\PHPUnit\Constraint\ExtendsClass;
-use PHPFox\PHPUnit\Constraint\ImplementsInterfaceConstraint;
-use PHPFox\PHPUnit\Constraint\UsesTraitConstraint;
+use PHPFox\PHPUnit\Constraint\ImplementsInterface;
+use PHPFox\PHPUnit\Constraint\UsesTrait;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -67,9 +68,9 @@ trait InheritanceAssertionsTrait
      *
      * @param string $interface name of the interface that is expected to be implemented
      */
-    public static function implementsInterface(string $interface): ImplementsInterfaceConstraint
+    public static function implementsInterface(string $interface): ImplementsInterface
     {
-        return ImplementsInterfaceConstraint::fromString($interface);
+        return ImplementsInterface::fromInterfaceString($interface);
     }
 
     /**
@@ -115,7 +116,7 @@ trait InheritanceAssertionsTrait
      */
     public static function extendsClass(string $parent): ExtendsClass
     {
-        return ExtendsClass::fromString($parent);
+        return ExtendsClass::fromClassString($parent);
     }
 
     /**
@@ -159,9 +160,9 @@ trait InheritanceAssertionsTrait
      *
      * @param string $trait name of the trait that is expected to be included
      */
-    public static function usesTrait(string $trait): UsesTraitConstraint
+    public static function usesTrait(string $trait): UsesTrait
     {
-        return UsesTraitConstraint::fromString($trait);
+        return UsesTrait::fromTraitString($trait);
     }
 }
 

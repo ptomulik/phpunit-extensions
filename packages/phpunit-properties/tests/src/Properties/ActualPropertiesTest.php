@@ -1,23 +1,20 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Properties\ActualProperties;
-use PHPFox\PHPUnit\Properties\ActualPropertiesInterface;
-use PHPFox\PHPUnit\Properties\ExpectedProperties;
-use PHPFox\PHPUnit\Properties\PropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
+use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -27,6 +24,8 @@ use PHPFox\PHPUnit\TestCase;
  */
 final class ActualPropertiesTest extends TestCase
 {
+    use InheritanceAssertionsTrait;
+
     //
     //
     // TESTS
@@ -52,19 +51,19 @@ final class ActualPropertiesTest extends TestCase
         return [
             // #0
             [
-                'args' => [],
+                'args'   => [],
                 'expect' => [],
             ],
 
             // #1
             [
-                'args' => [[]],
+                'args'   => [[]],
                 'expect' => [],
             ],
 
             // #2
             [
-                'args' => [['foo' => 'FOO']],
+                'args'   => [['foo' => 'FOO']],
                 'expect' => ['foo' => 'FOO'],
             ],
         ];
@@ -93,14 +92,14 @@ final class ActualPropertiesTest extends TestCase
             // #0
             [
                 'parent' => new ActualProperties(),
-                'child' => new ExpectedProperties($selector),
+                'child'  => new ExpectedProperties($selector),
                 'expect' => false,
             ],
 
             // #1
             [
                 'parent' => new ActualProperties(),
-                'child' => new ActualProperties(),
+                'child'  => new ActualProperties(),
                 'expect' => true,
             ],
         ];

@@ -2,15 +2,15 @@ PHPUnit 9.3.11 by Sebastian Bergmann and contributors.
 
 .F                                                                  2 / 2 (100%)
 
-Time: 00:00.556, Memory: 178.94 MB
+Time: 00:00.008, Memory: 6.00 MB
 
 There was 1 failure:
 
 1) AssertUsesTraitTest::testAssertUsesTraitFailure
 Failed asserting that RuntimeException uses trait ExampleTrait.
 
-/code/packages/testing/testing/Assertions/ClassAssertionsTrait.php:134
-/code/docs/sphinx/examples/testing/AssertUsesTraitTest.php:22
+packages/phpunit-inheritance/src/Assertions/InheritanceAssertionsTrait.php:134
+docs/sphinx/examples/phpunit-inheritance/AssertUsesTraitTest.php:20
 
 FAILURES!
 Tests: 2, Assertions: 3, Failures: 1.

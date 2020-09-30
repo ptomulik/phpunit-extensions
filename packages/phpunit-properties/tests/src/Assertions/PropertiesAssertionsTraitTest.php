@@ -1,18 +1,18 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Assertions;
 
-use PHPFox\PHPUnit\Assertions\PropertiesAssertionsTrait;
 use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
@@ -70,7 +70,7 @@ final class PropertiesAssertionsTraitTest extends TestCase
                 ],
                 'expect' => [
                     'exception' => \PHPUnit\Framework\Exception::class,
-                    'message' => 'The array of expected properties contains 3 invalid key(s)',
+                    'message'   => 'The array of expected properties contains 3 invalid key(s)',
                 ],
             ],
         ];
@@ -110,41 +110,41 @@ final class PropertiesAssertionsTraitTest extends TestCase
         return [
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'method' => 'objectPropertiesIdenticalTo',
-                'array' => ['foo' => 'FOO'],
-                'value' => 123,
+                'array'  => ['foo' => 'FOO'],
+                'value'  => 123,
                 'expect' => [
                     'exception' => ExpectationFailedException::class,
-                    'message' => '/^Failed asserting that 123 is an object with properties identical to specified.$/',
+                    'message'   => '/^Failed asserting that 123 is an object with properties identical to specified.$/',
                 ],
             ],
 
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'method' => 'objectPropertiesEqualTo',
-                'array' => ['foo' => 'FOO'],
-                'value' => 123,
+                'array'  => ['foo' => 'FOO'],
+                'value'  => 123,
                 'expect' => [
                     'exception' => ExpectationFailedException::class,
-                    'message' => '/^Failed asserting that 123 is an object with properties equal to specified.$/',
+                    'message'   => '/^Failed asserting that 123 is an object with properties equal to specified.$/',
                 ],
             ],
 
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'method' => 'classPropertiesIdenticalTo',
-                'array' => ['foo' => 'FOO'],
-                'value' => 123,
+                'array'  => ['foo' => 'FOO'],
+                'value'  => 123,
                 'expect' => [
                     'exception' => ExpectationFailedException::class,
-                    'message' => '/^Failed asserting that 123 is a class with properties identical to specified.$/',
+                    'message'   => '/^Failed asserting that 123 is a class with properties identical to specified.$/',
                 ],
             ],
 
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'method' => 'classPropertiesEqualTo',
-                'array' => ['foo' => 'FOO'],
-                'value' => 123,
+                'array'  => ['foo' => 'FOO'],
+                'value'  => 123,
                 'expect' => [
                     'exception' => ExpectationFailedException::class,
-                    'message' => '/^Failed asserting that 123 is a class with properties equal to specified.$/',
+                    'message'   => '/^Failed asserting that 123 is a class with properties equal to specified.$/',
                 ],
             ],
         ];
@@ -171,12 +171,12 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
     public static function provObjectPropertiesIdenticalTo(): array
     {
-        $esmith = new class() {
+        $esmith          = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
-            public $age = 20;
+            public $age  = 20;
             public $husband;
-            public $family = [];
+            public $family  = [];
             private $salary = 98;
 
             public function getSalary()
@@ -191,17 +191,17 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
             public function marry($husband)
             {
-                $this->husband = $husband;
+                $this->husband  = $husband;
                 $this->family[] = $husband;
             }
         };
 
-        $jsmith = new class() {
+        $jsmith          = new class() {
             public $name = 'John';
             public $last = 'Smith';
-            public $age = 21;
+            public $age  = 21;
             public $wife;
-            public $family = [];
+            public $family  = [];
             private $salary = 123;
 
             public function getSalary()
@@ -216,7 +216,7 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
             public function marry($wife)
             {
-                $this->wife = $wife;
+                $this->wife     = $wife;
                 $this->family[] = $wife;
             }
         };
@@ -224,14 +224,14 @@ final class PropertiesAssertionsTraitTest extends TestCase
         $esmith->marry($jsmith);
         $jsmith->marry($esmith);
 
-        $registry = new class() {
-            public $persons = [];
+        $registry            = new class() {
+            public $persons  = [];
             public $families = [];
 
             public function addFamily(string $key, array $persons)
             {
                 $this->families[$key] = $persons;
-                $this->persons = array_merge($this->persons, $persons);
+                $this->persons        = array_merge($this->persons, $persons);
             }
         };
 
@@ -247,7 +247,7 @@ final class PropertiesAssertionsTraitTest extends TestCase
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
-                    'age' => 21,
+                    'age'  => 21,
                     'wife' => $esmith,
                 ],
                 'object' => $jsmith,
@@ -277,12 +277,12 @@ final class PropertiesAssertionsTraitTest extends TestCase
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
-                    'age' => 21,
+                    'age'  => 21,
                     'wife' => self::objectPropertiesIdenticalTo([
-                        'name' => 'Emily',
-                        'last' => 'Smith',
-                        'age' => 20,
-                        'husband' => $jsmith,
+                        'name'        => 'Emily',
+                        'last'        => 'Smith',
+                        'age'         => 20,
+                        'husband'     => $jsmith,
                         'getSalary()' => 98,
                     ]),
                 ],
@@ -293,15 +293,15 @@ final class PropertiesAssertionsTraitTest extends TestCase
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
-                    'age' => 21,
+                    'age'  => 21,
                     'wife' => self::objectPropertiesIdenticalTo([
-                        'name' => 'Emily',
-                        'last' => 'Smith',
-                        'age' => 20,
+                        'name'    => 'Emily',
+                        'last'    => 'Smith',
+                        'age'     => 20,
                         'husband' => self::objectPropertiesIdenticalTo([
-                            'name' => 'John',
-                            'last' => 'Smith',
-                            'age' => 21,
+                            'name'        => 'John',
+                            'last'        => 'Smith',
+                            'age'         => 21,
                             'getSalary()' => 123,
                         ]),
                         'getSalary()' => 98,
@@ -362,11 +362,11 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
     public static function provObjectPropertiesEqualButNotIdenticalTo(): array
     {
-        $object = new class() {
+        $object                 = new class() {
             public $emptyString = '';
             public $null;
             public $string123 = '123';
-            public $int321 = 321;
+            public $int321    = 321;
             public $boolFalse = false;
         };
 
@@ -374,10 +374,10 @@ final class PropertiesAssertionsTraitTest extends TestCase
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => null,
-                    'null' => '',
-                    'string123' => 123,
-                    'int321' => '321',
-                    'boolFalse' => 0,
+                    'null'        => '',
+                    'string123'   => 123,
+                    'int321'      => '321',
+                    'boolFalse'   => 0,
                 ],
                 'object' => $object,
             ],
@@ -386,18 +386,18 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
     public static function provObjectPropertiesNotEqualTo(): array
     {
-        $hbrown = new class() {
+        $hbrown          = new class() {
             public $name = 'Helen';
             public $last = 'Brown';
-            public $age = 44;
+            public $age  = 44;
         };
 
-        $esmith = new class() {
+        $esmith          = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
-            public $age = 20;
+            public $age  = 20;
             public $husband;
-            public $family = [];
+            public $family  = [];
             private $salary = 98;
 
             public function getSalary()
@@ -412,17 +412,17 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
             public function marry($husband)
             {
-                $this->husband = $husband;
+                $this->husband  = $husband;
                 $this->family[] = $husband;
             }
         };
 
-        $jsmith = new class() {
+        $jsmith          = new class() {
             public $name = 'John';
             public $last = 'Smith';
-            public $age = 21;
+            public $age  = 21;
             public $wife;
-            public $family = [];
+            public $family  = [];
             private $salary = 123;
 
             public function getSalary()
@@ -437,7 +437,7 @@ final class PropertiesAssertionsTraitTest extends TestCase
 
             public function marry($wife)
             {
-                $this->wife = $wife;
+                $this->wife     = $wife;
                 $this->family[] = $wife;
             }
         };
@@ -445,14 +445,14 @@ final class PropertiesAssertionsTraitTest extends TestCase
         $esmith->marry($jsmith);
         $jsmith->marry($esmith);
 
-        $registry = new class() {
-            public $persons = [];
+        $registry            = new class() {
+            public $persons  = [];
             public $families = [];
 
             public function addFamily(string $key, array $persons)
             {
                 $this->families[$key] = $persons;
-                $this->persons = array_merge($this->persons, $persons);
+                $this->persons        = array_merge($this->persons, $persons);
             }
         };
 
@@ -498,15 +498,15 @@ final class PropertiesAssertionsTraitTest extends TestCase
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
-                    'age' => 21,
+                    'age'  => 21,
                     'wife' => [
-                        'name' => 'Emily',
-                        'last' => 'Smith',
-                        'age' => 20,
+                        'name'    => 'Emily',
+                        'last'    => 'Smith',
+                        'age'     => 20,
                         'husband' => [
-                            'name' => 'John',
-                            'last' => 'Smith',
-                            'age' => 21,
+                            'name'        => 'John',
+                            'last'        => 'Smith',
+                            'age'         => 21,
                             'getSalary()' => 123,
                         ],
                         'getSalary()' => 98,
@@ -694,10 +694,10 @@ final class PropertiesAssertionsTraitTest extends TestCase
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => '',
-                    'null' => null,
-                    'string123' => '123',
-                    'int321' => 321,
-                    'boolFalse' => false,
+                    'null'        => null,
+                    'string123'   => '123',
+                    'int321'      => 321,
+                    'boolFalse'   => false,
                 ],
                 'class' => get_class(new class() {
                     public static $emptyString = '';
@@ -716,10 +716,10 @@ final class PropertiesAssertionsTraitTest extends TestCase
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => null,
-                    'null' => '',
-                    'string123' => 123,
-                    'int321' => '321',
-                    'boolFalse' => 0,
+                    'null'        => '',
+                    'string123'   => 123,
+                    'int321'      => '321',
+                    'boolFalse'   => 0,
                 ],
                 'class' => get_class(new class() {
                     public static $emptyString = '';
@@ -738,10 +738,10 @@ final class PropertiesAssertionsTraitTest extends TestCase
             'PropertiesAssertionsTraitTest.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => 'foo',
-                    'null' => 1,
-                    'string123' => '321',
-                    'int321' => 123,
-                    'boolFalse' => true,
+                    'null'        => 1,
+                    'string123'   => '321',
+                    'int321'      => 123,
+                    'boolFalse'   => true,
                 ],
                 'class' => get_class(new class() {
                     public static $emptyString = '';

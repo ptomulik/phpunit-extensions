@@ -1,18 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace PHPFox\PHPUnit\Assert;
-
-use PHPUnit\Framework\TestCase;
-
 trait ExampleTrait
 {
 }
 
-/**
- * @coversNothing
- */
-final class AssertUsesTraitTest extends TestCase
+final class AssertUsesTraitTest extends \PHPUnit\Framework\TestCase
 {
+    use \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
     use ExampleTrait;
 
     public function testAssertUsesTrait()

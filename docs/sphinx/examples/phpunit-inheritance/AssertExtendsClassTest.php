@@ -1,18 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace PHPFox\PHPUnit\Assert;
-
-use PHPUnit\Framework\TestCase;
-
-/**
- * @coversNothing
- */
-final class AssertExtendsClassTest extends TestCase
+final class AssertExtendsClassTest extends \PHPUnit\Framework\TestCase
 {
+    use \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
+
     public function testAssertExtendsClass()
     {
         $this->assertExtendsClass(\Exception::class, \RuntimeException::class);
-        $this->assertExtendsClass(\Exception::class, new \RuntimeException);
+        $this->assertExtendsClass(\Exception::class, new \RuntimeException());
     }
 
     public function testAssertExtendsClassFailure()

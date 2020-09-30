@@ -1,14 +1,15 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
-
-declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
@@ -70,8 +71,8 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
         RecursiveUnwrapperInterface $unwrapper
     ) {
         $this->comparator = $comparator;
-        $this->expected = $expected;
-        $this->unwrapper = $unwrapper;
+        $this->expected   = $expected;
+        $this->unwrapper  = $unwrapper;
     }
 
     /**
@@ -94,7 +95,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
         }
 
         $comparator = static::makeComparator();
-        $selector = static::makePropertySelector();
+        $selector   = static::makePropertySelector();
         if (null === $unwrapper) {
             $unwrapper = new RecursiveUnwrapper();
         }
@@ -201,7 +202,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
 
             if ($this->getPropertySelector()->canSelectFrom($other)) {
                 $actual = $this->selectActualProperties($other);
-                $f = new ComparisonFailure(
+                $f      = new ComparisonFailure(
                     $this->expected,
                     $other,
                     $this->exporter()->export($this->expected),

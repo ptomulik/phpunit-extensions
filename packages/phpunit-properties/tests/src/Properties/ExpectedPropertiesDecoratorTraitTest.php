@@ -1,23 +1,19 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Properties\ExpectedProperties;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -69,7 +65,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testGetIteratorInvokesAdapteeMethod(): void
     {
         $iterator = $this->createMock(\Traversable::class);
-        $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
+        $adaptee  = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects($this->once())
             ->method('getIterator')
             ->willReturn($iterator)
@@ -100,7 +96,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testOffsetGetInvokesAdapteeMethod(): void
     {
-        $value = new \StdClass();
+        $value   = new \StdClass();
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects($this->once())
             ->method('offsetGet')
@@ -117,7 +113,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testOffsetSetInvokesAdapteeMethod(): void
     {
-        $value = new \StdClass();
+        $value   = new \StdClass();
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects($this->once())
             ->method('offsetSet')
@@ -163,7 +159,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testGetArrayCopyInvokesAdapteeMethod(): void
     {
-        $array = ['foo' => 'FOO'];
+        $array   = ['foo' => 'FOO'];
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects($this->once())
             ->method('getArrayCopy')
@@ -179,7 +175,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testCanUnwrapChildInvokesAdapteeMethod(): void
     {
-        $child = $this->createMock(PropertiesInterface::class);
+        $child   = $this->createMock(PropertiesInterface::class);
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects($this->once())
             ->method('canUnwrapChild')
@@ -197,7 +193,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testGetPropertySelectorInvokesAdapteeMethod(): void
     {
         $selector = $this->createMock(PropertySelectorInterface::class);
-        $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
+        $adaptee  = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects($this->once())
             ->method('getPropertySelector')
             ->willReturn($selector)

@@ -1,14 +1,15 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
-
-declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
@@ -86,7 +87,7 @@ final class HasPregCaptures extends Constraint
 
             if (is_array($other)) {
                 [$expected, $actual] = $this->getArraysForComparison($other);
-                $f = new ComparisonFailure(
+                $f                   = new ComparisonFailure(
                     $this->expected,
                     $other,
                     $this->exporter()->export($expected),

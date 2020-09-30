@@ -1,18 +1,19 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPUnit\Framework\InvalidArgumentException;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -36,7 +37,7 @@ final class ObjectPropertySelector extends AbstractPropertySelector
     protected function selectWithMethod($subject, string $method, &$retval = null): bool
     {
         if (!is_object($subject)) {
-            throw InvalidArgumentException::create(1, 'object');
+            throw InvalidArgumentException::fromBackTrace(1, 'an object', gettype($subject));
         }
         if (!method_exists($subject, $method)) {
             return false;
@@ -56,7 +57,7 @@ final class ObjectPropertySelector extends AbstractPropertySelector
     protected function selectWithAttribute($subject, $key, &$retval = null): bool
     {
         if (!is_object($subject)) {
-            throw InvalidArgumentException::create(1, 'object');
+            throw InvalidArgumentException::fromBackTrace(1, 'an object', gettype($subject));
         }
         $key = (string) $key;
         if (!property_exists($subject, $key)) {

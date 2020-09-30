@@ -1,20 +1,42 @@
 {
     "name": "php-fox/phpunit-extensions",
-    "description": "Extensions to PHPUnit framework",
-    "authors": [
-        {
-            "name": "Paweł Tomulik",
-            "email": "ptomulik@meil.pw.edu.pl",
-            "homepage": "https://github.com/ptomulik",
-            "role": "Developer"
+    "autoload": {
+        "psr-4": {
+            "PHPFox\\PHPUnit\\": [
+                "packages/phpunit-common/src/",
+                "packages/phpunit-inheritance/src/",
+                "packages/phpunit-pcre/src/",
+                "packages/phpunit-properties/src/"
+            ]
         }
-    ],
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPFox\\PHPUnit\\": [
+                "packages/phpunit-common/tests/src/",
+                "packages/phpunit-inheritance/tests/src/",
+                "packages/phpunit-pcre/tests/src/",
+                "packages/phpunit-properties/tests/src/"
+            ],
+            "PHPFox\\PHPUnit\\Docs\\Behat\\": "docs/sphinx/behat/"
+        }
+    },
+    "replace": {
+        "php-fox/phpunit-common": "self.version",
+        "php-fox/phpunit-inheritance": "self.version",
+        "php-fox/phpunit-pcre": "self.version",
+        "php-fox/phpunit-properties": "self.version"
+    },
+    "description": "Extensions to PHPUnit framework",
     "require": {
         "php": ">=7.3"
     },
     "license": "MIT",
     "require-dev": {
-        "symplify/monorepo-builder": "^8.3"
+        "behat/behat": "^3.4",
+        "phpunit/phpunit": ">=9.3",
+        "psy/psysh": "dev-master",
+        "symplify/monorepo-builder": "^8.0.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

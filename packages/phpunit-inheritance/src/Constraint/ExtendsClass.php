@@ -1,25 +1,24 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPUnit\Framework\InvalidArgumentException;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * Constraint that accepts classes that extend given class.
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @extends AbstractInheritanceConstraint<ExtendsClass>
  */
 final class ExtendsClass extends AbstractInheritanceConstraint
 {
@@ -28,10 +27,12 @@ final class ExtendsClass extends AbstractInheritanceConstraint
      *
      * @psalm-assert class-string $expected
      */
-    public static function fromString(string $expected): self
+    public static function fromClassString(string $expected): self
     {
         if (!class_exists($expected)) {
-            throw InvalidArgumentException::create(1, 'class-string');
+            $provided = sprintf("'%s'", addslashes($expected));
+
+            throw InvalidArgumentException::fromBackTrace(1, 'a class-string', $provided);
         }
 
         return new self($expected);

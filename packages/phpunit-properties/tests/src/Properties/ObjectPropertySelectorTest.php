@@ -1,21 +1,20 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Properties\AbstractPropertySelector;
-use PHPFox\PHPUnit\Properties\ObjectPropertySelector;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
+use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -28,6 +27,7 @@ use PHPFox\PHPUnit\TestCase;
 final class ObjectPropertySelectorTest extends TestCase
 {
     use ObjectPropertySelectorTestTrait;
+    use InheritanceAssertionsTrait;
 
     // required by ObjectPropertySelectorTestTrait
     public function createObjectPropertySelector(): PropertySelectorInterface

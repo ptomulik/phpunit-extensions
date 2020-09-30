@@ -1,19 +1,20 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Constraint\ObjectPropertiesIdenticalTo;
-use PHPFox\PHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
+use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -26,6 +27,7 @@ use PHPFox\PHPUnit\TestCase;
 final class ObjectPropertiesIdenticalToTest extends TestCase
 {
     use PropertiesComparatorTestTrait;
+    use InheritanceAssertionsTrait;
 
     // required by PropertiesComparatorTestTrait
     public function getPropertiesComparatorClass(): string

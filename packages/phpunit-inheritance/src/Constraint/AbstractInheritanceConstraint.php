@@ -1,29 +1,27 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Constraint;
 
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPUnit\Framework\Constraint\Operator;
-use PHPUnit\Framework\InvalidArgumentException;
 
 /**
  * Abstract base class for inheritance constraints (ExtendsClass,
- * ImplementsInterfaceConstraint, UsesTraitConstraint, etc.).
+ * ImplementsInterface, UsesTrait, etc.).
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @psalm-template Subclass of AbstractInheritanceConstraint
  */
 abstract class AbstractInheritanceConstraint extends Constraint
 {
@@ -40,12 +38,6 @@ abstract class AbstractInheritanceConstraint extends Constraint
     {
         $this->expected = $expected;
     }
-
-    /**
-     * @throws InvalidArgumentException
-     * @psalm-return Subclass
-     */
-    abstract public static function fromString(string $expected): self;
 
     /**
      * Returns a string representation of the constraint.

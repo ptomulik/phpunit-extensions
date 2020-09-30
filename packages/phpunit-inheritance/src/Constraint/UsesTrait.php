@@ -1,37 +1,38 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPUnit\Framework\InvalidArgumentException;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * Constraint that accepts classes that extend given class.
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @extends AbstractInheritanceConstraint<UsesTraitConstraint>
  */
-final class UsesTraitConstraint extends AbstractInheritanceConstraint
+final class UsesTrait extends AbstractInheritanceConstraint
 {
     /**
      * @throws InvalidArgumentException
      *
      * @psalm-assert trait-string $expected
      */
-    public static function fromString(string $expected): self
+    public static function fromTraitString(string $expected): self
     {
         if (!trait_exists($expected)) {
-            throw InvalidArgumentException::create(1, 'trait-string');
+            $provided = sprintf("'%s'", addslashes($expected));
+
+            throw InvalidArgumentException::fromBackTrace(1, 'a trait-string', $provided);
         }
 
         return new self($expected);

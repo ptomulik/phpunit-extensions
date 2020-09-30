@@ -1,18 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace PHPFox\PHPUnit\Assert;
-
-use PHPUnit\Framework\TestCase;
-
-/**
- * @coversNothing
- */
-final class AssertImplementsInterfaceTest extends TestCase
+final class AssertImplementsInterfaceTest extends \PHPUnit\Framework\TestCase
 {
+    use \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
+
     public function testAssertImplementsInterface()
     {
         $this->assertImplementsInterface(\Throwable::class, \RuntimeException::class);
-        $this->assertImplementsInterface(\Throwable::class, new \RuntimeException);
+        $this->assertImplementsInterface(\Throwable::class, new \RuntimeException());
     }
 
     public function testAssertImplementsInterfaceFailure()

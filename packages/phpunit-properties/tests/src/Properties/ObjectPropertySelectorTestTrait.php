@@ -1,20 +1,19 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Properties\ObjectPropertySelector;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPUnit\Framework\InvalidArgumentException;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -64,18 +63,18 @@ trait ObjectPropertySelectorTestTrait
             // #0
             'string' => [
                 'subject' => 'foo',
-                'expect' => false,
+                'expect'  => false,
             ],
 
             // #1
             'array' => [
                 'subject' => [],
-                'expect' => false,
+                'expect'  => false,
             ],
 
             'class' => [
                 'subject' => self::class,
-                'expect' => false,
+                'expect'  => false,
             ],
 
             // #2
@@ -88,7 +87,7 @@ trait ObjectPropertySelectorTestTrait
             // #3
             'new ObjectPropertySelector' => [
                 'subject' => $this->createObjectPropertySelector(),
-                'expect' => true,
+                'expect'  => true,
             ],
         ];
     }
@@ -119,7 +118,7 @@ trait ObjectPropertySelectorTestTrait
                 'object' => new class() {
                     public $foo = 'FOO';
                 },
-                'key' => 'foo',
+                'key'    => 'foo',
                 'return' => true,
                 'expect' => 'FOO',
             ],
@@ -129,7 +128,7 @@ trait ObjectPropertySelectorTestTrait
                 'object' => new class() {
                     public $foo = 'FOO';
                 },
-                'key' => 'bar',
+                'key'    => 'bar',
                 'return' => false,
                 'expect' => null,
             ],
@@ -142,7 +141,7 @@ trait ObjectPropertySelectorTestTrait
                         return 'FOO';
                     }
                 },
-                'key' => 'foo()',
+                'key'    => 'foo()',
                 'return' => true,
                 'expect' => 'FOO',
             ],
@@ -155,7 +154,7 @@ trait ObjectPropertySelectorTestTrait
                         return 'FOO';
                     }
                 },
-                'key' => 'foo()',
+                'key'    => 'foo()',
                 'return' => true,
                 'expect' => 'FOO',
             ],
@@ -168,7 +167,7 @@ trait ObjectPropertySelectorTestTrait
                         return 'FOO';
                     }
                 },
-                'key' => 'bar()',
+                'key'    => 'bar()',
                 'return' => false,
                 'expect' => null,
             ],
@@ -215,7 +214,7 @@ trait ObjectPropertySelectorTestTrait
 
     public function testObjectPropertySelectorSelectPropertyThrowsOnPrivateAttribute(): void
     {
-        $object = new class() {
+        $object          = new class() {
             private $foo = 'FOO';
         };
         $properties = $this->createObjectPropertySelector();
@@ -232,7 +231,7 @@ trait ObjectPropertySelectorTestTrait
 
     public function testObjectPropertySelectorSelectPropertyThrowsOnStaticProperty(): void
     {
-        $object = new class() {
+        $object                = new class() {
             public static $foo = 'FOO';
         };
         $properties = $this->createObjectPropertySelector();
@@ -253,13 +252,13 @@ trait ObjectPropertySelectorTestTrait
         return [
             // #0
             [
-                'key' => 'foo',
+                'key'    => 'foo',
                 'method' => 'selectWithAttribute',
             ],
 
             // #1
             [
-                'key' => 'foo()',
+                'key'    => 'foo()',
                 'method' => 'selectWithMethod',
             ],
         ];

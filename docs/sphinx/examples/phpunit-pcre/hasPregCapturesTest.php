@@ -1,21 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace PHPFox\PHPUnit\Assert;
-
-use PHPUnit\Framework\TestCase;
-
-/**
- * @coversNothing
- */
-final class HasPregCapturesTest extends TestCase
+final class hasPregCapturesTest extends \PHPUnit\Framework\TestCase
 {
+    use \PHPFox\PHPUnit\Assertions\PregAssertionsTrait;
+
     private $regexp;
     private $subject;
     private $matches;
 
-    public function setUp() : void
+    public function setUp(): void
     {
-        $this->regexp = '/(?<name>\w+) (?<surname>\w+)(?:, (?<age>\d+))?(?:, (?<city>\w+))?/';
+        $this->regexp  = '/(?<name>\w+) (?<surname>\w+)(?:, (?<age>\d+))?(?:, (?<city>\w+))?/';
         $this->subject = 'John Smith, London';
         preg_match($this->regexp, $this->subject, $this->matches, PREG_UNMATCHED_AS_NULL);
     }
@@ -26,8 +21,8 @@ final class HasPregCapturesTest extends TestCase
         $this->assertThat($this->matches, $this->hasPregCaptures([
             'name'    => 'John',  // - name is 'John' (ok),
             'surname' => 'Smith', // - surname is 'Smith' (ok),
-            'age'     =>  false,  // - age is absent (ok),
-            'city'    =>  true    // - city is present (ok).
+            'age'     => false,  // - age is absent (ok),
+            'city'    => true,    // - city is present (ok).
         ]));
     }
 
@@ -37,8 +32,8 @@ final class HasPregCapturesTest extends TestCase
         $this->assertThat($this->matches, $this->hasPregCaptures([
             'name'    => 'John',  // - name is 'John' (ok),
             'surname' => 'Brown', // - surname is 'Brown' (fail),
-            'age'     =>  true,   // - age is present (fail),
-            'city'    =>  false   // - city is absent (fail).
+            'age'     => true,   // - age is present (fail),
+            'city'    => false,   // - city is absent (fail).
         ]));
     }
 }

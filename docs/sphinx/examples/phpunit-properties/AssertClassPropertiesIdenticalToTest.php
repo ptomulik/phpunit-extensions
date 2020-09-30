@@ -1,14 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PHPFox\PHPUnit\Assert;
-
-use PHPUnit\Framework\TestCase;
-
-/**
- * @coversNothing
- */
-final class AssertClassPropertiesIdenticalToTest extends TestCase
+final class AssertClassPropertiesIdenticalToTest extends \PHPUnit\Framework\TestCase
 {
+    use \PHPFox\PHPUnit\Assertions\PropertiesAssertionsTrait;
+
     public static $attribute = 123;
 
     public static function getValue()
@@ -20,8 +15,8 @@ final class AssertClassPropertiesIdenticalToTest extends TestCase
     {
         // assert that:
         $this->assertClassPropertiesIdenticalTo([
-            'attribute'     => 123,     // - self::$attribute is 123 (ok)
-            'getValue()'    => 321,     // - self::getValue() is 321 (ok)
+            'attribute'  => 123,     // - self::$attribute is 123 (ok)
+            'getValue()' => 321,     // - self::getValue() is 321 (ok)
         ], self::class);
     }
 
@@ -29,8 +24,8 @@ final class AssertClassPropertiesIdenticalToTest extends TestCase
     {
         // assert that:
         $this->assertClassPropertiesIdenticalTo([
-            'attribute'     => '123',   // - self::$attribute is 123, not '123' (fail),
-            'getValue()'    => null,    // - self::getValue() is 321, not null (fail)
+            'attribute'  => '123',   // - self::$attribute is 123, not '123' (fail),
+            'getValue()' => null,    // - self::getValue() is 321, not null (fail)
         ], self::class);
     }
 }

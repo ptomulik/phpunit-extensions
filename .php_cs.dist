@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 $header = <<<'EOF'
-This file is part of php-extensions project.
+This file is part of php-fox/phpunit-extensions.
 
 (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
 
@@ -12,9 +12,6 @@ $finder = PhpCsFixer\Finder::create()
     ->files()
     ->in(__DIR__ . '/packages/*/src')
     ->in(__DIR__ . '/packages/*/tests')
-    ->in(__DIR__ . '/packages/*/behat')
-    ->in(__DIR__ . '/packages/*/config')
-    ->in(__DIR__ . '/docs/sphinx/examples/phpunit-*')
     ->name('*.php')
 ;
 
@@ -24,13 +21,20 @@ return PhpCsFixer\Config::create()
     ->setRules([
         '@PSR2' => true,
         '@PhpCsFixer' => true,
+        'blank_line_after_opening_tag' => false,
         'declare_strict_types' => true,
         'header_comment' => [
             'header' => $header,
-            'location' => 'after_open',
+            'location' => 'after_declare_strict',
         ],
         'array_syntax' => ['syntax' => 'short'],
         'psr4' => true,
+        'binary_operator_spaces' => [
+            'operators' => [
+                '=>' => 'align_single_space_minimal',
+                '='  => 'align_single_space_minimal'
+            ],
+        ]
     ])
 ;
 // vim: syntax=php sw=4 ts=4 et:

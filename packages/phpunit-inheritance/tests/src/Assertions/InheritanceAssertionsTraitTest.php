@@ -1,37 +1,37 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Assertions;
 
-use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
 use PHPFox\PHPUnit\Constraint\ExtendsClass;
-use PHPFox\PHPUnit\Constraint\ImplementsInterfaceConstraint;
-use PHPFox\PHPUnit\Constraint\UsesTraitConstraint;
-use PHPFox\PHPUnit\Examples\ExampleClassNotUsingTrait;
-use PHPFox\PHPUnit\Examples\ExampleClassUsingTrait;
-use PHPFox\PHPUnit\Examples\ExampleTrait;
-use PHPFox\PHPUnit\Examples\ExampleTraitUsingTrait;
+use PHPFox\PHPUnit\Constraint\ImplementsInterface;
+use PHPFox\PHPUnit\Constraint\UsesTrait;
+use PHPFox\PHPUnit\Examples\Inheritance\ExampleClassNotUsingTrait;
+use PHPFox\PHPUnit\Examples\Inheritance\ExampleClassUsingTrait;
+use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
+use PHPFox\PHPUnit\Examples\Inheritance\ExampleTraitUsingTrait;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+ * @small
  * @covers \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait
  * @covers \PHPFox\PHPUnit\Constraint\AbstractInheritanceConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ExtendsClass
- * @covers \PHPFox\PHPUnit\Constraint\ImplementsInterfaceConstraint
- * @covers \PHPFox\PHPUnit\Constraint\UsesTraitConstraint
+ * @covers \PHPFox\PHPUnit\Constraint\ImplementsInterface
+ * @covers \PHPFox\PHPUnit\Constraint\UsesTrait
  *
  * @internal
  */
@@ -50,18 +50,18 @@ final class InheritanceAssertionsTraitTest extends TestCase
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Throwable::class,
-                'subject' => \Exception::class,
-                'message' => sprintf($template, \Exception::class, \Throwable::class),
+                'subject'   => \Exception::class,
+                'message'   => sprintf($template, \Exception::class, \Throwable::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Throwable::class,
-                'subject' => new \Exception(),
-                'message' => sprintf($template, 'object '.\Exception::class, \Throwable::class),
+                'subject'   => new \Exception(),
+                'message'   => sprintf($template, 'object '.\Exception::class, \Throwable::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Traversable::class,
-                'subject' => \Iterator::class,
-                'message' => sprintf($template, \Iterator::class, \Traversable::class),
+                'subject'   => \Iterator::class,
+                'message'   => sprintf($template, \Iterator::class, \Traversable::class),
             ],
         ];
     }
@@ -73,23 +73,23 @@ final class InheritanceAssertionsTraitTest extends TestCase
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Traversable::class,
-                'subject' => \Exception::class,
-                'message' => sprintf($template, \Exception::class, \Traversable::class),
+                'subject'   => \Exception::class,
+                'message'   => sprintf($template, \Exception::class, \Traversable::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Traversable::class,
-                'subject' => new \Exception(),
-                'message' => sprintf($template, 'object '.\Exception::class, \Traversable::class),
+                'subject'   => new \Exception(),
+                'message'   => sprintf($template, 'object '.\Exception::class, \Traversable::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Traversable::class,
-                'subject' => 'lorem ipsum',
-                'message' => sprintf($template, "'lorem ipsum'", \Traversable::class),
+                'subject'   => 'lorem ipsum',
+                'message'   => sprintf($template, "'lorem ipsum'", \Traversable::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'interface' => \Traversable::class,
-                'subject' => 123,
-                'message' => sprintf($template, '123', \Traversable::class),
+                'subject'   => 123,
+                'message'   => sprintf($template, '123', \Traversable::class),
             ],
         ];
     }
@@ -152,22 +152,22 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
     public static function provImplementsInterfaceThrowsInvalidArgumentException(): array
     {
-        $template = 'Argument #1 of %s::fromString() must be an interface-string';
+        $template = 'Argument #1 of %s::fromInterfaceString() must be an interface-string, \'%s\' given';
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'argument' => 'non-interface string',
-                'messsage' => sprintf($template, ImplementsInterfaceConstraint::class),
+                'messsage' => sprintf($template, ImplementsInterface::class, 'non-interface string'),
             ],
 
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'argument' => \Exception::class,
-                'messsage' => sprintf($template, ImplementsInterfaceConstraint::class),
+                'messsage' => sprintf($template, ImplementsInterface::class, addslashes(\Exception::class)),
             ],
 
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'argument' => ExampleTrait::class,
-                'messsage' => sprintf($template, ImplementsInterfaceConstraint::class),
+                'messsage' => sprintf($template, ImplementsInterface::class, addslashes(ExampleTrait::class)),
             ],
         ];
     }
@@ -193,13 +193,13 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'class' => \Exception::class,
+                'class'   => \Exception::class,
                 'subject' => \ErrorException::class,
                 'message' => sprintf($template, \ErrorException::class, \Exception::class),
             ],
 
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'class' => \Exception::class,
+                'class'   => \Exception::class,
                 'subject' => new \ErrorException(),
                 'message' => sprintf($template, 'object '.\ErrorException::class, \Exception::class),
             ],
@@ -212,22 +212,22 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'class' => \Error::class,
+                'class'   => \Error::class,
                 'subject' => \ErrorException::class,
                 'message' => sprintf($template, \ErrorException::class, \Error::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'class' => \Error::class,
+                'class'   => \Error::class,
                 'subject' => new \ErrorException(),
                 'message' => sprintf($template, 'object '.\ErrorException::class, \Error::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'class' => \Error::class,
+                'class'   => \Error::class,
                 'subject' => 'lorem ipsum',
                 'message' => sprintf($template, "'lorem ipsum'", \Error::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'class' => \Error::class,
+                'class'   => \Error::class,
                 'subject' => 123,
                 'message' => sprintf($template, '123', \Error::class),
             ],
@@ -302,7 +302,7 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
     public static function provExtendsClassThrowsInvalidArgumentException(): array
     {
-        $template = 'Argument #1 of %s::fromString() must be a class-string';
+        $template = 'Argument #1 of %s::fromClassString() must be a class-string';
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
@@ -343,17 +343,17 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => ExampleClassUsingTrait::class,
                 'message' => sprintf($template, ExampleClassUsingTrait::class, ExampleTrait::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => new ExampleClassUsingTrait(),
                 'message' => sprintf($template, 'object '.ExampleClassUsingTrait::class, ExampleTrait::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => ExampleTraitUsingTrait::class,
                 'message' => sprintf($template, ExampleTraitUsingTrait::class, ExampleTrait::class),
             ],
@@ -366,22 +366,22 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => ExampleClassNotUsingTrait::class,
                 'message' => sprintf($template, ExampleClassNotUsingTrait::class, ExampleTrait::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => new ExampleClassNotUsingTrait(),
                 'message' => sprintf($template, 'object '.ExampleClassNotUsingTrait::class, ExampleTrait::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => 'lorem ipsum',
                 'message' => sprintf($template, "'lorem ipsum'", ExampleTrait::class),
             ],
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
-                'trait' => ExampleTrait::class,
+                'trait'   => ExampleTrait::class,
                 'subject' => 123,
                 'message' => sprintf($template, '123', ExampleTrait::class),
             ],
@@ -456,22 +456,22 @@ final class InheritanceAssertionsTraitTest extends TestCase
 
     public static function provUsesTraitThrowsInvalidArgumentException(): array
     {
-        $template = 'Argument #1 of %s::fromString() must be a trait-string';
+        $template = 'Argument #1 of %s::fromTraitString() must be a trait-string';
 
         return [
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'argument' => 'non-trait string',
-                'messsage' => sprintf($template, UsesTraitConstraint::class),
+                'messsage' => sprintf($template, UsesTrait::class),
             ],
 
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'argument' => \Exception::class,
-                'messsage' => sprintf($template, UsesTraitConstraint::class),
+                'messsage' => sprintf($template, UsesTrait::class),
             ],
 
             'InheritanceAssertionsTraitTest.php:'.__LINE__ => [
                 'argument' => \Throwable::class,
-                'messsage' => sprintf($template, UsesTraitConstraint::class),
+                'messsage' => sprintf($template, UsesTrait::class),
             ],
         ];
     }

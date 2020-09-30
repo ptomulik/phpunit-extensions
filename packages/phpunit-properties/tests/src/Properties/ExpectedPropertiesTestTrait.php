@@ -1,22 +1,17 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-declare(strict_types=1);
-
 namespace PHPFox\PHPUnit\Properties;
-
-use PHPFox\PHPUnit\Properties\ActualProperties;
-use PHPFox\PHPUnit\Properties\ExpectedProperties;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertiesInterface;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -64,14 +59,14 @@ trait ExpectedPropertiesTestTrait
             // #0
             [
                 'parent' => $this->createExpectedProperties($selector),
-                'child' => new ActualProperties(),
+                'child'  => new ActualProperties(),
                 'expect' => false,
             ],
 
             // #1
             [
                 'parent' => $this->createExpectedProperties($selector),
-                'child' => new ExpectedProperties($selector),
+                'child'  => new ExpectedProperties($selector),
                 'expect' => true,
             ],
         ];

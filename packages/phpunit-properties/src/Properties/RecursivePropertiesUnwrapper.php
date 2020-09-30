@@ -1,14 +1,15 @@
 <?php
 
+
+declare(strict_types=1);
+
 /*
- * This file is part of Korowai framework.
+ * This file is part of php-fox/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
-
-declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
@@ -39,7 +40,7 @@ final class RecursivePropertiesUnwrapper implements RecursivePropertiesUnwrapper
     public function __construct(bool $tagging = true)
     {
         $this->tagging = $tagging;
-        $this->seen = new \SplObjectStorage();
+        $this->seen    = new \SplObjectStorage();
     }
 
     /**

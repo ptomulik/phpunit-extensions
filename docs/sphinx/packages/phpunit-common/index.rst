@@ -3,9 +3,9 @@
 
 .. _phpunit-common:
 
-**********************
-php-fox/phpunit-common
-**********************
+****************
+Common Utilities
+****************
 
 .. toctree::
    :hidden:
