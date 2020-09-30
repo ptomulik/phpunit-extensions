@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 /*
@@ -19,12 +18,12 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \PHPFox\PHPUnit\PropertiesAssertionsTrait
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesComparator
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesIdenticalTo
  * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesIdenticalTo
+ * @covers \PHPFox\PHPUnit\PropertiesAssertionsTrait
  *
  * @internal
  */

@@ -21,7 +21,7 @@ services:
         FOX_UID: "${FOX_UID:-6789}"
         FOX_GID: "${FOX_GID:-6789}"
     environment:
-      - SAMI_SOURCE_DIR=${SAMI_SOURCE_DIR:-'packages/*'}
+      - SAMI_SOURCE_DIR=${SAMI_SOURCE_DIR:-packages/*}
     ports:
       - "${FOX_SAMI_PORT:-8001}:8001"
     volumes:

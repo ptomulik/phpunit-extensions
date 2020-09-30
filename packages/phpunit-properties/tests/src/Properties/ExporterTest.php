@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 /*
@@ -13,9 +12,9 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
+use PHPFox\PHPUnit\InheritanceAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
-use PHPFox\PHPUnit\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
