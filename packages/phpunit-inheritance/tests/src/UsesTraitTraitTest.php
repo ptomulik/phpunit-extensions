@@ -31,10 +31,6 @@ final class UsesTraitTraitTest extends TestCase
 {
     use UsesTraitTrait;
 
-    //
-    // usesTrait
-    //
-
     public static function provUsesTrait(): array
     {
         $template = 'Failed asserting that %s does not use trait %s.';
@@ -159,17 +155,17 @@ final class UsesTraitTraitTest extends TestCase
         return [
             'UsesTraitTraitTest.php:'.__LINE__ => [
                 'argument' => 'non-trait string',
-                'messsage' => sprintf($template, UsesTrait::class),
+                'message'  => sprintf($template, UsesTrait::class),
             ],
 
             'UsesTraitTraitTest.php:'.__LINE__ => [
                 'argument' => \Exception::class,
-                'messsage' => sprintf($template, UsesTrait::class),
+                'message'  => sprintf($template, UsesTrait::class),
             ],
 
             'UsesTraitTraitTest.php:'.__LINE__ => [
                 'argument' => \Throwable::class,
-                'messsage' => sprintf($template, UsesTrait::class),
+                'message'  => sprintf($template, UsesTrait::class),
             ],
         ];
     }

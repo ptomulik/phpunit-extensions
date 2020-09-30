@@ -28,10 +28,6 @@ final class ImplementsInterfaceTraitTest extends TestCase
 {
     use ImplementsInterfaceTrait;
 
-    //
-    // implementsInterface
-    //
-
     public static function provImplementsInterface(): array
     {
         $template = 'Failed asserting that %s does not implement interface %s.';
@@ -146,17 +142,17 @@ final class ImplementsInterfaceTraitTest extends TestCase
         return [
             'ImplementsInterfaceTraitTest.php:'.__LINE__ => [
                 'argument' => 'non-interface string',
-                'messsage' => sprintf($template, ImplementsInterface::class, 'non-interface string'),
+                'message'  => sprintf($template, ImplementsInterface::class, 'non-interface string'),
             ],
 
             'ImplementsInterfaceTraitTest.php:'.__LINE__ => [
                 'argument' => \Exception::class,
-                'messsage' => sprintf($template, ImplementsInterface::class, addslashes(\Exception::class)),
+                'message'  => sprintf($template, ImplementsInterface::class, addslashes(\Exception::class)),
             ],
 
             'ImplementsInterfaceTraitTest.php:'.__LINE__ => [
                 'argument' => ExampleTrait::class,
-                'messsage' => sprintf($template, ImplementsInterface::class, addslashes(ExampleTrait::class)),
+                'message'  => sprintf($template, ImplementsInterface::class, addslashes(ExampleTrait::class)),
             ],
         ];
     }

@@ -28,10 +28,6 @@ final class ExtendsClassTraitTest extends TestCase
 {
     use ExtendsClassTrait;
 
-    //
-    // extendsClass
-    //
-
     public static function provExtendsClass(): array
     {
         $template = 'Failed asserting that %s does not extend class %s.';
@@ -152,17 +148,17 @@ final class ExtendsClassTraitTest extends TestCase
         return [
             'ExtendsClassTraitTest.php:'.__LINE__ => [
                 'argument' => 'non-class string',
-                'messsage' => sprintf($template, ExtendsClass::class),
+                'message'  => sprintf($template, ExtendsClass::class),
             ],
 
             'ExtendsClassTraitTest.php:'.__LINE__ => [
                 'argument' => \Throwable::class,
-                'messsage' => sprintf($template, ExtendsClass::class),
+                'message'  => sprintf($template, ExtendsClass::class),
             ],
 
             'ExtendsClassTraitTest.php:'.__LINE__ => [
                 'argument' => ExampleTrait::class,
-                'messsage' => sprintf($template, ExtendsClass::class),
+                'message'  => sprintf($template, ExtendsClass::class),
             ],
         ];
     }

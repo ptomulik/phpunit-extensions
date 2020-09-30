@@ -14,7 +14,6 @@ use Exception;
 use Iterator;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
 use PHPFox\PHPUnit\Exception\InvalidArgumentException;
-use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Throwable;
@@ -22,29 +21,63 @@ use Traversable;
 
 /**
  * @small
+ * @covers \PHPFox\PHPUnit\Constraint\AbstractInheritanceConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ImplementsInterface
+ * @covers \PHPFox\PHPUnit\Constraint\InheritanceConstraintTestTrait
  *
  * @internal
  */
 final class ImplementsInterfaceTest extends TestCase
 {
+    use InheritanceConstraintTestTrait;
+
+    // required by InheritanceConstraintTestTrait
+    public static function provFailureDescriptionOfCustomUnaryOperator(): iterable
+    {
+        return [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
+                'constraint' => ImplementsInterface::fromInterfaceString(Throwable::class),
+                'subject'    => Iterator::class,
+                'expect'     => [
+                    'exception' => ExpectationFailedException::class,
+                    'message'   => '/Iterator implements interface Throwable/',
+                ],
+            ],
+        ];
+    }
+
+    // required by InheritanceConstraintTestTrait
+    public static function provFailureDescriptionOfLogicalNotOperator(): iterable
+    {
+        return [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
+                'constraint' => ImplementsInterface::fromInterfaceString(Throwable::class),
+                'subject'    => Exception::class,
+                'expect'     => [
+                    'exception' => ExpectationFailedException::class,
+                    'message'   => '/Exception does not implement interface Throwable/',
+                ],
+            ],
+        ];
+    }
+
     public static function provImplementsInterface(): array
     {
         return [
             // class implements interface
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Throwable::class,
                 'subject'   => Exception::class,
             ],
 
             // object of class that implements interface
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Throwable::class,
                 'subject'   => new Exception(),
             ],
 
             // interface that extends interface
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Traversable::class,
                 'subject'   => Iterator::class,
             ],
@@ -56,22 +89,22 @@ final class ImplementsInterfaceTest extends TestCase
         $template = 'Failed asserting that %s implements interface %s.';
 
         return [
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Traversable::class,
                 'subject'   => Exception::class,
                 'message'   => sprintf($template, Exception::class, Traversable::class),
             ],
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Traversable::class,
                 'subject'   => new Exception(),
                 'message'   => sprintf($template, 'object '.Exception::class, Traversable::class),
             ],
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Traversable::class,
                 'subject'   => 'lorem ipsum',
                 'message'   => sprintf($template, "'lorem ipsum'", Traversable::class),
             ],
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'interface' => Traversable::class,
                 'subject'   => 123,
                 'message'   => sprintf($template, '123', Traversable::class),
@@ -84,17 +117,17 @@ final class ImplementsInterfaceTest extends TestCase
         $message = '/Argument #1 of \S+ must be an interface-string/';
 
         return [
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'argument' => 'non-interface string',
                 'messsage' => $message,
             ],
 
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'argument' => Exception::class,
                 'messsage' => $message,
             ],
 
-            [
+            'ImplementsInterfaceTest.php:'.__LINE__ => [
                 'argument' => ExampleTrait::class,
                 'messsage' => $message,
             ],
@@ -137,31 +170,5 @@ final class ImplementsInterfaceTest extends TestCase
         self::expectExceptionMessageMatches($message);
 
         ImplementsInterface::fromInterfaceString($argument);
-    }
-
-    public function testFailureDescriptionOfCustomUnaryOperator(): void
-    {
-        $constraint = ImplementsInterface::fromInterfaceString(Throwable::class);
-
-        $noop = $this->getMockBuilder(UnaryOperator::class)
-            ->setConstructorArgs([$constraint])
-            ->getMockForAbstractClass()
-        ;
-
-        $noop->expects($this->any())
-            ->method('operator')
-            ->willReturn('noop')
-        ;
-        $noop->expects($this->any())
-            ->method('precedence')
-            ->willReturn(1)
-        ;
-
-        $regexp = '/Iterator implements interface Throwable/';
-
-        self::expectException(ExpectationFailedException::class);
-        self::expectExceptionMessageMatches($regexp);
-
-        $noop->evaluate(Iterator::class);
     }
 }

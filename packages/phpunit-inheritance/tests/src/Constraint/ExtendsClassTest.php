@@ -15,30 +15,63 @@ use ErrorException;
 use Exception;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
 use PHPFox\PHPUnit\Exception\InvalidArgumentException;
-use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 
 /**
  * @small
+ * @covers \PHPFox\PHPUnit\Constraint\AbstractInheritanceConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ExtendsClass
+ * @covers \PHPFox\PHPUnit\Constraint\InheritanceConstraintTestTrait
  *
  * @internal
  */
 final class ExtendsClassTest extends TestCase
 {
+    use InheritanceConstraintTestTrait;
+
+    // required by InheritanceConstraintTestTrait
+    public static function provFailureDescriptionOfCustomUnaryOperator(): iterable
+    {
+        return [
+            'ExtendsClassTest.php:'.__LINE__ => [
+                'constraint' => ExtendsClass::fromClassString(ErrorException::class),
+                'subject'    => Exception::class,
+                'expect'     => [
+                    'exception' => ExpectationFailedException::class,
+                    'message'   => '/Exception extends class ErrorException/',
+                ],
+            ],
+        ];
+    }
+
+    // required by InheritanceConstraintTestTrait
+    public static function provFailureDescriptionOfLogicalNotOperator(): iterable
+    {
+        return [
+            'ExtendsClassTest.php:'.__LINE__ => [
+                'constraint' => ExtendsClass::fromClassString(Exception::class),
+                'subject'    => ErrorException::class,
+                'expect'     => [
+                    'exception' => ExpectationFailedException::class,
+                    'message'   => '/ErrorException does not extend class Exception/',
+                ],
+            ],
+        ];
+    }
+
     public static function provExtendsClass(): array
     {
         return [
             // class extends class
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'class'   => Exception::class,
                 'subject' => ErrorException::class,
             ],
 
             // object of class that extends class
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'class'   => Exception::class,
                 'subject' => new ErrorException(),
             ],
@@ -50,22 +83,22 @@ final class ExtendsClassTest extends TestCase
         $template = 'Failed asserting that %s extends class %s.';
 
         return [
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'class'   => Error::class,
                 'subject' => ErrorException::class,
                 'message' => sprintf($template, ErrorException::class, Error::class),
             ],
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'class'   => Error::class,
                 'subject' => new ErrorException(),
                 'message' => sprintf($template, 'object '.ErrorException::class, Error::class),
             ],
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'class'   => Error::class,
                 'subject' => 'lorem ipsum',
                 'message' => sprintf($template, "'lorem ipsum'", Error::class),
             ],
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'class'   => Error::class,
                 'subject' => 123,
                 'message' => sprintf($template, '123', Error::class),
@@ -73,22 +106,22 @@ final class ExtendsClassTest extends TestCase
         ];
     }
 
-    public static function provConstraintThrowsInvalidArgumentException(): array
+    public static function provThrowsInvalidArgumentException(): array
     {
         $message = '/Argument #1 of \S+ must be a class-string/';
 
         return [
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'argument' => 'non-class string',
                 'messsage' => $message,
             ],
 
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'argument' => Throwable::class,
                 'messsage' => $message,
             ],
 
-            [
+            'ExtendsClassTest.php:'.__LINE__ => [
                 'argument' => ExampleTrait::class,
                 'messsage' => $message,
             ],
@@ -123,39 +156,13 @@ final class ExtendsClassTest extends TestCase
     }
 
     /**
-     * @dataProvider provConstraintThrowsInvalidArgumentException
+     * @dataProvider provThrowsInvalidArgumentException
      */
-    public function testConstraintThrowsInvalidArgumentException(string $argument, string $message): void
+    public function testThrowsInvalidArgumentException(string $argument, string $message): void
     {
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessageMatches($message);
 
         ExtendsClass::fromClassString($argument);
-    }
-
-    public function testFailureDescriptionOfCustomUnaryOperator(): void
-    {
-        $constraint = ExtendsClass::fromClassString(ErrorException::class);
-
-        $noop = $this->getMockBuilder(UnaryOperator::class)
-            ->setConstructorArgs([$constraint])
-            ->getMockForAbstractClass()
-        ;
-
-        $noop->expects($this->any())
-            ->method('operator')
-            ->willReturn('noop')
-        ;
-        $noop->expects($this->any())
-            ->method('precedence')
-            ->willReturn(1)
-        ;
-
-        $regexp = '/Exception extends class ErrorException/';
-
-        self::expectException(ExpectationFailedException::class);
-        self::expectExceptionMessageMatches($regexp);
-
-        $noop->evaluate(Exception::class);
     }
 }
