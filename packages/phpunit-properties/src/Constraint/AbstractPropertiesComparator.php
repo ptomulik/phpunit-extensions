@@ -20,9 +20,9 @@ use PHPFox\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait;
 use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
 use PHPFox\PHPUnit\Properties\Exporter;
 use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesSelector as RecursiveSelector;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper as RecursiveUnwrapper;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface as RecursiveUnwrapperInterface;
+use PHPFox\PHPUnit\Properties\RecursivePropertiesSelector;
+use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
+use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPUnit\Framework\Constraint\Operator;
@@ -37,8 +37,6 @@ use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
  * Support for other kinds of beings may be implemented if necessary.
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @psalm-template Subclass of AbstractPropertiesComparator
  */
 abstract class AbstractPropertiesComparator extends Constraint implements ExpectedPropertiesInterface
 {
@@ -50,7 +48,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
     private $expected;
 
     /**
-     * @var RecursiveUnwrapperInterface
+     * @var RecursivePropertiesUnwrapperInterface
      */
     private $unwrapper;
 
@@ -67,7 +65,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
     final protected function __construct(
         ComparatorInterface $comparator,
         ExpectedPropertiesInterface $expected,
-        RecursiveUnwrapperInterface $unwrapper
+        RecursivePropertiesUnwrapperInterface $unwrapper
     ) {
         $this->comparator = $comparator;
         $this->expected   = $expected;
@@ -79,31 +77,31 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
      */
     abstract public function subject(): string;
 
-    /**
-     * Creates constraint using array of expected property values as specification.
-     *
-     * @psalm-return Subclass
-     */
-    public static function fromArray(array $expected, RecursiveUnwrapperInterface $unwrapper = null): self
-    {
-        $valid = array_filter($expected, 'is_string', ARRAY_FILTER_USE_KEY);
-        if (($count = count($expected) - count($valid)) > 0) {
-            $message = 'The array of expected properties contains '.$count.' invalid key(s)';
-
-            throw new \PHPUnit\Framework\Exception($message);
-        }
-
-        $comparator = static::makeComparator();
-        $selector   = static::makePropertySelector();
-        if (null === $unwrapper) {
-            $unwrapper = new RecursiveUnwrapper();
-        }
-
-        /** @psalm-var Subclass */
-        $constraint = new static($comparator, new ExpectedProperties($selector, $expected), $unwrapper);
-
-        return $constraint;
-    }
+//    /**
+//     * Creates constraint using array of expected property values as specification.
+//     *
+//     * @psalm-return Subclass
+//     */
+//    public static function fromArray(array $expected, RecursivePropertiesUnwrapperInterface $unwrapper = null): self
+//    {
+//        $valid = array_filter($expected, 'is_string', ARRAY_FILTER_USE_KEY);
+//        if (($count = count($expected) - count($valid)) > 0) {
+//            $message = 'The array of expected properties contains '.$count.' invalid key(s)';
+//
+//            throw new \PHPFox\PHPUnit\Exception\InvalidArgumentException($message);
+//        }
+//
+//        $comparator = static::makeComparator();
+//        $selector   = static::makePropertySelector();
+//        if (null === $unwrapper) {
+//            $unwrapper = new RecursivePropertiesUnwrapper();
+//        }
+//
+//        /** @psalm-var Subclass */
+//        $constraint = new static($comparator, new ExpectedProperties($selector, $expected), $unwrapper);
+//
+//        return $constraint;
+//    }
 
     /**
      * Returns an instance of ComparatorInterface which provides comparison
@@ -124,10 +122,10 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
     }
 
     /**
-     * Returns an instance of RecursiveUnwrapperInterface used to convert
+     * Returns an instance of RecursivePropertiesUnwrapperInterface used to convert
      * expected/actual properties objects to raw arrays.
      */
-    final public function getPropertiesUnwrapper(): RecursiveUnwrapperInterface
+    final public function getPropertiesUnwrapper(): RecursivePropertiesUnwrapperInterface
     {
         return $this->unwrapper;
     }
@@ -232,17 +230,17 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
         return $this->comparator->compare($expect, $actual);
     }
 
-    /**
-     * Creates instance of PropertySelectorInterface specific to the type of
-     * subjects supported by this constraint.
-     */
-    abstract protected static function makePropertySelector(): PropertySelectorInterface;
-
-    /**
-     * Creates instance of ComparatorInterface specific to the type of
-     * comparison (equality, identity) used by subclass.
-     */
-    abstract protected static function makeComparator(): ComparatorInterface;
+//    /**
+//     * Creates instance of PropertySelectorInterface specific to the type of
+//     * subjects supported by this constraint.
+//     */
+//    abstract protected static function makePropertySelector(): PropertySelectorInterface;
+//
+//    /**
+//     * Creates instance of ComparatorInterface specific to the type of
+//     * comparison (equality, identity) used by subclass.
+//     */
+//    abstract protected static function makeComparator(): ComparatorInterface;
 
     final protected function exporter(): SebastianBergmannExporter
     {
@@ -298,7 +296,7 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
      */
     private function selectActualProperties($subject): ActualPropertiesInterface
     {
-        return (new RecursiveSelector($this->expected))->selectProperties($subject);
+        return (new RecursivePropertiesSelector($this->expected))->selectProperties($subject);
     }
 
     /**

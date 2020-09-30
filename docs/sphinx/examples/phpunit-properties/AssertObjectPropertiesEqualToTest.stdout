@@ -20,7 +20,7 @@ Failed asserting that object AssertObjectPropertiesEqualToTest is an object with
  )
 
 packages/phpunit-properties/src/Constraint/AbstractPropertiesComparator.php:212
-packages/phpunit-properties/src/PropertiesAssertionsTrait.php:114
+packages/phpunit-properties/src/ObjectPropertiesEqualToTrait.php:56
 docs/sphinx/examples/phpunit-properties/AssertObjectPropertiesEqualToTest.php:27
 
 FAILURES!

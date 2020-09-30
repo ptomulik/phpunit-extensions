@@ -20,7 +20,7 @@ Failed asserting that 'AssertClassPropertiesEqualToTest' is a class with propert
  )
 
 packages/phpunit-properties/src/Constraint/AbstractPropertiesComparator.php:212
-packages/phpunit-properties/src/PropertiesAssertionsTrait.php:228
+packages/phpunit-properties/src/ClassPropertiesEqualToTrait.php:56
 docs/sphinx/examples/phpunit-properties/AssertClassPropertiesEqualToTest.php:29
 
 FAILURES!

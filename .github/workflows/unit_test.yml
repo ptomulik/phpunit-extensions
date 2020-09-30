@@ -1,0 +1,59 @@
+name: Unit Testing
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  monorepo_testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version:
+          - 7.3
+          - 7.4
+    name: php-fox/phpunit-extensions (PHP ${{ matrix.php_version }})
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php_version }}
+          coverage: none
+      - run: |
+          composer install --no-progress --ansi
+      - run: |
+          vendor/bin/phpunit --no-coverage
+
+  after_split_testing:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package_name:
+          - phpunit-common
+          - phpunit-inheritance
+          - phpunit-pcre
+          - phpunit-properties
+        php_version:
+          - 7.3
+          - 7.4
+
+    name: php-fox/${{ matrix.package_name }} (PHP ${{ matrix.php_version }})
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php_version }}
+          coverage: none
+      - run: |
+          composer install --no-progress --ansi
+          vendor/bin/monorepo-builder localize-composer-paths --ansi
+
+          cd packages/${{ matrix.package_name }}
+          composer update --no-progress --ansi
+
+      - run: |
+          cd packages/${{ matrix.package_name }}
+          vendor/bin/phpunit --no-coverage
+

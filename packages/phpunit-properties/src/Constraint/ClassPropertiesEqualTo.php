@@ -12,10 +12,8 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Properties\ClassPropertySelector;
 use PHPFox\PHPUnit\Properties\ComparatorInterface;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 
 /**
  * Constraint that accepts classes having properties equal to specified ones.
@@ -42,26 +40,11 @@ use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
  *      }), $matcher);
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @extends AbstractPropertiesComparator<ClassPropertiesEqualTo>
  */
 final class ClassPropertiesEqualTo extends AbstractPropertiesComparator
 {
-    /**
-     * Returns short description of subject type supported by this constraint.
-     */
-    public function subject(): string
-    {
-        return 'a class';
-    }
-
-    /**
-     * Creates instance of ClassPropertySelector.
-     */
-    protected static function makePropertySelector(): PropertySelectorInterface
-    {
-        return new ClassPropertySelector();
-    }
+    use NamedPropertiesComparatorTrait;
+    use ClassPropertiesComparatorTrait;
 
     /**
      * Creates instance of EqualityComparator.

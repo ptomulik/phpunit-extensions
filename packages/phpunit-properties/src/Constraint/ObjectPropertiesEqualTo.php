@@ -14,8 +14,6 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\Properties\ComparatorInterface;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\ObjectPropertySelector;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 
 /**
  * Constraint that accepts objects having properties equal to specified ones.
@@ -42,26 +40,11 @@ use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
  *      }, $matcher);
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- *
- * @extends AbstractPropertiesComparator<ObjectPropertiesEqualTo>
  */
 final class ObjectPropertiesEqualTo extends AbstractPropertiesComparator
 {
-    /**
-     * Returns short description of subject type supported by this constraint.
-     */
-    public function subject(): string
-    {
-        return 'an object';
-    }
-
-    /**
-     * Creates instance of ObjectPropertySelector.
-     */
-    protected static function makePropertySelector(): PropertySelectorInterface
-    {
-        return new ObjectPropertySelector();
-    }
+    use NamedPropertiesComparatorTrait;
+    use ObjectPropertiesComparatorTrait;
 
     /**
      * Creates instance of EqualityComparator.

@@ -2,7 +2,7 @@
 
 final class objectPropertiesEqualToTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\PropertiesAssertionsTrait;
+    use \PHPFox\PHPUnit\ObjectPropertiesEqualToTrait;
 
     public $attribute = 123;
 
