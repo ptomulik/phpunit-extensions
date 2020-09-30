@@ -12,7 +12,7 @@ jobs:
         php_version:
           - 7.3
           - 7.4
-    name: php-fox/phpunit-extensions (PHP ${{ matrix.php_version }})
+    name: phpunit-extensions (PHP ${{ matrix.php_version }})
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v1
@@ -38,7 +38,7 @@ jobs:
           - 7.3
           - 7.4
 
-    name: php-fox/${{ matrix.package_name }} (PHP ${{ matrix.php_version }})
+    name: ${{ matrix.package_name }} (PHP ${{ matrix.php_version }})
 
     steps:
       - uses: actions/checkout@v2
