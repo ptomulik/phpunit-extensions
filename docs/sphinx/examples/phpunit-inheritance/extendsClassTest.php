@@ -2,7 +2,7 @@
 
 final class extendsClassTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
+    use \PHPFox\PHPUnit\InheritanceAssertionsTrait;
 
     public function testExtendsClass()
     {

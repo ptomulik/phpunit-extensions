@@ -11,7 +11,7 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Assertions;
+namespace PHPFox\PHPUnit;
 
 use PHPFox\PHPUnit\Constraint\ExtendsClass;
 use PHPFox\PHPUnit\Constraint\ImplementsInterface;

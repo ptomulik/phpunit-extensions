@@ -2,7 +2,7 @@
 
 final class AssertObjectPropertiesIdenticalToTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\Assertions\PropertiesAssertionsTrait;
+    use \PHPFox\PHPUnit\PropertiesAssertionsTrait;
 
     public $attribute = 123;
 

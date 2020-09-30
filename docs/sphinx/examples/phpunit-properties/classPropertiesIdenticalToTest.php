@@ -2,7 +2,7 @@
 
 final class classPropertiesIdenticalToTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\Assertions\PropertiesAssertionsTrait;
+    use \PHPFox\PHPUnit\PropertiesAssertionsTrait;
 
     public static $attribute = 123;
 

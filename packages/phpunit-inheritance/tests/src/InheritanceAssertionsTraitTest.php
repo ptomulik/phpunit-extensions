@@ -11,7 +11,7 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Assertions;
+namespace PHPFox\PHPUnit;
 
 use PHPFox\PHPUnit\Constraint\ExtendsClass;
 use PHPFox\PHPUnit\Constraint\ImplementsInterface;
@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait
+ * @covers \PHPFox\PHPUnit\InheritanceAssertionsTrait
  * @covers \PHPFox\PHPUnit\Constraint\AbstractInheritanceConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ExtendsClass
  * @covers \PHPFox\PHPUnit\Constraint\ImplementsInterface

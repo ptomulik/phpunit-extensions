@@ -15,7 +15,7 @@ namespace PHPFox\PHPUnit\Properties;
 
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
-use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
+use PHPFox\PHPUnit\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>

@@ -2,7 +2,7 @@
 
 final class hasPregCapturesTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\Assertions\PregAssertionsTrait;
+    use \PHPFox\PHPUnit\PregAssertionsTrait;
 
     private $regexp;
     private $subject;

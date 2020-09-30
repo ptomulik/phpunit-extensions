@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace PHPFox\PHPUnit\Properties;
 
 use PHPUnit\Framework\TestCase;
-use PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
+use PHPFox\PHPUnit\InheritanceAssertionsTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>

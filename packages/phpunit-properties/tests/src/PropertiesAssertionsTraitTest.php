@@ -11,7 +11,7 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Assertions;
+namespace PHPFox\PHPUnit;
 
 use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \PHPFox\PHPUnit\Assertions\PropertiesAssertionsTrait
+ * @covers \PHPFox\PHPUnit\PropertiesAssertionsTrait
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesComparator
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesIdenticalTo

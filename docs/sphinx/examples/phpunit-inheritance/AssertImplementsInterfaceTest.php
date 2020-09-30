@@ -2,7 +2,7 @@
 
 final class AssertImplementsInterfaceTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\Assertions\InheritanceAssertionsTrait;
+    use \PHPFox\PHPUnit\InheritanceAssertionsTrait;
 
     public function testAssertImplementsInterface()
     {
