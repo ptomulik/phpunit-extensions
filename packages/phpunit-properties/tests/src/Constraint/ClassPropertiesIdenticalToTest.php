@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesComparator
+ * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesIdenticalTo
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesComparatorTestTrait
  *

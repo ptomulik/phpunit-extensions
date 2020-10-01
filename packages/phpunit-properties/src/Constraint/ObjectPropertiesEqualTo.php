@@ -41,7 +41,7 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-final class ObjectPropertiesEqualTo extends AbstractPropertiesComparator
+final class ObjectPropertiesEqualTo extends AbstractPropertiesConstraint
 {
     use NamedPropertiesComparatorTrait;
     use ObjectPropertiesComparatorTrait;

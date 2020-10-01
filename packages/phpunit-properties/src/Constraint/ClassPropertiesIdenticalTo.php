@@ -41,7 +41,7 @@ use PHPFox\PHPUnit\Properties\IdentityComparator;
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-final class ClassPropertiesIdenticalTo extends AbstractPropertiesComparator
+final class ClassPropertiesIdenticalTo extends AbstractPropertiesConstraint
 {
     use NamedPropertiesComparatorTrait;
     use ClassPropertiesComparatorTrait;

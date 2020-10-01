@@ -2,7 +2,7 @@ PHPUnit 9.3.11 by Sebastian Bergmann and contributors.
 
 .F                                                                  2 / 2 (100%)
 
-Time: 00:00.006, Memory: 6.00 MB
+Time: 00:00.013, Memory: 6.00 MB
 
 There was 1 failure:
 
@@ -21,9 +21,7 @@ Failed asserting that array has expected PCRE capture groups.
 +    'city' => 'London'
  )
 
-packages/phpunit-pcre/src/Constraint/HasPregCaptures.php:97
-packages/phpunit-pcre/src/HasPregCapturesTrait.php:61
-docs/sphinx/examples/phpunit-pcre/AssertHasPregCapturesTest.php:37
+AssertHasPregCapturesTest.php:37
 
 FAILURES!
 Tests: 2, Assertions: 2, Failures: 1.

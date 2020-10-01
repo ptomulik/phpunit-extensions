@@ -54,10 +54,10 @@ trait PropertiesComparatorTestTrait
      */
     abstract public function createMock(string $originalClassName): MockObject;
 
-    public function testExtendsAbstractPropertiesComparator(): void
+    public function testExtendsAbstractPropertiesConstraint(): void
     {
         $class = $this->getPropertiesComparatorClass();
-        $this->assertExtendsClass(AbstractPropertiesComparator::class, $class);
+        $this->assertExtendsClass(AbstractPropertiesConstraint::class, $class);
     }
 
     public function testImplementsExpectedPropertiesInterface(): void

@@ -83,19 +83,18 @@ class DocExampleContext implements Context
     {
         $top = preg_quote($this->getTopPath(), '/');
 
-        //$lines = explode(PHP_EOL, $string);
         $patterns = [
             '/\r/',
             '/^(PHPUnit )(?:\$version|\d+(?:\.\w+)*)( by Sebastian Bergmann and contributors\.)$/m',
             '/^(Time: )(?:(?:\d+)(?::\d+)?(?:\.\d+)?(?: \w+)?)(, Memory: )(?:\d+(?:\.\d+)?(?: \d+)?( \w+)?)$/m',
-            '/^(?:'.$top.'\/)?(packages(?:\/[\w-]+)+\.php):\d+$/m',
-            '/^(?:'.$top.'\/)?(docs\/sphinx\/examples(?:\/[\w-]+)+\.php):(\d+)$/m',
+            '/^(?:'.$top.'\/)?(packages(?:\/[\w-]+)+\.php):\d+[\\r\\n]?/m',
+            '/^(?:'.$top.'\/)docs\/sphinx\/examples\/(?:[^\/]*\/)*([\w-]+\.php):(\d+)$/m',
         ];
         $replaces = [
             '',
             '\1$version\2',
             '\1$time\2$memory',
-            '\1:##',
+            '',
             '\1:\2',
         ];
         return preg_replace($patterns, $replaces, $string);

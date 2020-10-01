@@ -9,7 +9,7 @@ There was 1 failure:
 1) extendsClassTest::testExtendsClassFailure
 Failed asserting that extendsClassTest extends class Exception.
 
-docs/sphinx/examples/phpunit-inheritance/extendsClassTest.php:15
+extendsClassTest.php:15
 
 FAILURES!
 Tests: 2, Assertions: 3, Failures: 1.

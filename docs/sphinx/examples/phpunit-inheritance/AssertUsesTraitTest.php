@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-trait ExampleTrait
+trait ExampleTraitForAssertUsesTraitTest
 {
 }
 
 final class AssertUsesTraitTest extends \PHPUnit\Framework\TestCase
 {
     use \PHPFox\PHPUnit\UsesTraitTrait;
-    use ExampleTrait;
+    use ExampleTraitForAssertUsesTraitTest;
 
     public function testAssertUsesTrait()
     {
-        $this->assertUsesTrait(ExampleTrait::class, self::class);
-        $this->assertUsesTrait(ExampleTrait::class, $this);
+        $this->assertUsesTrait(ExampleTraitForAssertUsesTraitTest::class, self::class);
+        $this->assertUsesTrait(ExampleTraitForAssertUsesTraitTest::class, $this);
     }
 
     public function testAssertUsesTraitFailure()
     {
-        $this->assertUsesTrait(ExampleTrait::class, \RuntimeException::class);
+        $this->assertUsesTrait(ExampleTraitForAssertUsesTraitTest::class, \RuntimeException::class);
     }
 }

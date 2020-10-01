@@ -36,7 +36,7 @@ use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-abstract class AbstractPropertiesComparator extends Constraint implements ExpectedPropertiesInterface
+abstract class AbstractPropertiesConstraint extends Constraint implements ExpectedPropertiesInterface
 {
     use ExpectedPropertiesDecoratorTrait;
 

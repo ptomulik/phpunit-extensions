@@ -2,12 +2,12 @@ PHPUnit 9.3.11 by Sebastian Bergmann and contributors.
 
 .F                                                                  2 / 2 (100%)
 
-Time: 00:00.009, Memory: 6.00 MB
+Time: 00:00.007, Memory: 6.00 MB
 
 There was 1 failure:
 
 1) AssertClassPropertiesIdenticalToTest::testFailure
-Failed asserting that 'AssertClassPropertiesIdenticalToTest' is a class with properties identical to specified.
+Failed asserting that AssertClassPropertiesIdenticalToTest is a class with properties identical to specified.
 --- Expected
 +++ Actual
 @@ @@
@@ -19,9 +19,7 @@ Failed asserting that 'AssertClassPropertiesIdenticalToTest' is a class with pro
 +    'getValue()' => 321
  )
 
-packages/phpunit-properties/src/Constraint/AbstractPropertiesComparator.php:212
-packages/phpunit-properties/src/ClassPropertiesIdenticalToTrait.php:56
-docs/sphinx/examples/phpunit-properties/AssertClassPropertiesIdenticalToTest.php:29
+AssertClassPropertiesIdenticalToTest.php:29
 
 FAILURES!
 Tests: 2, Assertions: 4, Failures: 1.
