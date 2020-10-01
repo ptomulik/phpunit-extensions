@@ -44,7 +44,7 @@ trait ObjectPropertiesIdenticalToTrait
      *                         Optional failure message
      *
      * @throws ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\Exception\InvalidArgumentException when a non-string keys are found in *$expected*
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException when a non-string keys are found in *$expected*
      */
     public static function assertObjectPropertiesIdenticalTo(
         array $expected,
@@ -66,7 +66,7 @@ trait ObjectPropertiesIdenticalToTrait
      *                         Optional failure message
      *
      * @throws ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\Exception\InvalidArgumentException when a non-string keys are found in *$expected*
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException when a non-string keys are found in *$expected*
      */
     public static function assertNotObjectPropertiesIdenticalTo(
         array $expected,
@@ -82,7 +82,7 @@ trait ObjectPropertiesIdenticalToTrait
      * @param array $expected
      *                        An array of key => value pairs with expected values of attributes
      *
-     * @throws \PHPFox\PHPUnit\Exception\InvalidArgumentException when non-string keys are found in *$expected*
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException when non-string keys are found in *$expected*
      */
     public static function objectPropertiesIdenticalTo(array $expected): ObjectPropertiesIdenticalTo
     {

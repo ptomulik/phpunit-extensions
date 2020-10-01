@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPUnit\Framework\TestCase;

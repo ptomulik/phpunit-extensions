@@ -14,6 +14,7 @@ namespace PHPFox\PHPUnit;
 
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
+use PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait;
 
 /**
  * @covers \PHPFox\PHPUnit\ClassPropertiesEqualToTrait
@@ -24,99 +25,22 @@ use PHPUnit\Framework\TestCase;
 final class ClassPropertiesEqualToTraitTest extends TestCase
 {
     use ClassPropertiesEqualToTrait;
-
-    //
-    // class
-    //
-
-    public static function provClassPropertiesIdenticalTo(): array
-    {
-        return [
-            'ClassPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => [
-                    'emptyString' => '',
-                    'null'        => null,
-                    'string123'   => '123',
-                    'int321'      => 321,
-                    'boolFalse'   => false,
-                ],
-                'class' => get_class(new class() {
-                    public static $emptyString = '';
-                    public static $null;
-                    public static $string123 = '123';
-                    public static $int321 = 321;
-                    public static $boolFalse = false;
-                }),
-            ],
-        ];
-    }
-
-    public static function provClassPropertiesEqualButNotIdenticalTo(): array
-    {
-        return [
-            'ClassPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => [
-                    'emptyString' => null,
-                    'null'        => '',
-                    'string123'   => 123,
-                    'int321'      => '321',
-                    'boolFalse'   => 0,
-                ],
-                'class' => get_class(new class() {
-                    public static $emptyString = '';
-                    public static $null;
-                    public static $string123 = '123';
-                    public static $int321 = 321;
-                    public static $boolFalse = false;
-                }),
-            ],
-        ];
-    }
-
-    public static function provClassPropertiesNotEqualTo(): array
-    {
-        return [
-            'ClassPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => [
-                    'emptyString' => 'foo',
-                    'null'        => 1,
-                    'string123'   => '321',
-                    'int321'      => 123,
-                    'boolFalse'   => true,
-                ],
-                'class' => get_class(new class() {
-                    public static $emptyString = '';
-                    public static $null;
-                    public static $string123 = '123';
-                    public static $int321 = 321;
-                    public static $boolFalse = false;
-                }),
-            ],
-        ];
-    }
+    use ProvClassPropertiesTrait;
 
     /**
      * @dataProvider provClassPropertiesIdenticalTo
      * @dataProvider provClassPropertiesEqualButNotIdenticalTo
      */
-    public function testClassPropertiesEqualTo(array $expect, string $class)
+    public function testClassPropertiesEqualToSucceeds(array $expect, string $class)
     {
         self::assertThat($class, self::classPropertiesEqualTo($expect));
     }
 
     /**
-     * @dataProvider provClassPropertiesNotEqualTo
-     */
-    public function testLogicalNotClassPropertiesEqualTo(array $expect, string $class)
-    {
-        self::assertThat($class, self::logicalNot(self::classPropertiesEqualTo($expect)));
-    }
-
-    /**
      * @dataProvider provClassPropertiesIdenticalTo
      * @dataProvider provClassPropertiesEqualButNotIdenticalTo
      */
-    public function testAssertClassPropertiesEqualTo(array $expect, string $class)
+    public function testAssertClassPropertiesEqualToSucceeds(array $expect, string $class)
     {
         self::assertClassPropertiesEqualTo($expect, $class);
     }
@@ -138,7 +62,15 @@ final class ClassPropertiesEqualToTraitTest extends TestCase
     /**
      * @dataProvider provClassPropertiesNotEqualTo
      */
-    public function testAssertNotClassPropertiesEqualTo(array $expect, string $class)
+    public function testNotClassPropertiesEqualToSucceeds(array $expect, string $class)
+    {
+        self::assertThat($class, self::logicalNot(self::classPropertiesEqualTo($expect)));
+    }
+
+    /**
+     * @dataProvider provClassPropertiesNotEqualTo
+     */
+    public function testAssertNotClassPropertiesEqualToSucceeds(array $expect, string $class)
     {
         self::assertNotClassPropertiesEqualTo($expect, $class);
     }

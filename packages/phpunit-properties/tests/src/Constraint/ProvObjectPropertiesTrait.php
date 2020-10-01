@@ -226,12 +226,6 @@ trait ProvObjectPropertiesTrait
 
     public static function provObjectPropertiesEqualButNotIdenticalTo(): array
     {
-        $comparator = self::getComparatorClass();
-        $adjective = self::getComparisonAdjective($comparator);
-        $verb = EqualityComparator::class === $comparator ? 'fails to be' : 'is';
-
-        $template = '%s '.$verb.' an object with properties '.$adjective.' specified';
-
         $object = new class() {
             public $emptyString = '';
             public $null;
@@ -257,9 +251,6 @@ trait ProvObjectPropertiesTrait
 
     public static function provObjectPropertiesNotEqualTo(): array
     {
-        $adjective = self::getComparisonAdjective(self::getComparatorClass());
-        $template = '%s is an object with properties '.$adjective.' specified';
-
         $hbrown = new class() {
             public $name = 'Helen';
             public $last = 'Brown';

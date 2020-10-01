@@ -14,7 +14,7 @@ use Error;
 use ErrorException;
 use Exception;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Throwable;

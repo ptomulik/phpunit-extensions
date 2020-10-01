@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPFox\PHPUnit\Properties\ComparatorInterface;
 use PHPFox\PHPUnit\Properties\ExpectedProperties;
 use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
@@ -57,7 +57,7 @@ trait NamedPropertiesComparatorTrait
             throw InvalidArgumentException::fromBackTrace(
                 1,
                 'an associative array with string keys',
-                sprintf('an array with %d non-string keys', $count),
+                sprintf('an array with %d non-string %s', $count, $count > 1 ? 'keys' : 'key'),
                 1 + $depth
             );
         }

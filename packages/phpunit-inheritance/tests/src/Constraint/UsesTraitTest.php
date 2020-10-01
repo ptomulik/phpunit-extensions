@@ -15,7 +15,7 @@ use PHPFox\PHPUnit\Examples\Inheritance\ExampleClassNotUsingTrait;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleClassUsingTrait;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleTraitUsingTrait;
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Throwable;

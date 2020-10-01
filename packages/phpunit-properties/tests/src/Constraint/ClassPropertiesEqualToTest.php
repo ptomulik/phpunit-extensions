@@ -15,7 +15,6 @@ namespace PHPFox\PHPUnit\Constraint;
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPunit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
@@ -24,25 +23,30 @@ use PHPUnit\Framework\TestCase;
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait
- * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestTrait
+ * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
  *
  * @internal
  */
-final class ClassPropertiesEqualToTest extends TestCase
+final class ClassPropertiesEqualToTest extends PropertiesConstraintTestCase
 {
-    use PropertiesConstraintTestTrait;
-    use ImplementsInterfaceTrait;
-    use ExtendsClassTrait;
     use ProvClassPropertiesTrait;
 
-    // required by PropertiesConstraintTestTrait
-    public static function getConstraintClass(): string
+    public static function subject(): string
+    {
+        return 'a class';
+    }
+
+    public static function adjective(): string
+    {
+        return 'equal to';
+    }
+
+    public static function constraintClass(): string
     {
         return ClassPropertiesEqualTo::class;
     }
 
-    // required by ProvClassPropertiesTrait
-    public static function getComparatorClass(): string
+    public static function comparatorClass(): string
     {
         return EqualityComparator::class;
     }
@@ -53,10 +57,9 @@ final class ClassPropertiesEqualToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testClassPropertiesEqualToSucceeds(array $expect, $actual): void
+    public function testPropertiesEqualToSucceeds(array $expect, $actual): void
     {
-        $constraint = ClassPropertiesEqualTo::fromArray($expect);
-        self::assertThat($actual, $constraint);
+        parent::examinePropertiesMatchSucceeds($expect, $actual);
     }
 
     /**
@@ -65,14 +68,9 @@ final class ClassPropertiesEqualToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testClassPropertiesEqualToFails(array $expect, $actual, string $actualString): void
+    public function testPropertiesEqualToFails(array $expect, $actual, string $string): void
     {
-        $constraint = ClassPropertiesEqualTo::fromArray($expect);
-
-        $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(self::message($actualString, 'is a class', 'equal to'));
-
-        $constraint->evaluate($actual);
+        parent::examinePropertiesMatchFails($expect, $actual, $string);
     }
 
     /**
@@ -81,10 +79,9 @@ final class ClassPropertiesEqualToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testClassNotPropertiesEqualToSucceeds(array $expect, $actual): void
+    public function testNotClassPropertiesEqualToSucceeds(array $expect, $actual): void
     {
-        $constraint = new LogicalNot(ClassPropertiesEqualTo::fromArray($expect));
-        self::assertThat($actual, $constraint);
+        parent::examineNotPropertiesMatchSucceeds($expect, $actual);
     }
 
     /**
@@ -93,14 +90,9 @@ final class ClassPropertiesEqualToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testClassNotPropertiesEqualToFails(array $expect, $actual, string $actualString): void
+    public function testNotClassPropertiesEqualToFails(array $expect, $actual, string $string): void
     {
-        $constraint = new LogicalNot(ClassPropertiesEqualTo::fromArray($expect));
-
-        $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(self::message($actualString, 'fails to be a class', 'equal to'));
-
-        $constraint->evaluate($actual);
+        parent::examineNotPropertiesMatchFails($expect, $actual, $string);
     }
 }
 

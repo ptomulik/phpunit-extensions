@@ -8,7 +8,7 @@
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Exception;
+namespace PHPFox\PHPUnit;
 
 /**
  * @internal This class is not covered by the backward compatibility promise
@@ -19,8 +19,11 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
     {
         $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1 + $distance);
         $caller = $stack[$distance];
-        $class = $caller['class'] ?? null;
-        $scope = $class ? $class.'::' : '';
+        if (null !== ($class = $caller['class'] ?? null)) {
+            $scope = $class.'::';
+        } else {
+            $scope = '';
+        }
         $function = sprintf('%s%s', $scope, $caller['function']);
 
         return self::fromFunction($function, $argument, $expected, $provided);

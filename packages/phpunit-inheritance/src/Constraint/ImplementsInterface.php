@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+use PHPFox\PHPUnit\InvalidArgumentException;
 
 /**
  * Constraint that accepts classes that implement given interface.

@@ -8,7 +8,7 @@
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Exception;
+namespace PHPFox\PHPUnit;
 
 /**
  * @internal This class is not covered by the backward compatibility promise
