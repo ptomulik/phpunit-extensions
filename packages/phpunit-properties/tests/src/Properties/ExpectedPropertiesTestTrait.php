@@ -81,7 +81,7 @@ trait ExpectedPropertiesTestTrait
         PropertiesInterface $child,
         bool $expect
     ): void {
-        $this->assertSame($expect, $parent->canUnwrapChild($child));
+        self::assertSame($expect, $parent->canUnwrapChild($child));
     }
 }
 // vim: syntax=php sw=4 ts=4 et:

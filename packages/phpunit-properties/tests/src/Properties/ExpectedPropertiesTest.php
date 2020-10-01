@@ -45,12 +45,12 @@ final class ExpectedPropertiesTest extends TestCase
 
     public function testImplementsExpectedPropertiesInterface(): void
     {
-        $this->assertImplementsInterface(ExpectedPropertiesInterface::class, ExpectedProperties::class);
+        self::assertImplementsInterface(ExpectedPropertiesInterface::class, ExpectedProperties::class);
     }
 
     public function testExtendsArrayObject(): void
     {
-        $this->assertExtendsClass(\ArrayObject::class, ExpectedProperties::class);
+        self::assertExtendsClass(\ArrayObject::class, ExpectedProperties::class);
     }
 
     //
@@ -89,9 +89,9 @@ final class ExpectedPropertiesTest extends TestCase
 
         $properties = new ExpectedProperties($selector, ...$args);
 
-        $this->assertSame($selector, $properties->getPropertySelector());
-        $this->assertSame($expect, $properties->getArrayCopy());
-        $this->assertSame($expect, (array) $properties);
+        self::assertSame($selector, $properties->getPropertySelector());
+        self::assertSame($expect, $properties->getArrayCopy());
+        self::assertSame($expect, (array) $properties);
     }
 }
 // vim: syntax=php sw=4 ts=4 et:

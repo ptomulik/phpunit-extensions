@@ -332,7 +332,7 @@ final class ClassPropertiesEqualToTraitTest extends TestCase
 //
 //    public function testObjectPropertiesConstraintsWithAndOperator(): void
 //    {
-//        $this->assertThat(
+//        self::assertThat(
 //            new class() {
 //                public $foo = 'FOO';
 //                public $bar = '';
@@ -356,7 +356,7 @@ final class ClassPropertiesEqualToTraitTest extends TestCase
 //        self::expectException(ExpectationFailedException::class);
 //        self::expectExceptionMessageMatches($regexp);
 //
-//        $this->assertThat(
+//        self::assertThat(
 //            new class() {
 //                public $foo = '';
 //                public $bar = 'BAR';
@@ -398,7 +398,7 @@ final class ClassPropertiesEqualToTraitTest extends TestCase
 //        self::expectException(ExpectationFailedException::class);
 //        self::expectExceptionMessageMatches($regexp);
 //
-//        $this->assertThat(new class() {
+//        self::assertThat(new class() {
 //        }, $unary);
 //    }
 }

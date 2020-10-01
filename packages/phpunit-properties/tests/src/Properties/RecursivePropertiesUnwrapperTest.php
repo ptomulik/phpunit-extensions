@@ -47,7 +47,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
 
     public function testImplementsRecursivePropertiesUnwrapperInterface(): void
     {
-        $this->assertImplementsInterface(
+        self::assertImplementsInterface(
             RecursivePropertiesUnwrapperInterface::class,
             RecursivePropertiesUnwrapper::class
         );
@@ -89,7 +89,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
     public function testConstruct(array $args, array $expect): void
     {
         $unwrapper = new RecursivePropertiesUnwrapper(...$args);
-        $this->assertSame($expect['tagging'], $unwrapper->isTagging());
+        self::assertSame($expect['tagging'], $unwrapper->isTagging());
     }
 
     //
@@ -272,7 +272,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
     public function testUnwrap(array $args, PropertiesInterface $properties, array $expect): void
     {
         $unwrapper = new RecursivePropertiesUnwrapper(...$args);
-        $this->assertSame($expect, $unwrapper->unwrap($properties));
+        self::assertSame($expect, $unwrapper->unwrap($properties));
     }
 
     public function provUnwrapThrowsExceptionOnCircularDependency(): array

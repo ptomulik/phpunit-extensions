@@ -70,7 +70,7 @@ final class HasPregCapturesTraitTest extends TestCase
     {
         $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
-        $this->assertNotHasPregCaptures($expect, $actual);
+        self::assertNotHasPregCaptures($expect, $actual);
     }
 
     /**

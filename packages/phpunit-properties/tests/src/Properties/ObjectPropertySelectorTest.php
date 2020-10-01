@@ -37,12 +37,12 @@ final class ObjectPropertySelectorTest extends TestCase
 
     public function testImplementsPropertySelectorInterface(): void
     {
-        $this->assertImplementsInterface(PropertySelectorInterface::class, ObjectPropertySelector::class);
+        self::assertImplementsInterface(PropertySelectorInterface::class, ObjectPropertySelector::class);
     }
 
     public function testExtendsAbstractPropertySelector(): void
     {
-        $this->assertExtendsClass(AbstractPropertySelector::class, ObjectPropertySelector::class);
+        self::assertExtendsClass(AbstractPropertySelector::class, ObjectPropertySelector::class);
     }
 
     //
@@ -95,7 +95,7 @@ final class ObjectPropertySelectorTest extends TestCase
     public function testCanSelectFrom($subject, bool $expect): void
     {
         $selector = new ObjectPropertySelector();
-        $this->assertSame($expect, $selector->canSelectFrom($subject));
+        self::assertSame($expect, $selector->canSelectFrom($subject));
     }
 
     //
@@ -179,8 +179,8 @@ final class ObjectPropertySelectorTest extends TestCase
     public function testSelectProperty(object $object, $key, $return, $expect): void
     {
         $selector = new ObjectPropertySelector();
-        $this->assertSame($return, $selector->selectProperty($object, $key, $retval));
-        $this->assertSame($expect, $retval);
+        self::assertSame($return, $selector->selectProperty($object, $key, $retval));
+        self::assertSame($expect, $retval);
     }
 
     public function testSelectPropertyThrowsOnPrivateMethod(): void

@@ -70,7 +70,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn($iterator)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertSame($iterator, $properties->getIterator());
+        self::assertSame($iterator, $properties->getIterator());
     }
 
     //
@@ -86,7 +86,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn(true)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertTrue($properties->offsetExists(123));
+        self::assertTrue($properties->offsetExists(123));
     }
 
     //
@@ -103,7 +103,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn($value)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertSame($value, $properties->offsetGet(123));
+        self::assertSame($value, $properties->offsetGet(123));
     }
 
     //
@@ -149,7 +149,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn(123)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertSame(123, $properties->count());
+        self::assertSame(123, $properties->count());
     }
 
     //
@@ -165,7 +165,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn($array)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertSame($array, $properties->getArrayCopy());
+        self::assertSame($array, $properties->getArrayCopy());
     }
 
     //
@@ -182,7 +182,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn(true)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertTrue($properties->canUnwrapChild($child));
+        self::assertTrue($properties->canUnwrapChild($child));
     }
 
     //
@@ -198,7 +198,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
             ->willReturn($selector)
         ;
         $properties = $this->createDummyInstance($adaptee);
-        $this->assertSame($selector, $properties->getPropertySelector());
+        self::assertSame($selector, $properties->getPropertySelector());
     }
 }
 // vim: syntax=php sw=4 ts=4 et:

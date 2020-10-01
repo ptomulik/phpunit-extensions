@@ -46,7 +46,7 @@ final class ExporterTest extends TestCase
 
     public function testExtendsSebastianBergmannExporter(): void
     {
-        $this->assertExtendsClass(SebastianBergmannExporter::class, Exporter::class);
+        self::assertExtendsClass(SebastianBergmannExporter::class, Exporter::class);
     }
 
     //
@@ -79,7 +79,7 @@ final class ExporterTest extends TestCase
     public function testDescribe(PropertiesInterface $argument, string $expected): void
     {
         $exporter = new Exporter();
-        $this->assertSame($expected, $exporter->describe($argument));
+        self::assertSame($expected, $exporter->describe($argument));
     }
 
     //
@@ -149,7 +149,7 @@ final class ExporterTest extends TestCase
     public function testExport($argument, string $expected): void
     {
         $exporter = new Exporter();
-        $this->assertSame($expected, $exporter->export($argument));
+        self::assertSame($expected, $exporter->export($argument));
     }
 
     public function testExportHandlesCycle(): void
@@ -161,7 +161,7 @@ final class ExporterTest extends TestCase
         $expected = "Properties <Actual> (\n".
             "    'foo' => Properties <Actual>\n".
             ')';
-        $this->assertSame($expected, $exporter->export($argument));
+        self::assertSame($expected, $exporter->export($argument));
     }
 
     //
@@ -225,7 +225,7 @@ final class ExporterTest extends TestCase
     public function testShortenedExport($argument, string $expected): void
     {
         $exporter = new Exporter();
-        $this->assertSame($expected, $exporter->shortenedExport($argument));
+        self::assertSame($expected, $exporter->shortenedExport($argument));
     }
 }
 // vim: syntax=php sw=4 ts=4 et:

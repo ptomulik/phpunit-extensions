@@ -86,13 +86,13 @@ trait PropertiesConstraintTestTrait
     public function testExtendsAbstractPropertiesConstraint(): void
     {
         $class = $this->getConstraintClass();
-        $this->assertExtendsClass(AbstractPropertiesConstraint::class, $class);
+        self::assertExtendsClass(AbstractPropertiesConstraint::class, $class);
     }
 
     public function testImplementsExpectedPropertiesInterface(): void
     {
         $class = $this->getConstraintClass();
-        $this->assertImplementsInterface(ExpectedPropertiesInterface::class, $class);
+        self::assertImplementsInterface(ExpectedPropertiesInterface::class, $class);
     }
 
     // @codeCoverageIgnoreStart
@@ -132,9 +132,9 @@ trait PropertiesConstraintTestTrait
     public function testFromArray(string $class, array $args, array $expect): void
     {
         $constraint = $class::fromArray(...$args);
-        $this->assertThat($constraint->getPropertiesUnwrapper(), $expect['unwrapper']);
-        $this->assertThat($constraint->getArrayCopy(), $expect['properties']);
-        $this->assertThat($constraint->getComparator(), $expect['comparator']);
+        self::assertThat($constraint->getPropertiesUnwrapper(), $expect['unwrapper']);
+        self::assertThat($constraint->getArrayCopy(), $expect['properties']);
+        self::assertThat($constraint->getComparator(), $expect['comparator']);
     }
 
     public static function provFromArrayThrowsInvalidArgumentException(): array

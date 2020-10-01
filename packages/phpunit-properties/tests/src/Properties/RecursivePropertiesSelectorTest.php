@@ -45,7 +45,7 @@ final class RecursivePropertiesSelectorTest extends TestCase
 
     public function testImplementsRecursivePropertiesSelectorInterface(): void
     {
-        $this->assertImplementsInterface(RecursivePropertiesSelectorInterface::class, RecursivePropertiesSelector::class);
+        self::assertImplementsInterface(RecursivePropertiesSelectorInterface::class, RecursivePropertiesSelector::class);
     }
 
     //
@@ -241,8 +241,8 @@ final class RecursivePropertiesSelectorTest extends TestCase
         $selector  = new RecursivePropertiesSelector($selector);
         $unwrapper = new RecursivePropertiesUnwrapper();
         $selected  = $selector->selectProperties($subject);
-        $this->assertInstanceOf(ActualProperties::class, $selected);
-        $this->assertSame($expect, $unwrapper->unwrap($selected));
+        self::assertInstanceOf(ActualProperties::class, $selected);
+        self::assertSame($expect, $unwrapper->unwrap($selected));
     }
 }
 // vim: syntax=php sw=4 ts=4 et:

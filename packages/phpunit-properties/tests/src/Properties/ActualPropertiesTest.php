@@ -35,12 +35,12 @@ final class ActualPropertiesTest extends TestCase
 
     public function testImplementsActualPropertiesInterface(): void
     {
-        $this->assertImplementsInterface(ActualPropertiesInterface::class, ActualProperties::class);
+        self::assertImplementsInterface(ActualPropertiesInterface::class, ActualProperties::class);
     }
 
     public function testExtendsArrayObject(): void
     {
-        $this->assertExtendsClass(\ArrayObject::class, ActualProperties::class);
+        self::assertExtendsClass(\ArrayObject::class, ActualProperties::class);
     }
 
     //
@@ -77,8 +77,8 @@ final class ActualPropertiesTest extends TestCase
     {
         $properties = new ActualProperties(...$args);
 
-        $this->assertSame($expect, $properties->getArrayCopy());
-        $this->assertSame($expect, (array) $properties);
+        self::assertSame($expect, $properties->getArrayCopy());
+        self::assertSame($expect, (array) $properties);
     }
 
     //
@@ -111,7 +111,7 @@ final class ActualPropertiesTest extends TestCase
      */
     public function testCanUnwrapChild(PropertiesInterface $parent, PropertiesInterface $child, bool $expect): void
     {
-        $this->assertSame($expect, $parent->canUnwrapChild($child));
+        self::assertSame($expect, $parent->canUnwrapChild($child));
     }
 }
 // vim: syntax=php sw=4 ts=4 et:

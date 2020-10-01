@@ -32,7 +32,7 @@ use PHPFox\PHPUnit\Properties\IdentityComparator;
  *          'getName()' => 'John', 'age' => 21
  *      ]);
  *
- *      $this->assertThat(new class {
+ *      self::assertThat(new class {
  *          public static $age = 21;
  *          public static getName(): string {
  *              return 'John';
