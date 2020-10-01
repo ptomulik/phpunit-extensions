@@ -17,7 +17,7 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
 /**
  * @internal
  */
-trait ObjectPropertiesProvTrait
+trait ProvObjectPropertiesTrait
 {
     abstract public static function getComparatorClass(): string;
 
@@ -97,13 +97,13 @@ trait ObjectPropertiesProvTrait
         $registry->addFamily('smith', [$esmith, $jsmith]);
 
         return [
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21, 'wife' => $esmith],
                 'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
@@ -114,31 +114,31 @@ trait ObjectPropertiesProvTrait
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21],
                 'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith'],
                 'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['age' => 21],
                 'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['age' => 21, 'getSalary()' => 123, 'getDebit()' => -123],
                 'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
@@ -155,7 +155,7 @@ trait ObjectPropertiesProvTrait
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'name' => 'John',
                     'last' => 'Smith',
@@ -177,7 +177,7 @@ trait ObjectPropertiesProvTrait
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'family' => [$esmith],
                 ],
@@ -185,7 +185,7 @@ trait ObjectPropertiesProvTrait
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'family' => [
                         ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
@@ -195,7 +195,7 @@ trait ObjectPropertiesProvTrait
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'persons' => [
                         ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
@@ -212,7 +212,7 @@ trait ObjectPropertiesProvTrait
                 'message' => sprintf($template, 'object '.get_class($registry)),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'persons' => [
                         $esmith,
@@ -248,7 +248,7 @@ trait ObjectPropertiesProvTrait
         };
 
         return [
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => null,
                     'null'        => '',
@@ -457,25 +457,25 @@ trait ObjectPropertiesProvTrait
         $template = '%s is an object with properties '.$adjective.' specified';
 
         return [
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 123,
                 'message' => sprintf($template, 123),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 'arbitrary string',
                 'message' => sprintf($template, sprintf("'%s'", addslashes('arbitrary string'))),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => null,
                 'message' => sprintf($template, 'null'),
             ],
 
-            'ObjectPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => ['foo' => 'FOO'],
                 'message' => sprintf($template, 'array'),

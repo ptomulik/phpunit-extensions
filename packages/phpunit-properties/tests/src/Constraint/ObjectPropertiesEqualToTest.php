@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesEqualTo
- * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesProvTrait
+ * @covers \PHPFox\PHPUnit\Constraint\ProvObjectPropertiesTrait
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestTrait
  *
  * @internal
@@ -33,7 +33,7 @@ final class ObjectPropertiesEqualToTest extends TestCase
     use PropertiesConstraintTestTrait;
     use ImplementsInterfaceTrait;
     use ExtendsClassTrait;
-    use ObjectPropertiesProvTrait;
+    use ProvObjectPropertiesTrait;
 
     // required by PropertiesConstraintTestTrait
     public static function getConstraintClass(): string
@@ -41,7 +41,7 @@ final class ObjectPropertiesEqualToTest extends TestCase
         return ObjectPropertiesEqualTo::class;
     }
 
-    // required by ObjectPropertiesProvTrait;
+    // required by ProvObjectPropertiesTrait;
     public static function getComparatorClass(): string
     {
         return EqualityComparator::class;

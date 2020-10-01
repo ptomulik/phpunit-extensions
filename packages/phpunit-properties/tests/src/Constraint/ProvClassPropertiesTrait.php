@@ -17,7 +17,7 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
 /**
  * @internal
  */
-trait ClassPropertiesProvTrait
+trait ProvClassPropertiesTrait
 {
     abstract public static function getComparatorClass(): string;
 
@@ -41,7 +41,7 @@ trait ClassPropertiesProvTrait
         ];
 
         return [
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => '',
                     'null'        => null,
@@ -74,7 +74,7 @@ trait ClassPropertiesProvTrait
         ];
 
         return [
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => null,
                     'null'        => '',
@@ -104,7 +104,7 @@ trait ClassPropertiesProvTrait
         ];
 
         return [
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'emptyString' => 'foo',
                     'null'        => 1,
@@ -124,25 +124,25 @@ trait ClassPropertiesProvTrait
         $template = '%s is a class with properties '.$adjective.' specified';
 
         return [
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 123,
                 'message' => sprintf($template, 123),
             ],
 
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 'arbitrary string',
                 'message' => sprintf($template, sprintf("'%s'", addslashes('arbitrary string'))),
             ],
 
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => null,
                 'message' => sprintf($template, 'null'),
             ],
 
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => ['foo' => 'FOO'],
                 'message' => sprintf($template, 'array'),

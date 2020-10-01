@@ -19,13 +19,13 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\HasPregCaptures
- * @covers \PHPFox\PHPUnit\Constraint\HasPregCapturesProvTrait
+ * @covers \PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait
  *
  * @internal
  */
 final class HasPregCapturesTest extends TestCase
 {
-    use HasPregCapturesProvTrait;
+    use ProvHasPregCapturesTrait;
 
     /**
      * @dataProvider provHasPregCaptures

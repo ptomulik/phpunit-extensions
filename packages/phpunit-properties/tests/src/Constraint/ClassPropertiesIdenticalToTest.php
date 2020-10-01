@@ -32,7 +32,7 @@ final class ClassPropertiesIdenticalToTest extends TestCase
     use PropertiesConstraintTestTrait;
     use ImplementsInterfaceTrait;
     use ExtendsClassTrait;
-    use ClassPropertiesProvTrait;
+    use ProvClassPropertiesTrait;
 
     // required by PropertiesConstraintTestTrait
     public static function getConstraintClass(): string
@@ -40,7 +40,7 @@ final class ClassPropertiesIdenticalToTest extends TestCase
         return ClassPropertiesIdenticalTo::class;
     }
 
-    // required by ClassPropertiesProvTrait
+    // required by ProvClassPropertiesTrait
     public static function getComparatorClass(): string
     {
         return IdentityComparator::class;

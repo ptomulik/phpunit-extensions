@@ -12,13 +12,13 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit;
 
-use PHPFox\PHPUnit\Constraint\HasPregCapturesProvTrait;
+use PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \PHPFox\PHPUnit\Constraint\HasPregCapturesProvTrait
+ * @covers \PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait
  * @covers \PHPFox\PHPUnit\HasPregCapturesTrait
  *
  * @internal
@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase;
 final class HasPregCapturesTraitTest extends TestCase
 {
     use HasPregCapturesTrait;
-    use HasPregCapturesProvTrait;
+    use ProvHasPregCapturesTrait;
 
     /**
      * @dataProvider provHasPregCaptures
