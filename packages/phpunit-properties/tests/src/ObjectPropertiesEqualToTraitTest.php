@@ -824,11 +824,11 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 //                public $foo = 'FOO';
 //                public $bar = '';
 //            },
-//            $this->logicalAnd(
-//                $this->objectPropertiesIdenticalTo([
+//            self::logicalAnd(
+//                self::objectPropertiesIdenticalTo([
 //                    'foo' => 'FOO',
 //                ]),
-//                $this->objectPropertiesEqualTo([
+//                self::objectPropertiesEqualTo([
 //                    'bar' => null,
 //                ])
 //            )
@@ -848,11 +848,11 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 //                public $foo = '';
 //                public $bar = 'BAR';
 //            },
-//            $this->logicalAnd(
-//                $this->objectPropertiesIdenticalTo([
+//            self::logicalAnd(
+//                self::objectPropertiesIdenticalTo([
 //                    'foo' => 'FOO',
 //                ]),
-//                $this->objectPropertiesEqualTo([
+//                self::objectPropertiesEqualTo([
 //                    'bar' => null,
 //                ])
 //            )
@@ -862,7 +862,7 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 //    // for full coverage of failureDescriptionInContext()
 //    public function testFailureDescriptionOfCustomUnaryOperator(): void
 //    {
-//        $constraint = $this->objectPropertiesIdenticalTo([
+//        $constraint = self::objectPropertiesIdenticalTo([
 //            'foo' => 'FOO',
 //        ]);
 //
@@ -871,11 +871,11 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 //            ->getMockForAbstractClass()
 //        ;
 //
-//        $unary->expects($this->any())
+//        $unary->expects(self::any())
 //            ->method('operator')
 //            ->willReturn('!')
 //        ;
-//        $unary->expects($this->any())
+//        $unary->expects(self::any())
 //            ->method('precedence')
 //            ->willReturn(1)
 //        ;

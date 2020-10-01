@@ -65,7 +65,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     {
         $iterator = $this->createMock(\Traversable::class);
         $adaptee  = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('getIterator')
             ->willReturn($iterator)
         ;
@@ -80,7 +80,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testOffsetExistsInvokesAdapteeMethod(): void
     {
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('offsetExists')
             ->with(123)
             ->willReturn(true)
@@ -97,7 +97,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     {
         $value   = new \StdClass();
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('offsetGet')
             ->with(123)
             ->willReturn($value)
@@ -114,7 +114,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     {
         $value   = new \StdClass();
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('offsetSet')
             ->with(123, $value)
         ;
@@ -129,7 +129,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testOffsetUnsetInvokesAdapteeMethod(): void
     {
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('offsetUnset')
             ->with(123)
         ;
@@ -144,7 +144,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testCountInvokesAdapteeMethod(): void
     {
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('count')
             ->willReturn(123)
         ;
@@ -160,7 +160,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     {
         $array   = ['foo' => 'FOO'];
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('getArrayCopy')
             ->willReturn($array)
         ;
@@ -176,7 +176,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     {
         $child   = $this->createMock(PropertiesInterface::class);
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('canUnwrapChild')
             ->with($child)
             ->willReturn(true)
@@ -193,7 +193,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     {
         $selector = $this->createMock(PropertySelectorInterface::class);
         $adaptee  = $this->createMock(ExpectedPropertiesInterface::class);
-        $adaptee->expects($this->once())
+        $adaptee->expects(self::once())
             ->method('getPropertySelector')
             ->willReturn($selector)
         ;

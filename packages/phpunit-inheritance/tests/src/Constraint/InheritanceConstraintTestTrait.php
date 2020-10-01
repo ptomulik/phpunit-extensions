@@ -49,11 +49,11 @@ trait InheritanceConstraintTestTrait
             ->getMockForAbstractClass()
         ;
 
-        $noop->expects($this->any())
+        $noop->expects(self::any())
             ->method('operator')
             ->willReturn('noop')
         ;
-        $noop->expects($this->any())
+        $noop->expects(self::any())
             ->method('precedence')
             ->willReturn(1)
         ;

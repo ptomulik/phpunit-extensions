@@ -85,13 +85,13 @@ trait PropertiesConstraintTestTrait
 
     public function testExtendsAbstractPropertiesConstraint(): void
     {
-        $class = $this->getConstraintClass();
+        $class = self::getConstraintClass();
         self::assertExtendsClass(AbstractPropertiesConstraint::class, $class);
     }
 
     public function testImplementsExpectedPropertiesInterface(): void
     {
-        $class = $this->getConstraintClass();
+        $class = self::getConstraintClass();
         self::assertImplementsInterface(ExpectedPropertiesInterface::class, $class);
     }
 
