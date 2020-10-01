@@ -279,6 +279,15 @@ abstract class AbstractPropertiesComparator extends Constraint implements Expect
             return 'object '.get_class($subject);
         }
 
+        if (is_array($subject)) {
+            return 'array';
+        }
+
+        if (is_string($subject) && class_exists($subject)) {
+            // avoid converting anonymous class names to binary strings.
+            return $subject;
+        }
+
         return $this->exporter()->export($subject);
     }
 }

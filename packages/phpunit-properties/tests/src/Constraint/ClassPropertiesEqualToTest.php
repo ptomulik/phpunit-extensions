@@ -41,25 +41,34 @@ final class ClassPropertiesEqualToTest extends TestCase
     /**
      * @dataProvider provClassPropertiesIdenticalTo
      * @dataProvider provClassPropertiesEqualButNotIdenticalTo
+     *
+     * @param mixed $actual
      */
-    public function testClassPropertiesEqualToSucceeds(array $expect, string $class): void
+    public function testClassPropertiesEqualToSucceeds(array $expect, $actual): void
     {
         $constraint = ClassPropertiesEqualTo::fromArray($expect);
-        self::assertThat($class, $constraint);
+        self::assertThat($actual, $constraint);
     }
 
     /**
      * @dataProvider provClassPropertiesNotEqualTo
+     * @dataProvider provClassPropertiesNotEqualToNonClass
+     *
+     * @param mixed $actual
      */
-    public function testClassPropertiesEqualToFails(array $expect, string $class): void
+    public function testClassPropertiesEqualToFails(array $expect, $actual, string $message): void
     {
         $constraint = ClassPropertiesEqualTo::fromArray($expect);
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(sprintf('%s is a class with properties equal to', $class));
+        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
 
-        $constraint->evaluate($class);
+        $constraint->evaluate($actual);
     }
+
+//    public function testNotClassPropertiesEqualToSucceeds(array $expect, string $class): void
+//    {
+//    }
 }
 
 // vim: syntax=php sw=4 ts=4 et:
