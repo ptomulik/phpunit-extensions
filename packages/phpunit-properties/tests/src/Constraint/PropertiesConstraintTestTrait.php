@@ -21,6 +21,9 @@ use PHPFox\PHPUnit\Properties\IdentityComparator;
 use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 use PHPUnit\Framework\Constraint\IsIdentical;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
+use PHPUnit\Framework\Constraint\UnaryOperator;
+use PHPUnit\Framework\MockObject\MockBuilder;
+use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -66,6 +69,15 @@ trait PropertiesConstraintTestTrait
     abstract public function createMock(string $originalClassName): MockObject;
 
     /**
+     * Returns a builder object to create mock objects using a fluent interface.
+     *
+     * @psalm-template RealInstanceType of object
+     * @psalm-param class-string<RealInstanceType> $className
+     * @psalm-return MockBuilder<RealInstanceType>
+     */
+    abstract public function getMockBuilder(string $className): MockBuilder;
+
+    /**
      * @psalm-template Comparator of EqualityComparator|IdentityComparator
      * @psalm-assert class-string<Comparator> $comparator
      *
@@ -82,6 +94,21 @@ trait PropertiesConstraintTestTrait
             throw InvalidArgumentException::fromBackTrace(1, 'a comparator class name', $comparator);
         }
     }
+
+    public function testGetComparisonAdjectiveThrowsInvalidArgumentError(): void
+    {
+        $template = 'Argument #1 of %s::getComparisonAdjective() must be a comparator class name, FooBar given.';
+
+        // self test
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(sprintf($template, self::class));
+
+        self::getComparisonAdjective('FooBar');
+
+        // @codeCoverageIgnoreStart
+    }
+
+    // @codeCoverageIgnoreEnd
 
     public function testExtendsAbstractPropertiesConstraint(): void
     {
@@ -137,6 +164,7 @@ trait PropertiesConstraintTestTrait
         self::assertThat($constraint->getComparator(), $expect['comparator']);
     }
 
+    // @codeCoverageIgnoreStart
     public static function provFromArrayThrowsInvalidArgumentException(): array
     {
         $class = self::getConstraintClass();
@@ -153,6 +181,7 @@ trait PropertiesConstraintTestTrait
             ]
         ];
     }
+    // @codeCoverageIgnoreEnd
 
     /**
      * @dataProvider provFromArrayThrowsInvalidArgumentException
@@ -163,7 +192,43 @@ trait PropertiesConstraintTestTrait
         $this->expectExceptionMessage($message);
 
         $class::fromArray(...$args);
+
+        // @codeCoverageIgnoreStart
     }
+
+   // @codeCoverageIgnoreEnd
+
+    // for full coverage of failureDescriptionInContext()
+    public function testFailureDescriptionOfCustomUnaryOperator(): void
+    {
+        $class = self::getConstraintClass();
+        $constraint = $class::fromArray(['foo' => 'FOO']);
+
+        $unary = $this->getMockBuilder(UnaryOperator::class)
+            ->setConstructorArgs([$constraint])
+            ->getMockForAbstractClass()
+        ;
+
+        $unary->expects(self::any())
+            ->method('operator')
+            ->willReturn('!')
+        ;
+        $unary->expects(self::any())
+            ->method('precedence')
+            ->willReturn(1)
+        ;
+
+        $adjective = self::getComparisonAdjective(self::getComparatorClass());
+        $regexp = 'with properties '.$adjective.' specified';
+
+        self::expectException(ExpectationFailedException::class);
+        self::expectExceptionMessage($regexp);
+
+        self::assertThat(null, $unary);
+
+        // @codeCoverageIgnoreStart
+    }
+    // @codeCoverageIgnoreEnd
 }
 
 // vim: syntax=php sw=4 ts=4 et:
