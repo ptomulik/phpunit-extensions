@@ -12,18 +12,14 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\ExtendsClassTrait;
-use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPunit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesEqualTo
- * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
+ * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait
  *
  * @internal
  */

@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Properties\EqualityComparator;
-
 /**
  * @internal
  */
@@ -42,7 +40,7 @@ trait ProvClassPropertiesTrait
                     'int321'      => 321,
                     'boolFalse'   => false,
                 ],
-                'actual'  => $classes[0],
+                'actual' => $classes[0],
                 'string' => $classes[0],
             ],
         ];
@@ -69,7 +67,7 @@ trait ProvClassPropertiesTrait
                     'int321'      => '321',
                     'boolFalse'   => 0,
                 ],
-                'actual'  => $classes[0],
+                'actual' => $classes[0],
                 'string' => $classes[0],
             ],
         ];
@@ -77,7 +75,6 @@ trait ProvClassPropertiesTrait
 
     public static function provClassPropertiesNotEqualTo(): array
     {
-
         $classes = [
             get_class(new class() {
                 public static $emptyString = '';
@@ -97,7 +94,7 @@ trait ProvClassPropertiesTrait
                     'int321'      => 123,
                     'boolFalse'   => true,
                 ],
-                'actual'  => $classes[0],
+                'actual' => $classes[0],
                 'string' => $classes[0],
             ],
         ];
@@ -105,35 +102,34 @@ trait ProvClassPropertiesTrait
 
     public static function provClassPropertiesNotEqualToNonClass(): array
     {
-
         return [
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => 123,
+                'expect' => ['foo' => 'FOO'],
+                'actual' => 123,
                 'string' => '123',
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => 'arbitrary string',
-                'string' => '\'arbitrary string\''
+                'expect' => ['foo' => 'FOO'],
+                'actual' => 'arbitrary string',
+                'string' => '\'arbitrary string\'',
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => null,
+                'expect' => ['foo' => 'FOO'],
+                'actual' => null,
                 'string' => 'null',
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => ['foo' => 'FOO'],
+                'expect' => ['foo' => 'FOO'],
+                'actual' => ['foo' => 'FOO'],
                 'string' => 'array',
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => new \stdClass(),
+                'expect' => ['foo' => 'FOO'],
+                'actual' => new \stdClass(),
                 'string' => 'object stdClass',
             ],
         ];
@@ -141,5 +137,3 @@ trait ProvClassPropertiesTrait
 
     // @codeCoverageIgnoreEnd
 }
-
-

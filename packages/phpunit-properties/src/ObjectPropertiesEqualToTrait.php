@@ -43,7 +43,7 @@ trait ObjectPropertiesEqualToTrait
      *                         Optional failure message
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException when a non-string keys are found in *$expected*
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
      */
     public static function assertObjectPropertiesEqualTo(
         array $expected,
@@ -65,7 +65,7 @@ trait ObjectPropertiesEqualToTrait
      *                         Optional failure message
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException when a non-string keys are found in *$expected*
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
      */
     public static function assertNotObjectPropertiesEqualTo(
         array $expected,
@@ -82,7 +82,7 @@ trait ObjectPropertiesEqualToTrait
      *                        An array of key => value pairs with expected values of attributes
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException when non-string keys are found in *$expected*
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when non-string keys are found in *$expected*
      */
     public static function objectPropertiesEqualTo(array $expected): ObjectPropertiesEqualTo
     {

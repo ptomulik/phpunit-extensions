@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Properties\EqualityComparator;
-
 /**
  * @internal
  */
@@ -91,8 +89,8 @@ trait ProvObjectPropertiesTrait
 
         return [
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21, 'wife' => $esmith],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Smith', 'age' => 21, 'wife' => $esmith],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -103,31 +101,31 @@ trait ProvObjectPropertiesTrait
                     'age'  => 21,
                     'wife' => $esmith,
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Smith', 'age' => 21],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Smith'],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Smith'],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['age' => 21],
-                'actual'  => $jsmith,
+                'expect' => ['age' => 21],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['age' => 21, 'getSalary()' => 123, 'getDebit()' => -123],
-                'actual'  => $jsmith,
+                'expect' => ['age' => 21, 'getSalary()' => 123, 'getDebit()' => -123],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -144,7 +142,7 @@ trait ProvObjectPropertiesTrait
                         'getSalary()' => 98,
                     ]),
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -166,7 +164,7 @@ trait ProvObjectPropertiesTrait
                         'getSalary()' => 98,
                     ]),
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -174,7 +172,7 @@ trait ProvObjectPropertiesTrait
                 'expect' => [
                     'family' => [$esmith],
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -184,7 +182,7 @@ trait ProvObjectPropertiesTrait
                         ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
                     ],
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -201,7 +199,7 @@ trait ProvObjectPropertiesTrait
                         ],
                     ],
                 ],
-                'actual'  => $registry,
+                'actual' => $registry,
                 'string' => 'object '.get_class($registry),
             ],
 
@@ -218,7 +216,7 @@ trait ProvObjectPropertiesTrait
                         ],
                     ],
                 ],
-                'actual'  => $registry,
+                'actual' => $registry,
                 'string' => 'object '.get_class($registry),
             ],
         ];
@@ -243,7 +241,7 @@ trait ProvObjectPropertiesTrait
                     'int321'      => '321',
                     'boolFalse'   => 0,
                 ],
-                'actual'  => $object,
+                'actual' => $object,
                 'string' => 'object '.get_class($object),
             ],
         ];
@@ -325,44 +323,44 @@ trait ProvObjectPropertiesTrait
 
         return [
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Brown', 'age' => 21],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Brown', 'age' => 21],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => null],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Smith', 'wife' => null],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => 'Emily'],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Smith', 'wife' => 'Emily'],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => $hbrown],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Smith', 'wife' => $hbrown],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['name' => 'John', 'last' => 'Brown'],
-                'actual'  => $jsmith,
+                'expect' => ['name' => 'John', 'last' => 'Brown'],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['age' => 19],
-                'actual'  => $jsmith,
+                'expect' => ['age' => 19],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect'  => ['age' => 21, 'getSalary()' => 1230],
-                'actual'  => $jsmith,
+                'expect' => ['age' => 21, 'getSalary()' => 1230],
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -384,7 +382,7 @@ trait ProvObjectPropertiesTrait
                         'getSalary()' => 98,
                     ],
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -394,7 +392,7 @@ trait ProvObjectPropertiesTrait
                         ['name' => 'Emily', 'last' => 'Smith'],
                     ],
                 ],
-                'actual'  => $jsmith,
+                'actual' => $jsmith,
                 'string' => 'object '.get_class($jsmith),
             ],
 
@@ -411,7 +409,7 @@ trait ProvObjectPropertiesTrait
                         ],
                     ],
                 ],
-                'actual'  => $registry,
+                'actual' => $registry,
                 'string' => 'object '.get_class($registry),
             ],
 
@@ -429,7 +427,7 @@ trait ProvObjectPropertiesTrait
                         ],
                     ]),
                 ],
-                'actual'  => $registry,
+                'actual' => $registry,
                 'string' => 'object '.get_class($registry),
             ],
         ];
@@ -439,32 +437,30 @@ trait ProvObjectPropertiesTrait
     {
         return [
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => 123,
-                'string'  => '123',
+                'expect' => ['foo' => 'FOO'],
+                'actual' => 123,
+                'string' => '123',
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => 'arbitrary string',
-                'string'  => '\'arbitrary string\'',
+                'expect' => ['foo' => 'FOO'],
+                'actual' => 'arbitrary string',
+                'string' => '\'arbitrary string\'',
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => null,
-                'string'  => 'null',
+                'expect' => ['foo' => 'FOO'],
+                'actual' => null,
+                'string' => 'null',
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
-                'expect'  => ['foo' => 'FOO'],
-                'actual'  => ['foo' => 'FOO'],
-                'string'  => 'array',
+                'expect' => ['foo' => 'FOO'],
+                'actual' => ['foo' => 'FOO'],
+                'string' => 'array',
             ],
         ];
     }
 
     // @codeCoverageIgnoreEnd
 }
-
-

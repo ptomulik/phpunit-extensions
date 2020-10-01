@@ -15,16 +15,13 @@ namespace PHPFox\PHPUnit\Constraint;
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPUnit\Framework\Constraint\LogicalNot;
-use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesEqualTo
- * @covers \PHPFox\PHPUnit\Constraint\ProvObjectPropertiesTrait
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
+ * @covers \PHPFox\PHPUnit\Constraint\ProvObjectPropertiesTrait
  *
  * @internal
  */

@@ -14,7 +14,6 @@ namespace PHPFox\PHPUnit;
 
 use PHPFox\PHPUnit\Constraint\ImplementsInterface;
 use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
-use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 

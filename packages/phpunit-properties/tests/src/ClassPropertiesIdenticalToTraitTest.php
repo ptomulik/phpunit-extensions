@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit;
 
-use PHPUnit\Framework\Constraint\UnaryOperator;
+use PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
-use PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>

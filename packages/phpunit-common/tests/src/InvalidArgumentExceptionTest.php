@@ -10,8 +10,8 @@
 
 namespace PHPFox\PHPUnit;
 
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 
 if (!function_exists('PHPFox\\PHPUnit\\testInvalidArgumentExceptionFromBackTrace')) {
     function testInvalidArgumentExceptionFromBackTrace(
@@ -37,6 +37,8 @@ if (!function_exists('PHPFox\\PHPUnit\\testInvalidArgumentExceptionFromBackTrace
 /**
  * @small
  * @covers \PHPFox\PHPUnit\InvalidArgumentException
+ *
+ * @internal
  */
 final class InvalidArgumentExceptionTest extends TestCase
 {

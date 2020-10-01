@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit;
 
+use PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
-use PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait;
 
 /**
  * @covers \PHPFox\PHPUnit\ClassPropertiesEqualToTrait

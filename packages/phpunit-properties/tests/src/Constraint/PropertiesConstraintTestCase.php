@@ -12,22 +12,16 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\InvalidArgumentException;
-use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
-use PHPFox\PHPUnit\Properties\IdentityComparator;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
-use PHPUnit\Framework\Constraint\IsIdentical;
-use PHPUnit\Framework\Constraint\IsInstanceOf;
-use PHPUnit\Framework\Constraint\UnaryOperator;
-use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\MockObject\MockBuilder;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Constraint\Constraint;
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
+use PHPFox\PHPUnit\InvalidArgumentException;
+use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
+use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
+use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
+use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit\Framework\Constraint\UnaryOperator;
+use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -38,8 +32,11 @@ abstract class PropertiesConstraintTestCase extends TestCase
     use ImplementsInterfaceTrait;
 
     abstract public static function subject(): string;
+
     abstract public static function adjective(): string;
+
     abstract public static function constraintClass(): string;
+
     abstract public static function comparatorClass(): string;
 
     public function testExtendsAbstractPropertiesConstraint(): void
@@ -99,19 +96,19 @@ abstract class PropertiesConstraintTestCase extends TestCase
     {
         return [
             'PropertiesConstraintTestTrait.php:'.__LINE__ => [
-                'array'  => [
+                'array' => [
                     'a' => 'A',
-                    0 => 'B',
+                    0   => 'B',
                 ],
                 'count' => 1,
             ],
             'PropertiesConstraintTestTrait.php:'.__LINE__ => [
-                'array'  => [
+                'array' => [
                     'a' => 'A',
-                    0 => 'B',
-                    2 => 'C',
-                    7 => 'D',
-                    'e' => 'E'
+                    0   => 'B',
+                    2   => 'C',
+                    7   => 'D',
+                    'e' => 'E',
                 ],
                 'count' => 3,
             ],
@@ -126,38 +123,6 @@ abstract class PropertiesConstraintTestCase extends TestCase
         $this->examineExceptionOnNonStringKeys($array, $count);
     }
 
-
-    /**
-     * Assert that $function throws InvalidArgumentException with appropriate
-     * message when provided with an array having one or more non-string keys.
-     *
-     * @param array $array An array with non-string keys to be passed as an argument to $function
-     * @param int $count Number of non-string keys in $array
-     * @param callable $function A function that creates constraint
-     *
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     */
-    private function examineExceptionOnNonStringKeys(array $array, int $count, callable $function = null): void
-    {
-        if (null === $function) {
-            $function = [static::constraintClass(), 'fromArray'];
-        }
-
-        $message = sprintf(
-            'Argument #1 of %s::fromArray() must be an associative array with string keys, '.
-            'an array with %d non-string %s given',
-            static::constraintClass(),
-            $count,
-            $count > 1 ? 'keys' : 'key'
-        );
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage($message);
-
-        call_user_func($function, $array);
-
-        // @codeCoverageIgnoreStart
-    }
     // @codeCoverageIgnoreEnd
 
     final public function testFailureExceptionInUnaryOperatorContext(): void
@@ -228,6 +193,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
         $constraint->evaluate($actual);
         // @codeCoverageIgnoreStart
     }
+
     // @codeCoverageIgnoreEnd
 
     /**
@@ -255,14 +221,15 @@ abstract class PropertiesConstraintTestCase extends TestCase
         $constraint->evaluate($actual);
         // @codeCoverageIgnoreStart
     }
+
     // @codeCoverageIgnoreEnd
 
     /**
      * Assembles expected failure message out of pieces.
      *
-     * @param string $value A noun representing the actual value, such as "123" or "array" or "object stdClass"
+     * @param string $value          A noun representing the actual value, such as "123" or "array" or "object stdClass"
      * @param string $verbAndSubject A concatenated verb and subject, such as "is a class", or "fails to be an object"
-     * @param string $adjective An adjective reflecting the comparison: "equal to" or "identical to"
+     * @param string $adjective      An adjective reflecting the comparison: "equal to" or "identical to"
      */
     final protected static function message(string $value, string $verbAndSubject, string $adjective): string
     {
@@ -272,13 +239,45 @@ abstract class PropertiesConstraintTestCase extends TestCase
     /**
      * Assembles a statement which is a part of failure message.
      *
-     * @param string $value A noun representing the actual value, such as "123" or "array" or "object stdClass"
+     * @param string $value          A noun representing the actual value, such as "123" or "array" or "object stdClass"
      * @param string $verbAndSubject A concatenated verb and subject, such as "is a class", or "fails to be an object"
-     * @param string $adjective An adjective reflecting the comparison: "equal to" or "identical to"
+     * @param string $adjective      An adjective reflecting the comparison: "equal to" or "identical to"
      */
     final protected static function statement(string $value, string $verbAndSubject, string $adjective): string
     {
         return sprintf('%s %s with properties %s specified', $value, $verbAndSubject, $adjective);
+    }
+
+    /**
+     * Assert that $function throws InvalidArgumentException with appropriate
+     * message when provided with an array having one or more non-string keys.
+     *
+     * @param array    $array    An array with non-string keys to be passed as an argument to $function
+     * @param int      $count    Number of non-string keys in $array
+     * @param callable $function A function that creates constraint
+     *
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     */
+    private function examineExceptionOnNonStringKeys(array $array, int $count, callable $function = null): void
+    {
+        if (null === $function) {
+            $function = [static::constraintClass(), 'fromArray'];
+        }
+
+        $message = sprintf(
+            'Argument #1 of %s::fromArray() must be an associative array with string keys, '.
+            'an array with %d non-string %s given',
+            static::constraintClass(),
+            $count,
+            $count > 1 ? 'keys' : 'key'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage($message);
+
+        call_user_func($function, $array);
+
+        // @codeCoverageIgnoreStart
     }
 }
 
