@@ -231,6 +231,30 @@ trait PropertiesConstraintTestTrait
     }
 
     // @codeCoverageIgnoreEnd
+
+    /**
+     * Assembles expected failure message out of pieces.
+     *
+     * @param string $value A noun representing the actual value, such as "123" or "array" or "object stdClass"
+     * @param string $verbAndSubject A concatenated verb and subject, such as "is a class", or "fails to be an object"
+     * @param string $adjective An adjective reflecting the comparison: "equal to" or "identical to"
+     */
+    private static function message(string $value, string $verbAndSubject, string $adjective): string
+    {
+        return sprintf('Failed asserting that %s.', self::statement($value, $verbAndSubject, $adjective));
+    }
+
+    /**
+     * Assembles a statement which is a part of failure message.
+     *
+     * @param string $value A noun representing the actual value, such as "123" or "array" or "object stdClass"
+     * @param string $verbAndSubject A concatenated verb and subject, such as "is a class", or "fails to be an object"
+     * @param string $adjective An adjective reflecting the comparison: "equal to" or "identical to"
+     */
+    private static function statement(string $value, string $verbAndSubject, string $adjective): string
+    {
+        return sprintf('%s %s with properties %s specified', $value, $verbAndSubject, $adjective);
+    }
 }
 
 // vim: syntax=php sw=4 ts=4 et:

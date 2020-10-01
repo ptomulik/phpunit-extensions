@@ -19,17 +19,10 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
  */
 trait ProvObjectPropertiesTrait
 {
-    abstract public static function getComparatorClass(): string;
-
-    abstract public static function getComparisonAdjective(string $comparator): string;
-
     // @codeCoverageIgnoreStart
 
     public static function provObjectPropertiesIdenticalTo(): array
     {
-        $adjective = self::getComparisonAdjective(self::getComparatorClass());
-        $template = '%s fails to be an object with properties '.$adjective.' specified';
-
         $esmith = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
@@ -100,7 +93,7 @@ trait ProvObjectPropertiesTrait
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21, 'wife' => $esmith],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -111,31 +104,31 @@ trait ProvObjectPropertiesTrait
                     'wife' => $esmith,
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith'],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['age' => 21],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['age' => 21, 'getSalary()' => 123, 'getDebit()' => -123],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -152,7 +145,7 @@ trait ProvObjectPropertiesTrait
                     ]),
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -174,7 +167,7 @@ trait ProvObjectPropertiesTrait
                     ]),
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -182,7 +175,7 @@ trait ProvObjectPropertiesTrait
                     'family' => [$esmith],
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -192,7 +185,7 @@ trait ProvObjectPropertiesTrait
                     ],
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -209,7 +202,7 @@ trait ProvObjectPropertiesTrait
                     ],
                 ],
                 'actual'  => $registry,
-                'message' => sprintf($template, 'object '.get_class($registry)),
+                'string' => 'object '.get_class($registry),
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
@@ -226,7 +219,7 @@ trait ProvObjectPropertiesTrait
                     ],
                 ],
                 'actual'  => $registry,
-                'message' => sprintf($template, 'object '.get_class($registry)),
+                'string' => 'object '.get_class($registry),
             ],
         ];
     }
@@ -257,7 +250,7 @@ trait ProvObjectPropertiesTrait
                     'boolFalse'   => 0,
                 ],
                 'actual'  => $object,
-                'message' => sprintf($template, 'object '.get_class($object)),
+                'string' => 'object '.get_class($object),
             ],
         ];
     }
@@ -343,43 +336,43 @@ trait ProvObjectPropertiesTrait
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Brown', 'age' => 21],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => null],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => 'Emily'],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => $hbrown],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['name' => 'John', 'last' => 'Brown'],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['age' => 19],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
                 'expect'  => ['age' => 21, 'getSalary()' => 1230],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
@@ -401,7 +394,7 @@ trait ProvObjectPropertiesTrait
                     ],
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
@@ -411,7 +404,7 @@ trait ProvObjectPropertiesTrait
                     ],
                 ],
                 'actual'  => $jsmith,
-                'message' => sprintf($template, 'object '.get_class($jsmith)),
+                'string' => 'object '.get_class($jsmith),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
@@ -428,7 +421,7 @@ trait ProvObjectPropertiesTrait
                     ],
                 ],
                 'actual'  => $registry,
-                'message' => sprintf($template, 'object '.get_class($registry)),
+                'string' => 'object '.get_class($registry),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
@@ -446,39 +439,36 @@ trait ProvObjectPropertiesTrait
                     ]),
                 ],
                 'actual'  => $registry,
-                'message' => sprintf($template, 'object '.get_class($registry)),
+                'string' => 'object '.get_class($registry),
             ],
         ];
     }
 
     public static function provObjectPropertiesNotEqualToNonObject(): array
     {
-        $adjective = self::getComparisonAdjective(self::getComparatorClass());
-        $template = '%s is an object with properties '.$adjective.' specified';
-
         return [
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 123,
-                'message' => sprintf($template, 123),
+                'string'  => '123',
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 'arbitrary string',
-                'message' => sprintf($template, sprintf("'%s'", addslashes('arbitrary string'))),
+                'string'  => '\'arbitrary string\'',
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => null,
-                'message' => sprintf($template, 'null'),
+                'string'  => 'null',
             ],
 
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => ['foo' => 'FOO'],
-                'message' => sprintf($template, 'array'),
+                'string'  => 'array',
             ],
         ];
     }
@@ -486,4 +476,4 @@ trait ProvObjectPropertiesTrait
     // @codeCoverageIgnoreEnd
 }
 
-// vim: syntax=php sw=4 ts=4 et:
+

@@ -64,12 +64,12 @@ final class ClassPropertiesIdenticalToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testClassPropertiesIdenticalToFails(array $expect, $actual, string $message): void
+    public function testClassPropertiesIdenticalToFails(array $expect, $actual, string $actualString): void
     {
         $constraint = ClassPropertiesIdenticalTo::fromArray($expect);
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+        $this->expectExceptionMessage(self::message($actualString, 'is a class', 'identical to'));
 
         $constraint->evaluate($actual);
     }
@@ -92,12 +92,12 @@ final class ClassPropertiesIdenticalToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testClassNotPropertiesIdenticalToFails(array $expect, $actual, string $message): void
+    public function testClassNotPropertiesIdenticalToFails(array $expect, $actual, string $actualString): void
     {
         $constraint = new LogicalNot(ClassPropertiesIdenticalTo::fromArray($expect));
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+        $this->expectExceptionMessage(self::message($actualString, 'fails to be a class', 'identical to'));
 
         $constraint->evaluate($actual);
     }

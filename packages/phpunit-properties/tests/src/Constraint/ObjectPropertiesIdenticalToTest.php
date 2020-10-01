@@ -65,12 +65,12 @@ final class ObjectPropertiesIdenticalToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testObjectPropertiesIdenticalToFails(array $expect, $actual, string $message): void
+    public function testObjectPropertiesIdenticalToFails(array $expect, $actual, string $string): void
     {
         $constraint = ObjectPropertiesIdenticalTo::fromArray($expect);
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+        $this->expectExceptionMessage(self::message($string, 'is an object', 'identical to'));
 
         $constraint->evaluate($actual);
     }
@@ -93,12 +93,12 @@ final class ObjectPropertiesIdenticalToTest extends TestCase
      *
      * @param mixed $actual
      */
-    public function testObjectNotPropertiesIdenticalToFails(array $expect, $actual, string $message): void
+    public function testObjectNotPropertiesIdenticalToFails(array $expect, $actual, string $string): void
     {
         $constraint = new LogicalNot(ObjectPropertiesIdenticalTo::fromArray($expect));
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+        $this->expectExceptionMessage(self::message($string, 'fails to be an object', 'identical to'));
 
         $constraint->evaluate($actual);
     }

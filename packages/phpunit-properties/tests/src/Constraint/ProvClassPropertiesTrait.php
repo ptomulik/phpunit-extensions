@@ -19,17 +19,10 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
  */
 trait ProvClassPropertiesTrait
 {
-    abstract public static function getComparatorClass(): string;
-
-    abstract public static function getComparisonAdjective(string $comparator): string;
-
     // @codeCoverageIgnoreStart
 
     public static function provClassPropertiesIdenticalTo(): array
     {
-        $adjective = self::getComparisonAdjective(self::getComparatorClass());
-        $template = '%s fails to be a class with properties '.$adjective.' specified';
-
         $classes = [
             get_class(new class() {
                 public static $emptyString = '';
@@ -50,19 +43,13 @@ trait ProvClassPropertiesTrait
                     'boolFalse'   => false,
                 ],
                 'actual'  => $classes[0],
-                'message' => sprintf($template, $classes[0]),
+                'string' => $classes[0],
             ],
         ];
     }
 
     public static function provClassPropertiesEqualButNotIdenticalTo(): array
     {
-        $comparator = self::getComparatorClass();
-        $adjective = self::getComparisonAdjective($comparator);
-        $verb = EqualityComparator::class === $comparator ? 'fails to be' : 'is';
-
-        $template = '%s '.$verb.' a class with properties '.$adjective.' specified';
-
         $classes = [
             get_class(new class() {
                 public static $emptyString = '';
@@ -83,15 +70,13 @@ trait ProvClassPropertiesTrait
                     'boolFalse'   => 0,
                 ],
                 'actual'  => $classes[0],
-                'message' => sprintf($template, $classes[0]),
+                'string' => $classes[0],
             ],
         ];
     }
 
     public static function provClassPropertiesNotEqualTo(): array
     {
-        $adjective = self::getComparisonAdjective(self::getComparatorClass());
-        $template = '%s is a class with properties '.$adjective.' specified';
 
         $classes = [
             get_class(new class() {
@@ -113,39 +98,43 @@ trait ProvClassPropertiesTrait
                     'boolFalse'   => true,
                 ],
                 'actual'  => $classes[0],
-                'message' => sprintf($template, $classes[0]),
+                'string' => $classes[0],
             ],
         ];
     }
 
     public static function provClassPropertiesNotEqualToNonClass(): array
     {
-        $adjective = self::getComparisonAdjective(self::getComparatorClass());
-        $template = '%s is a class with properties '.$adjective.' specified';
 
         return [
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 123,
-                'message' => sprintf($template, 123),
+                'string' => '123',
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 'arbitrary string',
-                'message' => sprintf($template, sprintf("'%s'", addslashes('arbitrary string'))),
+                'string' => '\'arbitrary string\''
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => null,
-                'message' => sprintf($template, 'null'),
+                'string' => 'null',
             ],
 
             'ProvClassPropertiesTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => ['foo' => 'FOO'],
-                'message' => sprintf($template, 'array'),
+                'string' => 'array',
+            ],
+
+            'ProvClassPropertiesTrait.php:'.__LINE__ => [
+                'expect'  => ['foo' => 'FOO'],
+                'actual'  => new \stdClass(),
+                'string' => 'object stdClass',
             ],
         ];
     }
@@ -153,4 +142,4 @@ trait ProvClassPropertiesTrait
     // @codeCoverageIgnoreEnd
 }
 
-// vim: syntax=php sw=4 ts=4 et:
+
