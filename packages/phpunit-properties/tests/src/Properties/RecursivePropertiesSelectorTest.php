@@ -238,9 +238,9 @@ final class RecursivePropertiesSelectorTest extends TestCase
      */
     public function testSelectProperties(ExpectedProperties $selector, $subject, array $expect): void
     {
-        $selector  = new RecursivePropertiesSelector($selector);
+        $selector = new RecursivePropertiesSelector($selector);
         $unwrapper = new RecursivePropertiesUnwrapper();
-        $selected  = $selector->selectProperties($subject);
+        $selected = $selector->selectProperties($subject);
         self::assertInstanceOf(ActualProperties::class, $selected);
         self::assertSame($expect, $unwrapper->unwrap($selected));
     }

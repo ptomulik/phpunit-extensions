@@ -26,7 +26,7 @@ trait NamedPropertiesComparatorTrait
         self::assertStringKeysOnly($expected, 1);
 
         $comparator = self::makeComparator();
-        $selector   = self::makePropertySelector();
+        $selector = self::makePropertySelector();
 
         if (null === $unwrapper) {
             $unwrapper = new RecursivePropertiesUnwrapper();

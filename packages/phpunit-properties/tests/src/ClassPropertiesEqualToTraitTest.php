@@ -95,7 +95,6 @@ final class ClassPropertiesEqualToTraitTest extends TestCase
         ];
     }
 
-
     /**
      * @dataProvider provClassPropertiesIdenticalTo
      * @dataProvider provClassPropertiesEqualButNotIdenticalTo

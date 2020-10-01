@@ -64,7 +64,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testGetIteratorInvokesAdapteeMethod(): void
     {
         $iterator = $this->createMock(\Traversable::class);
-        $adaptee  = $this->createMock(ExpectedPropertiesInterface::class);
+        $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects(self::once())
             ->method('getIterator')
             ->willReturn($iterator)
@@ -95,7 +95,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testOffsetGetInvokesAdapteeMethod(): void
     {
-        $value   = new \StdClass();
+        $value = new \StdClass();
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects(self::once())
             ->method('offsetGet')
@@ -112,7 +112,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testOffsetSetInvokesAdapteeMethod(): void
     {
-        $value   = new \StdClass();
+        $value = new \StdClass();
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects(self::once())
             ->method('offsetSet')
@@ -158,7 +158,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testGetArrayCopyInvokesAdapteeMethod(): void
     {
-        $array   = ['foo' => 'FOO'];
+        $array = ['foo' => 'FOO'];
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects(self::once())
             ->method('getArrayCopy')
@@ -174,7 +174,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 
     public function testCanUnwrapChildInvokesAdapteeMethod(): void
     {
-        $child   = $this->createMock(PropertiesInterface::class);
+        $child = $this->createMock(PropertiesInterface::class);
         $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects(self::once())
             ->method('canUnwrapChild')
@@ -192,7 +192,7 @@ final class ExpectedPropertiesDecoratorTraitTest extends TestCase
     public function testGetPropertySelectorInvokesAdapteeMethod(): void
     {
         $selector = $this->createMock(PropertySelectorInterface::class);
-        $adaptee  = $this->createMock(ExpectedPropertiesInterface::class);
+        $adaptee = $this->createMock(ExpectedPropertiesInterface::class);
         $adaptee->expects(self::once())
             ->method('getPropertySelector')
             ->willReturn($selector)

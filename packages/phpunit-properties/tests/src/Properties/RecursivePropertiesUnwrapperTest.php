@@ -100,7 +100,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
     {
         $actualProperties['[baz => BAZ]'] = $this->createActualProperties(['baz' => 'BAZ']);
         $expectProperties['[baz => BAZ]'] = $this->createExpectedProperties(['baz' => 'BAZ']);
-        $arrayObject['[baz => BAZ]']      = new \ArrayObject(['baz' => 'BAZ']);
+        $arrayObject['[baz => BAZ]'] = new \ArrayObject(['baz' => 'BAZ']);
 
         return [
             'RecursivePropertiesUnwrapperTest.php:'.__LINE__ => [
@@ -306,7 +306,7 @@ final class RecursivePropertiesUnwrapperTest extends TestCase
                 'baz' => $this->createActualProperties([]),
             ],
         ]);
-        $properties['#3']['foo']['bar']['qux']  = $properties['#3']['foo']['baz'];
+        $properties['#3']['foo']['bar']['qux'] = $properties['#3']['foo']['baz'];
         $properties['#3']['foo']['baz']['fred'] = $properties['#3']['foo']['bar'];
 
         return [

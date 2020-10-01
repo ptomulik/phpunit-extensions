@@ -13,8 +13,6 @@ declare(strict_types=1);
 namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\IdentityComparator;
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * @internal
@@ -26,7 +24,6 @@ trait ClassPropertiesProvTrait
     abstract public static function getComparisonAdjective(string $comparator): string;
 
     // @codeCoverageIgnoreStart
-
 
     public static function provClassPropertiesIdenticalTo(): array
     {
@@ -52,7 +49,7 @@ trait ClassPropertiesProvTrait
                     'int321'      => 321,
                     'boolFalse'   => false,
                 ],
-                'actual' => $classes[0],
+                'actual'  => $classes[0],
                 'message' => sprintf($template, $classes[0]),
             ],
         ];
@@ -85,7 +82,7 @@ trait ClassPropertiesProvTrait
                     'int321'      => '321',
                     'boolFalse'   => 0,
                 ],
-                'actual' => $classes[0],
+                'actual'  => $classes[0],
                 'message' => sprintf($template, $classes[0]),
             ],
         ];

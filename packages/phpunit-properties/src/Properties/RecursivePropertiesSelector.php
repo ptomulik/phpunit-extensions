@@ -40,7 +40,7 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
      */
     private function selectPropertiesArray($subject): array
     {
-        $array    = [];
+        $array = [];
         $selector = $this->expected->getPropertySelector();
         // order of keys in $array shall follow the given sequence in $this->expected
         foreach ($this->expected as $key => $expect) {

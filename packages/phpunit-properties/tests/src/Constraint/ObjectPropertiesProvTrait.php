@@ -13,8 +13,6 @@ declare(strict_types=1);
 namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\IdentityComparator;
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 
 /**
  * @internal
@@ -32,12 +30,12 @@ trait ObjectPropertiesProvTrait
         $adjective = self::getComparisonAdjective(self::getComparatorClass());
         $template = '%s fails to be an object with properties '.$adjective.' specified';
 
-        $esmith          = new class() {
+        $esmith = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
-            public $age  = 20;
+            public $age = 20;
             public $husband;
-            public $family  = [];
+            public $family = [];
             private $salary = 98;
 
             public function getSalary()
@@ -52,17 +50,17 @@ trait ObjectPropertiesProvTrait
 
             public function marry($husband)
             {
-                $this->husband  = $husband;
+                $this->husband = $husband;
                 $this->family[] = $husband;
             }
         };
 
-        $jsmith          = new class() {
+        $jsmith = new class() {
             public $name = 'John';
             public $last = 'Smith';
-            public $age  = 21;
+            public $age = 21;
             public $wife;
-            public $family  = [];
+            public $family = [];
             private $salary = 123;
 
             public function getSalary()
@@ -77,7 +75,7 @@ trait ObjectPropertiesProvTrait
 
             public function marry($wife)
             {
-                $this->wife     = $wife;
+                $this->wife = $wife;
                 $this->family[] = $wife;
             }
         };
@@ -85,14 +83,14 @@ trait ObjectPropertiesProvTrait
         $esmith->marry($jsmith);
         $jsmith->marry($esmith);
 
-        $registry            = new class() {
-            public $persons  = [];
+        $registry = new class() {
+            public $persons = [];
             public $families = [];
 
             public function addFamily(string $key, array $persons)
             {
                 $this->families[$key] = $persons;
-                $this->persons        = array_merge($this->persons, $persons);
+                $this->persons = array_merge($this->persons, $persons);
             }
         };
 
@@ -100,8 +98,8 @@ trait ObjectPropertiesProvTrait
 
         return [
             'ObjectPropertiesProvTrait.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Smith', 'age' => 21, 'wife' => $esmith],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21, 'wife' => $esmith],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -112,31 +110,31 @@ trait ObjectPropertiesProvTrait
                     'age'  => 21,
                     'wife' => $esmith,
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesProvTrait.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Smith', 'age' => 21],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Smith', 'age' => 21],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesProvTrait.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Smith'],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Smith'],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesProvTrait.php:'.__LINE__ => [
-                'expect' => ['age' => 21],
-                'actual' => $jsmith,
+                'expect'  => ['age' => 21],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesProvTrait.php:'.__LINE__ => [
-                'expect' => ['age' => 21, 'getSalary()' => 123, 'getDebit()' => -123],
-                'actual' => $jsmith,
+                'expect'  => ['age' => 21, 'getSalary()' => 123, 'getDebit()' => -123],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -153,7 +151,7 @@ trait ObjectPropertiesProvTrait
                         'getSalary()' => 98,
                     ]),
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -175,7 +173,7 @@ trait ObjectPropertiesProvTrait
                         'getSalary()' => 98,
                     ]),
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -183,7 +181,7 @@ trait ObjectPropertiesProvTrait
                 'expect' => [
                     'family' => [$esmith],
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -193,7 +191,7 @@ trait ObjectPropertiesProvTrait
                         ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
                     ],
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -210,7 +208,7 @@ trait ObjectPropertiesProvTrait
                         ],
                     ],
                 ],
-                'actual' => $registry,
+                'actual'  => $registry,
                 'message' => sprintf($template, 'object '.get_class($registry)),
             ],
 
@@ -227,7 +225,7 @@ trait ObjectPropertiesProvTrait
                         ],
                     ],
                 ],
-                'actual' => $registry,
+                'actual'  => $registry,
                 'message' => sprintf($template, 'object '.get_class($registry)),
             ],
         ];
@@ -241,11 +239,11 @@ trait ObjectPropertiesProvTrait
 
         $template = '%s '.$verb.' an object with properties '.$adjective.' specified';
 
-        $object                 = new class() {
+        $object = new class() {
             public $emptyString = '';
             public $null;
             public $string123 = '123';
-            public $int321    = 321;
+            public $int321 = 321;
             public $boolFalse = false;
         };
 
@@ -258,7 +256,7 @@ trait ObjectPropertiesProvTrait
                     'int321'      => '321',
                     'boolFalse'   => 0,
                 ],
-                'actual' => $object,
+                'actual'  => $object,
                 'message' => sprintf($template, 'object '.get_class($object)),
             ],
         ];
@@ -269,18 +267,18 @@ trait ObjectPropertiesProvTrait
         $adjective = self::getComparisonAdjective(self::getComparatorClass());
         $template = '%s is an object with properties '.$adjective.' specified';
 
-        $hbrown          = new class() {
+        $hbrown = new class() {
             public $name = 'Helen';
             public $last = 'Brown';
-            public $age  = 44;
+            public $age = 44;
         };
 
-        $esmith          = new class() {
+        $esmith = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
-            public $age  = 20;
+            public $age = 20;
             public $husband;
-            public $family  = [];
+            public $family = [];
             private $salary = 98;
 
             public function getSalary()
@@ -295,17 +293,17 @@ trait ObjectPropertiesProvTrait
 
             public function marry($husband)
             {
-                $this->husband  = $husband;
+                $this->husband = $husband;
                 $this->family[] = $husband;
             }
         };
 
-        $jsmith          = new class() {
+        $jsmith = new class() {
             public $name = 'John';
             public $last = 'Smith';
-            public $age  = 21;
+            public $age = 21;
             public $wife;
-            public $family  = [];
+            public $family = [];
             private $salary = 123;
 
             public function getSalary()
@@ -320,7 +318,7 @@ trait ObjectPropertiesProvTrait
 
             public function marry($wife)
             {
-                $this->wife     = $wife;
+                $this->wife = $wife;
                 $this->family[] = $wife;
             }
         };
@@ -328,14 +326,14 @@ trait ObjectPropertiesProvTrait
         $esmith->marry($jsmith);
         $jsmith->marry($esmith);
 
-        $registry            = new class() {
-            public $persons  = [];
+        $registry = new class() {
+            public $persons = [];
             public $families = [];
 
             public function addFamily(string $key, array $persons)
             {
                 $this->families[$key] = $persons;
-                $this->persons        = array_merge($this->persons, $persons);
+                $this->persons = array_merge($this->persons, $persons);
             }
         };
 
@@ -343,44 +341,44 @@ trait ObjectPropertiesProvTrait
 
         return [
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Brown', 'age' => 21],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Brown', 'age' => 21],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Smith', 'wife' => null],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => null],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Smith', 'wife' => 'Emily'],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => 'Emily'],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Smith', 'wife' => $hbrown],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Smith', 'wife' => $hbrown],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['name' => 'John', 'last' => 'Brown'],
-                'actual' => $jsmith,
+                'expect'  => ['name' => 'John', 'last' => 'Brown'],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['age' => 19],
-                'actual' => $jsmith,
+                'expect'  => ['age' => 19],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
             'ObjectPropertiesEqualToTraitTest.php:'.__LINE__ => [
-                'expect' => ['age' => 21, 'getSalary()' => 1230],
-                'actual' => $jsmith,
+                'expect'  => ['age' => 21, 'getSalary()' => 1230],
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -402,7 +400,7 @@ trait ObjectPropertiesProvTrait
                         'getSalary()' => 98,
                     ],
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -412,7 +410,7 @@ trait ObjectPropertiesProvTrait
                         ['name' => 'Emily', 'last' => 'Smith'],
                     ],
                 ],
-                'actual' => $jsmith,
+                'actual'  => $jsmith,
                 'message' => sprintf($template, 'object '.get_class($jsmith)),
             ],
 
@@ -429,7 +427,7 @@ trait ObjectPropertiesProvTrait
                         ],
                     ],
                 ],
-                'actual' => $registry,
+                'actual'  => $registry,
                 'message' => sprintf($template, 'object '.get_class($registry)),
             ],
 
@@ -447,7 +445,7 @@ trait ObjectPropertiesProvTrait
                         ],
                     ]),
                 ],
-                'actual' => $registry,
+                'actual'  => $registry,
                 'message' => sprintf($template, 'object '.get_class($registry)),
             ],
         ];

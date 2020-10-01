@@ -12,18 +12,18 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+use PHPFox\PHPUnit\Properties\EqualityComparator;
 use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
+use PHPFox\PHPUnit\Properties\IdentityComparator;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\IdentityComparator;
-use PHPFox\PHPUnit\Exception\InvalidArgumentException;
 use PHPUnit\Framework\Constraint\IsIdentical;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
 use PHPUnit\Framework\Constraint\UnaryOperator;
-use PHPUnit\Framework\MockObject\MockBuilder;
 use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\MockObject\MockBuilder;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -125,12 +125,12 @@ trait PropertiesConstraintTestTrait
     // @codeCoverageIgnoreStart
     public function provFromArray(): array
     {
-        $class      = self::getConstraintClass();
+        $class = self::getConstraintClass();
         $unwrapper = $this->createMock(RecursivePropertiesUnwrapperInterface::class);
 
         return [
             'PropertiesConstraintTestTrait.php:'.__LINE__ => [
-                'class' => $class,
+                'class'  => $class,
                 'args'   => [['foo' => 'FOO']],
                 'expect' => [
                     'properties' => self::identicalTo(['foo' => 'FOO']),
@@ -140,7 +140,7 @@ trait PropertiesConstraintTestTrait
             ],
 
             'PropertiesConstraintTestTrait.php:'.__LINE__ => [
-                'class' => $class,
+                'class'  => $class,
                 'args'   => [['foo' => 'FOO'], $unwrapper],
                 'expect' => [
                     'properties' => self::identicalTo(['foo' => 'FOO']),
@@ -174,13 +174,14 @@ trait PropertiesConstraintTestTrait
         return [
             'PropertiesConstraintTestTrait.php:'.__LINE__ => [
                 'class' => $class,
-                'args' =>  [
-                    ['a' => 'A', 0 => 'B', 2 => 'C', 7 => 'D', 'e' => 'E',],
+                'args'  => [
+                    ['a' => 'A', 0 => 'B', 2 => 'C', 7 => 'D', 'e' => 'E'],
                 ],
-                'message' => sprintf($template, $class, 3)
-            ]
+                'message' => sprintf($template, $class, 3),
+            ],
         ];
     }
+
     // @codeCoverageIgnoreEnd
 
     /**
@@ -196,7 +197,7 @@ trait PropertiesConstraintTestTrait
         // @codeCoverageIgnoreStart
     }
 
-   // @codeCoverageIgnoreEnd
+    // @codeCoverageIgnoreEnd
 
     // for full coverage of failureDescriptionInContext()
     public function testFailureDescriptionOfCustomUnaryOperator(): void
@@ -228,6 +229,7 @@ trait PropertiesConstraintTestTrait
 
         // @codeCoverageIgnoreStart
     }
+
     // @codeCoverageIgnoreEnd
 }
 

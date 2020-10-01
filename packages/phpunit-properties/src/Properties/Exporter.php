@@ -58,9 +58,9 @@ final class Exporter extends SebastianBergmannExporter
                 return $this->describe($value);
             }
 
-            $hash   = $processed->add($value);
+            $hash = $processed->add($value);
             $values = '';
-            $array  = $this->toArray($value);
+            $array = $this->toArray($value);
 
             if (count($array) > 0) {
                 foreach ($array as $k => $v) {

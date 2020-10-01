@@ -105,12 +105,12 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
     public static function provObjectPropertiesIdenticalTo(): array
     {
-        $esmith          = new class() {
+        $esmith = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
-            public $age  = 20;
+            public $age = 20;
             public $husband;
-            public $family  = [];
+            public $family = [];
             private $salary = 98;
 
             public function getSalary()
@@ -125,17 +125,17 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
             public function marry($husband)
             {
-                $this->husband  = $husband;
+                $this->husband = $husband;
                 $this->family[] = $husband;
             }
         };
 
-        $jsmith          = new class() {
+        $jsmith = new class() {
             public $name = 'John';
             public $last = 'Smith';
-            public $age  = 21;
+            public $age = 21;
             public $wife;
-            public $family  = [];
+            public $family = [];
             private $salary = 123;
 
             public function getSalary()
@@ -150,7 +150,7 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
             public function marry($wife)
             {
-                $this->wife     = $wife;
+                $this->wife = $wife;
                 $this->family[] = $wife;
             }
         };
@@ -158,14 +158,14 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
         $esmith->marry($jsmith);
         $jsmith->marry($esmith);
 
-        $registry            = new class() {
-            public $persons  = [];
+        $registry = new class() {
+            public $persons = [];
             public $families = [];
 
             public function addFamily(string $key, array $persons)
             {
                 $this->families[$key] = $persons;
-                $this->persons        = array_merge($this->persons, $persons);
+                $this->persons = array_merge($this->persons, $persons);
             }
         };
 
@@ -296,11 +296,11 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
     public static function provObjectPropertiesEqualButNotIdenticalTo(): array
     {
-        $object                 = new class() {
+        $object = new class() {
             public $emptyString = '';
             public $null;
             public $string123 = '123';
-            public $int321    = 321;
+            public $int321 = 321;
             public $boolFalse = false;
         };
 
@@ -320,18 +320,18 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
     public static function provObjectPropertiesNotEqualTo(): array
     {
-        $hbrown          = new class() {
+        $hbrown = new class() {
             public $name = 'Helen';
             public $last = 'Brown';
-            public $age  = 44;
+            public $age = 44;
         };
 
-        $esmith          = new class() {
+        $esmith = new class() {
             public $name = 'Emily';
             public $last = 'Smith';
-            public $age  = 20;
+            public $age = 20;
             public $husband;
-            public $family  = [];
+            public $family = [];
             private $salary = 98;
 
             public function getSalary()
@@ -346,17 +346,17 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
             public function marry($husband)
             {
-                $this->husband  = $husband;
+                $this->husband = $husband;
                 $this->family[] = $husband;
             }
         };
 
-        $jsmith          = new class() {
+        $jsmith = new class() {
             public $name = 'John';
             public $last = 'Smith';
-            public $age  = 21;
+            public $age = 21;
             public $wife;
-            public $family  = [];
+            public $family = [];
             private $salary = 123;
 
             public function getSalary()
@@ -371,7 +371,7 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
 
             public function marry($wife)
             {
-                $this->wife     = $wife;
+                $this->wife = $wife;
                 $this->family[] = $wife;
             }
         };
@@ -379,14 +379,14 @@ final class ObjectPropertiesEqualToTraitTest extends TestCase
         $esmith->marry($jsmith);
         $jsmith->marry($esmith);
 
-        $registry            = new class() {
-            public $persons  = [];
+        $registry = new class() {
+            public $persons = [];
             public $families = [];
 
             public function addFamily(string $key, array $persons)
             {
                 $this->families[$key] = $persons;
-                $this->persons        = array_merge($this->persons, $persons);
+                $this->persons = array_merge($this->persons, $persons);
             }
         };
 

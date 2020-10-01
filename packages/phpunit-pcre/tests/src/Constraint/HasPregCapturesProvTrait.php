@@ -22,7 +22,7 @@ trait HasPregCapturesProvTrait
     public static function provHasPregCaptures(): array
     {
         $defaultMessage = 'array does not have expected PCRE capture groups';
-        $cases          = [
+        $cases = [
             'HasPregCapturesProvTrait.php:'.__LINE__ => [
                 'expect' => [],
                 'actual' => [],

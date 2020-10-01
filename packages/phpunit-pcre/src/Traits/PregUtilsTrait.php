@@ -39,7 +39,7 @@ trait PregUtilsTrait
      */
     public static function pregTupleKeysAt(array $array, array $positions): array
     {
-        $keys   = array_keys($array);
+        $keys = array_keys($array);
         $result = [];
         // NOTE: do not use array_map() with closure, because closures
         // break process isolation (they are not serializable)
@@ -155,7 +155,7 @@ trait PregUtilsTrait
      */
     public static function prefixPregTuple(array $tuple, string $prefix, $prefixMain = false): array
     {
-        [$_0, $_1]  = self::pregTupleKeysAt($tuple, [0, 1]);
+        [$_0, $_1] = self::pregTupleKeysAt($tuple, [0, 1]);
         $tuple[$_0] = $prefix.$tuple[$_0];
         if (null !== ($captures = $tuple[$_1] ?? null)) {
             $tuple[$_1] = static::prefixPregCaptures($captures, $prefix, $prefixMain);
@@ -179,7 +179,7 @@ trait PregUtilsTrait
      */
     public static function suffixPregTuple(array $tuple, string $suffix, $suffixMain = false): array
     {
-        [$_0, $_1]  = self::pregTupleKeysAt($tuple, [0, 1]);
+        [$_0, $_1] = self::pregTupleKeysAt($tuple, [0, 1]);
         $tuple[$_0] = $tuple[$_0].$suffix;
         if (null !== ($captures = $tuple[$_1] ?? null)) {
             if ($suffixMain && null !== ($captures[0][0] ?? null)) {
@@ -266,8 +266,8 @@ trait PregUtilsTrait
         $options = array_merge($defaults, array_intersect_key($options, $defaults));
         extract($options);
 
-        $left    = array_values($left);    // string keys get lost, sorry
-        $right   = array_values($right);  // string keys get lost, sorry
+        $left = array_values($left);    // string keys get lost, sorry
+        $right = array_values($right);  // string keys get lost, sorry
         $options = ['suffix' => $glue.$right[0], 'suffixMain' => $joinMain];
         if (null !== ($captures = $right[1] ?? null)) {
             $options['merge'] = static::shiftPregCaptures($captures, strlen($left[0].$glue));

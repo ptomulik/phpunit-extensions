@@ -207,7 +207,7 @@ final class ObjectPropertySelectorTest extends TestCase
 
     public function testSelectPropertyThrowsOnPrivateAttribute(): void
     {
-        $object          = new class() {
+        $object = new class() {
             private $foo = 'FOO';
         };
         $selector = new ObjectPropertySelector();
@@ -224,7 +224,7 @@ final class ObjectPropertySelectorTest extends TestCase
 
     public function testSelectPropertyThrowsOnStaticProperty(): void
     {
-        $object                = new class() {
+        $object = new class() {
             public static $foo = 'FOO';
         };
         $selector = new ObjectPropertySelector();

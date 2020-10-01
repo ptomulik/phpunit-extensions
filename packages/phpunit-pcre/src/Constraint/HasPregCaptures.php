@@ -85,7 +85,7 @@ final class HasPregCaptures extends Constraint
 
             if (is_array($other)) {
                 [$expected, $actual] = $this->getArraysForComparison($other);
-                $f                   = new ComparisonFailure(
+                $f = new ComparisonFailure(
                     $this->expected,
                     $other,
                     $this->exporter()->export($expected),

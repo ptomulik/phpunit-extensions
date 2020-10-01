@@ -89,7 +89,7 @@ final class ExporterTest extends TestCase
     public function provExport(): array
     {
         $sebastianExporter = new SebastianBergmannExporter();
-        $sebastianHandles  = [
+        $sebastianHandles = [
             null,               // #0
             'abc',              // #1
             123,                // #2
@@ -154,8 +154,8 @@ final class ExporterTest extends TestCase
 
     public function testExportHandlesCycle(): void
     {
-        $exporter        = new Exporter();
-        $argument        = $this->createActualProperties([]);
+        $exporter = new Exporter();
+        $argument = $this->createActualProperties([]);
         $argument['foo'] = $argument;
 
         $expected = "Properties <Actual> (\n".
@@ -171,7 +171,7 @@ final class ExporterTest extends TestCase
     public function provShortenedExport(): array
     {
         $sebastianExporter = new SebastianBergmannExporter();
-        $sebastianHandles  = [
+        $sebastianHandles = [
             null,               // #0
             'abc',              // #1
             123,                // #2

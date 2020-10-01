@@ -39,7 +39,7 @@ final class RecursivePropertiesUnwrapper implements RecursivePropertiesUnwrapper
     public function __construct(bool $tagging = true)
     {
         $this->tagging = $tagging;
-        $this->seen    = new \SplObjectStorage();
+        $this->seen = new \SplObjectStorage();
     }
 
     /**

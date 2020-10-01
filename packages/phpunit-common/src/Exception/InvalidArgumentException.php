@@ -17,10 +17,10 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
 {
     public static function fromBackTrace(int $argument, string $expected, string $provided, int $distance = 1): self
     {
-        $stack    = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1 + $distance);
-        $caller   = $stack[$distance];
-        $class    = $caller['class'] ?? null;
-        $scope    = $class ? $class.'::' : '';
+        $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1 + $distance);
+        $caller = $stack[$distance];
+        $class = $caller['class'] ?? null;
+        $scope = $class ? $class.'::' : '';
         $function = sprintf('%s%s', $scope, $caller['function']);
 
         return self::fromFunction($function, $argument, $expected, $provided);

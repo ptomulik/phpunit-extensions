@@ -18,7 +18,6 @@ use PHPFox\PHPUnit\Properties\ComparatorInterface;
 use PHPFox\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait;
 use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
 use PHPFox\PHPUnit\Properties\Exporter;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesSelector;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 use PHPUnit\Framework\Constraint\Constraint;
@@ -66,8 +65,8 @@ abstract class AbstractPropertiesConstraint extends Constraint implements Expect
         RecursivePropertiesUnwrapperInterface $unwrapper
     ) {
         $this->comparator = $comparator;
-        $this->expected   = $expected;
-        $this->unwrapper  = $unwrapper;
+        $this->expected = $expected;
+        $this->unwrapper = $unwrapper;
     }
 
     /**
@@ -166,7 +165,7 @@ abstract class AbstractPropertiesConstraint extends Constraint implements Expect
 
             if ($this->getPropertySelector()->canSelectFrom($other)) {
                 $actual = $this->selectActualProperties($other);
-                $f      = new ComparisonFailure(
+                $f = new ComparisonFailure(
                     $this->expected,
                     $other,
                     $this->exporter()->export($this->expected),

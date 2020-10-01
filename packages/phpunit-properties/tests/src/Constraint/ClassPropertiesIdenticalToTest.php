@@ -14,10 +14,10 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
-use PHPunit\Framework\ExpectationFailedException;
 use PHPFox\PHPUnit\Properties\IdentityComparator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Constraint\LogicalNot;
+use PHPunit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
