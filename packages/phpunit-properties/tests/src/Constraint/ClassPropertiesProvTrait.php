@@ -12,10 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPUnit\Framework\Constraint\UnaryOperator;
-use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\TestCase;
-
 /**
  * @internal
  */
@@ -73,12 +69,12 @@ trait ClassPropertiesProvTrait
 
         $classes = [
             get_class(new class() {
-                    public static $emptyString = '';
-                    public static $null;
-                    public static $string123 = '123';
-                    public static $int321 = 321;
-                    public static $boolFalse = false;
-           }),
+                public static $emptyString = '';
+                public static $null;
+                public static $string123 = '123';
+                public static $int321 = 321;
+                public static $boolFalse = false;
+            }),
         ];
 
         return [
@@ -90,7 +86,7 @@ trait ClassPropertiesProvTrait
                     'int321'      => 123,
                     'boolFalse'   => true,
                 ],
-                'actual' => $classes[0],
+                'actual'  => $classes[0],
                 'message' => sprintf($template, $classes[0]),
             ],
         ];
@@ -104,7 +100,7 @@ trait ClassPropertiesProvTrait
             'ClassPropertiesProvTrait.php:'.__LINE__ => [
                 'expect'  => ['foo' => 'FOO'],
                 'actual'  => 123,
-                'message' => sprintf($template, 123)
+                'message' => sprintf($template, 123),
             ],
 
             'ClassPropertiesProvTrait.php:'.__LINE__ => [
@@ -134,7 +130,7 @@ trait ClassPropertiesProvTrait
                 'array' => [
                     'a' => 'A', 0 => 'B', 2 => 'C', 7 => 'D', 'e' => 'E',
                 ],
-                'message'   => 'The array of expected properties contains 3 invalid key(s)',
+                'message' => 'The array of expected properties contains 3 invalid key(s)',
             ],
         ];
 

@@ -30,6 +30,14 @@ final class ClassPropertySelector extends AbstractPropertySelector
     }
 
     /**
+     * Returns short description of subject type supported by this constraint.
+     */
+    public function subject(): string
+    {
+        return 'a class';
+    }
+
+    /**
      * @param mixed $subject
      * @param mixed $retval
      * @psalm-assert class-string $subject
@@ -70,14 +78,6 @@ final class ClassPropertySelector extends AbstractPropertySelector
         $retval = $subject::${$key};
 
         return true;
-    }
-
-    /**
-     * Returns short description of subject type supported by this constraint.
-     */
-    public function subject(): string
-    {
-        return 'a class';
     }
 }
 
