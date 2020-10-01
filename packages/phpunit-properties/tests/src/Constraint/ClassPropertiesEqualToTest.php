@@ -14,28 +14,37 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
+use PHPFox\PHPUnit\Properties\EqualityComparator;
 use PHPunit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Constraint\LogicalNot;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesEqualTo
- * @covers \PHPFox\PHPUnit\Constraint\PropertiesComparatorTestTrait
+ * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestTrait
+ * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesProvTrait
  *
  * @internal
  */
 final class ClassPropertiesEqualToTest extends TestCase
 {
-    use PropertiesComparatorTestTrait;
+    use PropertiesConstraintTestTrait;
     use ImplementsInterfaceTrait;
     use ExtendsClassTrait;
     use ClassPropertiesProvTrait;
 
-    // required by PropertiesComparatorTestTrait
-    public function getPropertiesComparatorClass(): string
+    // required by PropertiesConstraintTestTrait
+    public static function getConstraintClass(): string
     {
         return ClassPropertiesEqualTo::class;
+    }
+
+    // required by ClassPropertiesProvTrait
+    public static function getComparatorClass(): string
+    {
+        return EqualityComparator::class;
     }
 
     /**
@@ -66,9 +75,33 @@ final class ClassPropertiesEqualToTest extends TestCase
         $constraint->evaluate($actual);
     }
 
-//    public function testNotClassPropertiesEqualToSucceeds(array $expect, string $class): void
-//    {
-//    }
+    /**
+     * @dataProvider provClassPropertiesNotEqualTo
+     * @dataProvider provClassPropertiesNotEqualToNonClass
+     *
+     * @param mixed $actual
+     */
+    public function testClassNotPropertiesEqualToSucceeds(array $expect, $actual): void
+    {
+        $constraint = new LogicalNot(ClassPropertiesEqualTo::fromArray($expect));
+        self::assertThat($actual, $constraint);
+    }
+
+    /**
+     * @dataProvider provClassPropertiesIdenticalTo
+     * @dataProvider provClassPropertiesEqualButNotIdenticalTo
+     *
+     * @param mixed $actual
+     */
+    public function testClassNotPropertiesEqualToFails(array $expect, $actual, string $message): void
+    {
+        $constraint = new LogicalNot(ClassPropertiesEqualTo::fromArray($expect));
+
+        $this->expectException(ExpectationFailedException::class);
+        $this->expectExceptionMessage(sprintf('Failed asserting that %s.', $message));
+
+        $constraint->evaluate($actual);
+    }
 }
 
 // vim: syntax=php sw=4 ts=4 et:

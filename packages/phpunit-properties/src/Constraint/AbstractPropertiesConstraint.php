@@ -197,18 +197,6 @@ abstract class AbstractPropertiesConstraint extends Constraint implements Expect
         return $this->comparator->compare($expect, $actual);
     }
 
-//    /**
-//     * Creates instance of PropertySelectorInterface specific to the type of
-//     * subjects supported by this constraint.
-//     */
-//    abstract protected static function makePropertySelector(): PropertySelectorInterface;
-//
-//    /**
-//     * Creates instance of ComparatorInterface specific to the type of
-//     * comparison (equality, identity) used by subclass.
-//     */
-//    abstract protected static function makeComparator(): ComparatorInterface;
-
     final protected function exporter(): SebastianBergmannExporter
     {
         if (null === $this->exporter) {

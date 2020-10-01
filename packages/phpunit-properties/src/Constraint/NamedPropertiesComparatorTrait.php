@@ -55,6 +55,7 @@ trait NamedPropertiesComparatorTrait
         $valid = array_filter($array, 'is_string', ARRAY_FILTER_USE_KEY);
         if (($count = count($array) - count($valid)) > 0) {
             throw InvalidArgumentException::fromBackTrace(
+                1,
                 'an associative array with string keys',
                 sprintf('an array with %d non-string keys', $count),
                 1 + $depth

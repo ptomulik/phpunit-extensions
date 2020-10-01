@@ -12,15 +12,37 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\Properties\EqualityComparator;
+use PHPFox\PHPUnit\Properties\IdentityComparator;
+use PHPFox\PHPUnit\Exception\InvalidArgumentException;
+
 /**
  * @internal
  */
 trait ClassPropertiesProvTrait
 {
+    abstract public static function getComparatorClass(): string;
+
+    abstract public static function getComparisonAdjective(string $comparator): string;
+
     // @codeCoverageIgnoreStart
+
 
     public static function provClassPropertiesIdenticalTo(): array
     {
+        $adjective = self::getComparisonAdjective(self::getComparatorClass());
+        $template = '%s fails to be a class with properties '.$adjective.' specified';
+
+        $classes = [
+            get_class(new class() {
+                public static $emptyString = '';
+                public static $null;
+                public static $string123 = '123';
+                public static $int321 = 321;
+                public static $boolFalse = false;
+            }),
+        ];
+
         return [
             'ClassPropertiesProvTrait.php:'.__LINE__ => [
                 'expect' => [
@@ -30,19 +52,30 @@ trait ClassPropertiesProvTrait
                     'int321'      => 321,
                     'boolFalse'   => false,
                 ],
-                'actual' => get_class(new class() {
-                    public static $emptyString = '';
-                    public static $null;
-                    public static $string123 = '123';
-                    public static $int321 = 321;
-                    public static $boolFalse = false;
-                }),
+                'actual' => $classes[0],
+                'message' => sprintf($template, $classes[0]),
             ],
         ];
     }
 
     public static function provClassPropertiesEqualButNotIdenticalTo(): array
     {
+        $comparator = self::getComparatorClass();
+        $adjective = self::getComparisonAdjective($comparator);
+        $verb = EqualityComparator::class === $comparator ? 'fails to be' : 'is';
+
+        $template = '%s '.$verb.' a class with properties '.$adjective.' specified';
+
+        $classes = [
+            get_class(new class() {
+                public static $emptyString = '';
+                public static $null;
+                public static $string123 = '123';
+                public static $int321 = 321;
+                public static $boolFalse = false;
+            }),
+        ];
+
         return [
             'ClassPropertiesProvTrait.php:'.__LINE__ => [
                 'expect' => [
@@ -52,20 +85,16 @@ trait ClassPropertiesProvTrait
                     'int321'      => '321',
                     'boolFalse'   => 0,
                 ],
-                'actual' => get_class(new class() {
-                    public static $emptyString = '';
-                    public static $null;
-                    public static $string123 = '123';
-                    public static $int321 = 321;
-                    public static $boolFalse = false;
-                }),
+                'actual' => $classes[0],
+                'message' => sprintf($template, $classes[0]),
             ],
         ];
     }
 
     public static function provClassPropertiesNotEqualTo(): array
     {
-        $template = '%s is a class with properties equal to specified';
+        $adjective = self::getComparisonAdjective(self::getComparatorClass());
+        $template = '%s is a class with properties '.$adjective.' specified';
 
         $classes = [
             get_class(new class() {
@@ -94,7 +123,8 @@ trait ClassPropertiesProvTrait
 
     public static function provClassPropertiesNotEqualToNonClass(): array
     {
-        $template = '%s is a class with properties equal to specified';
+        $adjective = self::getComparisonAdjective(self::getComparatorClass());
+        $template = '%s is a class with properties '.$adjective.' specified';
 
         return [
             'ClassPropertiesProvTrait.php:'.__LINE__ => [
@@ -120,28 +150,6 @@ trait ClassPropertiesProvTrait
                 'actual'  => ['foo' => 'FOO'],
                 'message' => sprintf($template, 'array'),
             ],
-        ];
-    }
-
-    public static function provClassPropertiesWithInvalidExpectationSpec(): array
-    {
-        $specs = [
-            '3-int-keys' => [
-                'array' => [
-                    'a' => 'A', 0 => 'B', 2 => 'C', 7 => 'D', 'e' => 'E',
-                ],
-                'message' => 'The array of expected properties contains 3 invalid key(s)',
-            ],
-        ];
-
-        return [
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
-                'method' => 'classPropertiesIdenticalTo',
-            ] + $specs['3-int-keys'],
-
-            'ClassPropertiesProvTrait.php:'.__LINE__ => [
-                'method' => 'classPropertiesEqualTo',
-            ] + $specs['3-int-keys'],
         ];
     }
 
