@@ -23,25 +23,9 @@ final class ExtendsClass extends AbstractInheritanceConstraint
 
     private static $verb = 'extends class';
     private static $negatedVerb = 'does not extend class';
-    private static $validatorArgs = ['class_exists', 'a class-string'];
-
-    /**
-     * Returns an array of classes $class extends.
-     */
-    protected function inheritance(string $class): array
-    {
-        return class_parents($class);
-    }
-
-    /**
-     * Checks if *$subject* may be used as an argument to inheritance().
-     *
-     * @psalm-assert-if-true class-string $subject
-     */
-    protected function supports(string $subject): bool
-    {
-        return class_exists($subject);
-    }
+    private static $validation = ['class_exists', 'a class-string'];
+    private static $inheritance = 'class_parents';
+    private static $supports = ['class_exists'];
 }
 
 // vim: syntax=php sw=4 ts=4 et:

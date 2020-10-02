@@ -15,29 +15,25 @@ exclude_patterns:
   - "**/tests/"
   - "**/behat/"
   - "**/vendor/"
-checks:
-  similar-code:
-    config:
-      threshold: 88
 plugins:
   phpcodesniffer:
     enabled: true
 
   duplication:
     enabled: true
-##    config:
-##      debug: true
-##      dump_ast: true
-##      languages:
-##        php:
-##          filters:
-##            - "(Const VALUE_SAFE ___)"
-##            - "(Const VALUE_BASE64 ___)"
-##            - "(Const VALUE_URL ___)"
-##            - "(Stmt_Class _ _ _ _ _ LdapResultEntryIterator ___)"
-##            - "(Stmt_Class _ _ _ _ _ LdapResultReferenceIterator ___)"
-##            - "(Stmt_Class _ _ _ _ _ ResultEntryIterator ___)"
-##            - "(Stmt_Class _ _ _ _ _ ResultReferenceIterator ___)"
+    config:
+      languages:
+          php:
+            filters:
+              # The traits providing assertions are all similar, by design.
+              - "(Stmt_Trait _ ClassPropertiesEqualToTrait ___)"
+              - "(Stmt_Trait _ ClassPropertiesIdenticalToTrait ___)"
+              - "(Stmt_Trait _ ObjectPropertiesEqualToTrait ___)"
+              - "(Stmt_Trait _ ObjectPropertiesIdenticalToTrait ___)"
+              - "(Stmt_Trait _ ExtendsClassTrait ___)"
+              - "(Stmt_Trait _ ImplementsInterfaceTrait ___)"
+              - "(Stmt_Trait _ UsesTraitTrait ___)"
+              - "(Stmt_Trait _ HasPregCapturesTrait ___)"
 
   fixme:
     enabled: true

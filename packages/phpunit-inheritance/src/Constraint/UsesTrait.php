@@ -23,25 +23,9 @@ final class UsesTrait extends AbstractInheritanceConstraint
 
     private static $verb = 'uses trait';
     private static $negatedVerb = 'does not use trait';
-    private static $validatorArgs = ['trait_exists', 'a trait-string'];
-
-    /**
-     * Returns an array of traits $class uses.
-     */
-    protected function inheritance(string $class): array
-    {
-        return class_uses($class);
-    }
-
-    /**
-     * Checks if *$subject* may be used as an argument to inheritance().
-     *
-     * @psalm-assert-if-true class-string|trait-string $subject
-     */
-    protected function supports(string $subject): bool
-    {
-        return class_exists($subject) || trait_exists($subject);
-    }
+    private static $validation = ['trait_exists', 'a trait-string'];
+    private static $inheritance = 'class_uses';
+    private static $supports = ['class_exists', 'trait_exists'];
 }
 
 // vim: syntax=php sw=4 ts=4 et:

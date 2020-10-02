@@ -23,25 +23,9 @@ final class ImplementsInterface extends AbstractInheritanceConstraint
 
     private static $verb = 'implements interface';
     private static $negatedVerb = 'does not implement interface';
-    private static $validatorArgs = ['interface_exists', 'an interface-string'];
-
-    /**
-     * Returns an array of interfaces $class implements.
-     */
-    protected function inheritance(string $class): array
-    {
-        return class_implements($class);
-    }
-
-    /**
-     * Checks if *$subject* may be used as an argument to inheritance().
-     *
-     * @psalm-assert-if-true class-string $subject
-     */
-    protected function supports(string $subject): bool
-    {
-        return class_exists($subject) || interface_exists($subject);
-    }
+    private static $validation = ['interface_exists', 'an interface-string'];
+    private static $inheritance = 'class_implements';
+    private static $supports = ['class_exists', 'interface_exists'];
 }
 
 // vim: syntax=php sw=4 ts=4 et:
