@@ -52,7 +52,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     }
 
     // @codeCoverageIgnoreStart
-    public function provFromArray(): array
+    public function provCreate(): array
     {
         $unwrapper = $this->createMock(RecursivePropertiesUnwrapperInterface::class);
 
@@ -80,12 +80,12 @@ abstract class PropertiesConstraintTestCase extends TestCase
     // @codeCoverageIgnoreEnd
 
     /**
-     * @dataProvider provFromArray
+     * @dataProvider provCreate
      */
-    public function testFromArray(array $args, array $expect): void
+    public function testCreate(array $args, array $expect): void
     {
         $class = static::constraintClass();
-        $constraint = $class::fromArray(...$args);
+        $constraint = $class::create(...$args);
         self::assertThat($constraint->getPropertiesUnwrapper(), $expect['unwrapper']);
         self::assertThat($constraint->getArrayCopy(), $expect['properties']);
         self::assertThat($constraint->getComparator(), $expect['comparator']);
@@ -118,7 +118,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     /**
      * @dataProvider provArrayWithNonStringKeys
      */
-    final public function testFromArrayWithNonStringKeys(array $array, int $count): void
+    final public function testCreateWithNonStringKeys(array $array, int $count): void
     {
         $this->examineExceptionOnNonStringKeys($array, $count);
     }
@@ -128,7 +128,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     final public function testFailureExceptionInUnaryOperatorContext(): void
     {
         $class = static::constraintClass();
-        $constraint = $class::fromArray([]);
+        $constraint = $class::create([]);
 
         $unary = $this->wrapWithUnaryOperator($constraint);
         $verbAndAdjective = sprintf('is %s', static::subject());
@@ -174,7 +174,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     final protected function examinePropertiesMatchSucceeds(array $expect, $actual): void
     {
         $class = static::constraintClass();
-        $constraint = $class::fromArray($expect);
+        $constraint = $class::create($expect);
         self::assertThat($actual, $constraint);
     }
 
@@ -184,7 +184,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     final protected function examinePropertiesMatchFails(array $expect, $actual, string $string): void
     {
         $class = static::constraintClass();
-        $constraint = $class::fromArray($expect);
+        $constraint = $class::create($expect);
         $message = self::message($string, 'is '.static::subject(), static::adjective());
 
         $this->expectException(ExpectationFailedException::class);
@@ -202,7 +202,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     final protected function examineNotPropertiesMatchSucceeds(array $expect, $actual): void
     {
         $class = static::constraintClass();
-        $constraint = self::logicalNot($class::fromArray($expect));
+        $constraint = self::logicalNot($class::create($expect));
         self::assertThat($actual, $constraint);
     }
 
@@ -212,7 +212,7 @@ abstract class PropertiesConstraintTestCase extends TestCase
     final protected function examineNotPropertiesMatchFails(array $expect, $actual, string $string): void
     {
         $class = static::constraintClass();
-        $constraint = self::logicalNot($class::fromArray($expect));
+        $constraint = self::logicalNot($class::create($expect));
         $message = self::message($string, 'fails to be '.static::subject(), static::adjective());
 
         $this->expectException(ExpectationFailedException::class);
@@ -261,11 +261,11 @@ abstract class PropertiesConstraintTestCase extends TestCase
     private function examineExceptionOnNonStringKeys(array $array, int $count, callable $function = null): void
     {
         if (null === $function) {
-            $function = [static::constraintClass(), 'fromArray'];
+            $function = [static::constraintClass(), 'create'];
         }
 
         $message = sprintf(
-            'Argument #1 of %s::fromArray() must be an associative array with string keys, '.
+            'Argument #1 of %s::create() must be an associative array with string keys, '.
             'an array with %d non-string %s given',
             static::constraintClass(),
             $count,

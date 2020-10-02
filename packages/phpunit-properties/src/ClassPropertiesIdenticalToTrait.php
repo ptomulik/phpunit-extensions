@@ -86,7 +86,7 @@ trait ClassPropertiesIdenticalToTrait
      */
     public static function classPropertiesIdenticalTo(array $expected): ClassPropertiesIdenticalTo
     {
-        return ClassPropertiesIdenticalTo::fromArray($expected);
+        return ClassPropertiesIdenticalTo::create($expected);
     }
 }
 

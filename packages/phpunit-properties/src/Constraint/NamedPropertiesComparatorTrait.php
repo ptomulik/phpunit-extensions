@@ -21,7 +21,7 @@ use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 
 trait NamedPropertiesComparatorTrait
 {
-    public static function fromArray(array $expected, RecursivePropertiesUnwrapperInterface $unwrapper = null): self
+    public static function create(array $expected, RecursivePropertiesUnwrapperInterface $unwrapper = null): self
     {
         self::assertStringKeysOnly($expected, 1);
 

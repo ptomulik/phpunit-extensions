@@ -28,7 +28,7 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
  * method that returns property value.
  *
  *      // ...
- *      $matcher = ClassPropertiesEqualTo::fromArray([
+ *      $matcher = ClassPropertiesEqualTo::create([
  *          'getName()' => 'John', 'age' => '21'
  *      ]);
  *

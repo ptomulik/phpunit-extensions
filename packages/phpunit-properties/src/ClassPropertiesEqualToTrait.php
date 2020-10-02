@@ -86,7 +86,7 @@ trait ClassPropertiesEqualToTrait
      */
     public static function classPropertiesEqualTo(array $expected): ClassPropertiesEqualTo
     {
-        return ClassPropertiesEqualTo::fromArray($expected);
+        return ClassPropertiesEqualTo::create($expected);
     }
 }
 

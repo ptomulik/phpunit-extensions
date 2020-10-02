@@ -134,7 +134,7 @@ trait ProvObjectPropertiesTrait
                     'name' => 'John',
                     'last' => 'Smith',
                     'age'  => 21,
-                    'wife' => ObjectPropertiesIdenticalTo::fromArray([
+                    'wife' => ObjectPropertiesIdenticalTo::create([
                         'name'        => 'Emily',
                         'last'        => 'Smith',
                         'age'         => 20,
@@ -151,11 +151,11 @@ trait ProvObjectPropertiesTrait
                     'name' => 'John',
                     'last' => 'Smith',
                     'age'  => 21,
-                    'wife' => ObjectPropertiesIdenticalTo::fromArray([
+                    'wife' => ObjectPropertiesIdenticalTo::create([
                         'name'    => 'Emily',
                         'last'    => 'Smith',
                         'age'     => 20,
-                        'husband' => ObjectPropertiesIdenticalTo::fromArray([
+                        'husband' => ObjectPropertiesIdenticalTo::create([
                             'name'        => 'John',
                             'last'        => 'Smith',
                             'age'         => 21,
@@ -179,7 +179,7 @@ trait ProvObjectPropertiesTrait
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'family' => [
-                        ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
+                        ObjectPropertiesIdenticalTo::create(['name' => 'Emily', 'last' => 'Smith']),
                     ],
                 ],
                 'actual' => $jsmith,
@@ -189,13 +189,13 @@ trait ProvObjectPropertiesTrait
             'ProvObjectPropertiesTrait.php:'.__LINE__ => [
                 'expect' => [
                     'persons' => [
-                        ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
-                        ObjectPropertiesIdenticalTo::fromArray(['name' => 'John', 'last' => 'Smith']),
+                        ObjectPropertiesIdenticalTo::create(['name' => 'Emily', 'last' => 'Smith']),
+                        ObjectPropertiesIdenticalTo::create(['name' => 'John', 'last' => 'Smith']),
                     ],
                     'families' => [
                         'smith' => [
-                            ObjectPropertiesIdenticalTo::fromArray(['name' => 'Emily', 'last' => 'Smith']),
-                            ObjectPropertiesIdenticalTo::fromArray(['name' => 'John', 'last' => 'Smith']),
+                            ObjectPropertiesIdenticalTo::create(['name' => 'Emily', 'last' => 'Smith']),
+                            ObjectPropertiesIdenticalTo::create(['name' => 'John', 'last' => 'Smith']),
                         ],
                     ],
                 ],
@@ -420,7 +420,7 @@ trait ProvObjectPropertiesTrait
                         $jsmith,
                     ],
                     // the following should not match as the 'families' property is an array, not an object.
-                    'families' => ObjectPropertiesIdenticalTo::fromArray([
+                    'families' => ObjectPropertiesIdenticalTo::create([
                         'smith' => [
                             $esmith,
                             $jsmith,

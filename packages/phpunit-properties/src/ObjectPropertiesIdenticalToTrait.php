@@ -86,7 +86,7 @@ trait ObjectPropertiesIdenticalToTrait
      */
     public static function objectPropertiesIdenticalTo(array $expected): ObjectPropertiesIdenticalTo
     {
-        return ObjectPropertiesIdenticalTo::fromArray($expected);
+        return ObjectPropertiesIdenticalTo::create($expected);
     }
 }
 
