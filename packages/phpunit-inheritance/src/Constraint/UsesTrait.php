@@ -26,7 +26,7 @@ final class UsesTrait extends AbstractInheritanceConstraint
      *
      * @psalm-assert trait-string $expected
      */
-    public static function fromTraitString(string $expected): self
+    public static function create(string $expected): self
     {
         if (!trait_exists($expected)) {
             $provided = sprintf("'%s'", addslashes($expected));

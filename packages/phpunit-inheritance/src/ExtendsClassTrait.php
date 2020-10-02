@@ -67,7 +67,7 @@ trait ExtendsClassTrait
      */
     public static function extendsClass(string $parent): ExtendsClass
     {
-        return ExtendsClass::fromClassString($parent);
+        return ExtendsClass::create($parent);
     }
 }
 

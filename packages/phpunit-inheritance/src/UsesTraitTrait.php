@@ -67,7 +67,7 @@ trait UsesTraitTrait
      */
     public static function usesTrait(string $trait): UsesTrait
     {
-        return UsesTrait::fromTraitString($trait);
+        return UsesTrait::create($trait);
     }
 }
 

@@ -36,7 +36,7 @@ final class ImplementsInterfaceTest extends TestCase
     {
         return [
             'ImplementsInterfaceTest.php:'.__LINE__ => [
-                'constraint' => ImplementsInterface::fromInterfaceString(Throwable::class),
+                'constraint' => ImplementsInterface::create(Throwable::class),
                 'subject'    => Iterator::class,
                 'expect'     => [
                     'exception' => ExpectationFailedException::class,
@@ -51,7 +51,7 @@ final class ImplementsInterfaceTest extends TestCase
     {
         return [
             'ImplementsInterfaceTest.php:'.__LINE__ => [
-                'constraint' => ImplementsInterface::fromInterfaceString(Throwable::class),
+                'constraint' => ImplementsInterface::create(Throwable::class),
                 'subject'    => Exception::class,
                 'expect'     => [
                     'exception' => ExpectationFailedException::class,
@@ -141,7 +141,7 @@ final class ImplementsInterfaceTest extends TestCase
      */
     public function testConstraintSucceeds(string $interface, $subject): void
     {
-        $constraint = ImplementsInterface::fromInterfaceString($interface);
+        $constraint = ImplementsInterface::create($interface);
 
         self::assertTrue($constraint->evaluate($subject, '', true));
     }
@@ -153,7 +153,7 @@ final class ImplementsInterfaceTest extends TestCase
      */
     public function testConstraintFails(string $interface, $subject, string $message): void
     {
-        $constraint = ImplementsInterface::fromInterfaceString($interface);
+        $constraint = ImplementsInterface::create($interface);
 
         self::expectException(ExpectationFailedException::class);
         self::expectExceptionMessage($message);
@@ -169,6 +169,6 @@ final class ImplementsInterfaceTest extends TestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessageMatches($message);
 
-        ImplementsInterface::fromInterfaceString($argument);
+        ImplementsInterface::create($argument);
     }
 }

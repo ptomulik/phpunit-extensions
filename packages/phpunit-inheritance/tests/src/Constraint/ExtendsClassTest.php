@@ -36,7 +36,7 @@ final class ExtendsClassTest extends TestCase
     {
         return [
             'ExtendsClassTest.php:'.__LINE__ => [
-                'constraint' => ExtendsClass::fromClassString(ErrorException::class),
+                'constraint' => ExtendsClass::create(ErrorException::class),
                 'subject'    => Exception::class,
                 'expect'     => [
                     'exception' => ExpectationFailedException::class,
@@ -51,7 +51,7 @@ final class ExtendsClassTest extends TestCase
     {
         return [
             'ExtendsClassTest.php:'.__LINE__ => [
-                'constraint' => ExtendsClass::fromClassString(Exception::class),
+                'constraint' => ExtendsClass::create(Exception::class),
                 'subject'    => ErrorException::class,
                 'expect'     => [
                     'exception' => ExpectationFailedException::class,
@@ -135,7 +135,7 @@ final class ExtendsClassTest extends TestCase
      */
     public function testConstraintSucceeds(string $class, $subject): void
     {
-        $constraint = ExtendsClass::fromClassString($class);
+        $constraint = ExtendsClass::create($class);
 
         self::assertTrue($constraint->evaluate($subject, '', true));
     }
@@ -147,7 +147,7 @@ final class ExtendsClassTest extends TestCase
      */
     public function testConstraintFails(string $class, $subject, string $message): void
     {
-        $constraint = ExtendsClass::fromClassString($class);
+        $constraint = ExtendsClass::create($class);
 
         self::expectException(ExpectationFailedException::class);
         self::expectExceptionMessage($message);
@@ -163,6 +163,6 @@ final class ExtendsClassTest extends TestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessageMatches($message);
 
-        ExtendsClass::fromClassString($argument);
+        ExtendsClass::create($argument);
     }
 }

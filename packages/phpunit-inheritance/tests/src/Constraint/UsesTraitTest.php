@@ -37,7 +37,7 @@ final class UsesTraitTest extends TestCase
     {
         return [
             'UsesTraitTest.php:'.__LINE__ => [
-                'constraint' => UsesTrait::fromTraitString(ExampleTrait::class),
+                'constraint' => UsesTrait::create(ExampleTrait::class),
                 'subject'    => Exception::class,
                 'expect'     => [
                     'exception' => ExpectationFailedException::class,
@@ -52,7 +52,7 @@ final class UsesTraitTest extends TestCase
     {
         return [
             'UsesTraitTest.php:'.__LINE__ => [
-                'constraint' => UsesTrait::fromTraitString(ExampleTrait::class),
+                'constraint' => UsesTrait::create(ExampleTrait::class),
                 'subject'    => ExampleClassUsingTrait::class,
                 'expect'     => [
                     'exception' => ExpectationFailedException::class,
@@ -141,7 +141,7 @@ final class UsesTraitTest extends TestCase
      */
     public function testConstraintSucceeds(string $trait, $subject): void
     {
-        $constraint = UsesTrait::fromTraitString($trait);
+        $constraint = UsesTrait::create($trait);
 
         self::assertTrue($constraint->evaluate($subject, '', true));
     }
@@ -153,7 +153,7 @@ final class UsesTraitTest extends TestCase
      */
     public function testConstraintFails(string $trait, $subject, string $message): void
     {
-        $constraint = UsesTrait::fromTraitString($trait);
+        $constraint = UsesTrait::create($trait);
 
         self::expectException(ExpectationFailedException::class);
         self::expectExceptionMessage($message);
@@ -169,6 +169,6 @@ final class UsesTraitTest extends TestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessageMatches($message);
 
-        UsesTrait::fromTraitString($argument);
+        UsesTrait::create($argument);
     }
 }

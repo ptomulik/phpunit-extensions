@@ -142,7 +142,7 @@ final class ExtendsClassTraitTest extends TestCase
 
     public static function provExtendsClassThrowsInvalidArgumentException(): array
     {
-        $template = 'Argument #1 of %s::fromClassString() must be a class-string';
+        $template = 'Argument #1 of %s::create() must be a class-string';
 
         return [
             'ExtendsClassTraitTest.php:'.__LINE__ => [

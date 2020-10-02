@@ -26,7 +26,7 @@ final class ImplementsInterface extends AbstractInheritanceConstraint
      *
      * @psalm-assert class-string $expected
      */
-    public static function fromInterfaceString(string $expected): self
+    public static function create(string $expected): self
     {
         if (!interface_exists($expected)) {
             $provided = sprintf("'%s'", addslashes($expected));

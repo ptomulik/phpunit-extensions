@@ -67,7 +67,7 @@ trait ImplementsInterfaceTrait
      */
     public static function implementsInterface(string $interface): ImplementsInterface
     {
-        return ImplementsInterface::fromInterfaceString($interface);
+        return ImplementsInterface::create($interface);
     }
 }
 

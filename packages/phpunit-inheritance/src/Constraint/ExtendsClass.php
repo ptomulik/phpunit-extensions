@@ -26,7 +26,7 @@ final class ExtendsClass extends AbstractInheritanceConstraint
      *
      * @psalm-assert class-string $expected
      */
-    public static function fromClassString(string $expected): self
+    public static function create(string $expected): self
     {
         if (!class_exists($expected)) {
             $provided = sprintf("'%s'", addslashes($expected));
