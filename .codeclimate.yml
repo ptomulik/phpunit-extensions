@@ -1,0 +1,37 @@
+---
+version: "2"
+##checks:
+##  argument-count:
+##    config:
+##      threshold: 5
+patterns:
+  - "packages/"
+exclude_patterns:
+  - ".psalm/"
+  - "build/"
+  - "docs/"
+  - "bin/"
+  - "vendor/"
+  - "**/tests/"
+  - "**/behat/"
+  - "**/vendor/"
+plugins:
+  phpcodesniffer:
+    enabled: true
+
+  duplication:
+    enabled: true
+##    config:
+##      languages:
+##        php:
+##          filters:
+##            - "(Const VALUE_SAFE ___)"
+##            - "(Const VALUE_BASE64 ___)"
+##            - "(Const VALUE_URL ___)"
+##            - "(Stmt_Class _ _ _ _ _ LdapResultEntryIterator ___)"
+##            - "(Stmt_Class _ _ _ _ _ LdapResultReferenceIterator ___)"
+##            - "(Stmt_Class _ _ _ _ _ ResultEntryIterator ___)"
+##            - "(Stmt_Class _ _ _ _ _ ResultReferenceIterator ___)"
+
+  fixme:
+    enabled: true

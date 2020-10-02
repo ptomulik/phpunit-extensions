@@ -14,9 +14,7 @@
 
     <testsuites>
         <testsuite name="doc examples">
-            <directory suffix="Test.php">./phpunit-inheritance/</directory>
-            <directory suffix="Test.php">./phpunit-pcre/</directory>
-            <directory suffix="Test.php">./phpunit-properties/</directory>
+            <directory suffix="Test.php">.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

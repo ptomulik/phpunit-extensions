@@ -7,13 +7,13 @@ Feature: Examples
     And I should see exit code <exit_code>
 
     Examples:
-      | example_file                                            | stdout_file                                                | stderr_file                                                | exit_code |
-      | "phpunit-inheritance/AssertExtendsClassTest.php"        | "phpunit-inheritance/AssertExtendsClassTest.stdout"        | "phpunit-inheritance/AssertExtendsClassTest.stderr"        | 1         |
-      | "phpunit-inheritance/AssertImplementsInterfaceTest.php" | "phpunit-inheritance/AssertImplementsInterfaceTest.stdout" | "phpunit-inheritance/AssertImplementsInterfaceTest.stderr" | 1         |
-      | "phpunit-inheritance/AssertUsesTraitTest.php"           | "phpunit-inheritance/AssertUsesTraitTest.stdout"           | "phpunit-inheritance/AssertUsesTraitTest.stderr"           | 1         |
-      | "phpunit-inheritance/extendsClassTest.php"              | "phpunit-inheritance/extendsClassTest.stdout"              | "phpunit-inheritance/extendsClassTest.stderr"              | 1         |
-      | "phpunit-inheritance/implementsInterfaceTest.php"       | "phpunit-inheritance/implementsInterfaceTest.stdout"       | "phpunit-inheritance/implementsInterfaceTest.stderr"       | 1         |
-      | "phpunit-inheritance/usesTraitTest.php"                 | "phpunit-inheritance/usesTraitTest.stdout"                 | "phpunit-inheritance/usesTraitTest.stderr"                 | 1         |
+      | example_file                        | stdout_file                            | stderr_file                            | exit_code |
+      | "AssertExtendsClassTest.php"        | "AssertExtendsClassTest.stdout"        | "AssertExtendsClassTest.stderr"        | 1         |
+      | "AssertImplementsInterfaceTest.php" | "AssertImplementsInterfaceTest.stdout" | "AssertImplementsInterfaceTest.stderr" | 1         |
+      | "AssertUsesTraitTest.php"           | "AssertUsesTraitTest.stdout"           | "AssertUsesTraitTest.stderr"           | 1         |
+      | "extendsClassTest.php"              | "extendsClassTest.stdout"              | "extendsClassTest.stderr"              | 1         |
+      | "implementsInterfaceTest.php"       | "implementsInterfaceTest.stdout"       | "implementsInterfaceTest.stderr"       | 1         |
+      | "usesTraitTest.php"                 | "usesTraitTest.stdout"                 | "usesTraitTest.stderr"                 | 1         |
 
   @phpunit-pcre
   Scenario Outline: Examples for php-fox/phpunit-pcre
@@ -23,9 +23,9 @@ Feature: Examples
     And I should see exit code <exit_code>
 
     Examples:
-      | example_file                                  | stdout_file                                     | stderr_file                                     | exit_code |
-      | "phpunit-pcre/AssertHasPregCapturesTest.php"  | "phpunit-pcre/AssertHasPregCapturesTest.stdout" | "phpunit-pcre/AssertHasPregCapturesTest.stderr" | 1         |
-      | "phpunit-pcre/hasPregCapturesTest.php"        | "phpunit-pcre/hasPregCapturesTest.stdout"       | "phpunit-pcre/hasPregCapturesTest.stderr"       | 1         |
+      | example_file                     | stdout_file                        | stderr_file                        | exit_code |
+      | "AssertHasPregCapturesTest.php"  | "AssertHasPregCapturesTest.stdout" | "AssertHasPregCapturesTest.stderr" | 1         |
+      | "hasPregCapturesTest.php"        | "hasPregCapturesTest.stdout"       | "hasPregCapturesTest.stderr"       | 1         |
 
   @phpunit-properties
   Scenario Outline: Examples for php-fox/phpunit-properties
@@ -35,12 +35,12 @@ Feature: Examples
     And I should see exit code <exit_code>
 
     Examples:
-      | example_file                                                   | stdout_file                                                       | stderr_file                                                       | exit_code |
-      | "phpunit-properties/AssertClassPropertiesEqualToTest.php"      | "phpunit-properties/AssertClassPropertiesEqualToTest.stdout"      | "phpunit-properties/AssertClassPropertiesEqualToTest.stderr"      | 1         |
-      | "phpunit-properties/AssertClassPropertiesIdenticalToTest.php"  | "phpunit-properties/AssertClassPropertiesIdenticalToTest.stdout"  | "phpunit-properties/AssertClassPropertiesIdenticalToTest.stderr"  | 1         |
-      | "phpunit-properties/AssertObjectPropertiesEqualToTest.php"     | "phpunit-properties/AssertObjectPropertiesEqualToTest.stdout"     | "phpunit-properties/AssertObjectPropertiesEqualToTest.stderr"     | 1         |
-      | "phpunit-properties/AssertObjectPropertiesIdenticalToTest.php" | "phpunit-properties/AssertObjectPropertiesIdenticalToTest.stdout" | "phpunit-properties/AssertObjectPropertiesIdenticalToTest.stderr" | 1         |
-      | "phpunit-properties/classPropertiesEqualToTest.php"            | "phpunit-properties/classPropertiesEqualToTest.stdout"            | "phpunit-properties/classPropertiesEqualToTest.stderr"            | 1         |
-      | "phpunit-properties/classPropertiesIdenticalToTest.php"        | "phpunit-properties/classPropertiesIdenticalToTest.stdout"        | "phpunit-properties/classPropertiesIdenticalToTest.stderr"        | 1         |
-      | "phpunit-properties/objectPropertiesEqualToTest.php"           | "phpunit-properties/objectPropertiesEqualToTest.stdout"           | "phpunit-properties/objectPropertiesEqualToTest.stderr"           | 1         |
-      | "phpunit-properties/objectPropertiesIdenticalToTest.php"       | "phpunit-properties/objectPropertiesIdenticalToTest.stdout"       | "phpunit-properties/objectPropertiesIdenticalToTest.stderr"       | 1         |
+      | example_file                                | stdout_file                                    | stderr_file                                    | exit_code |
+      | "AssertClassPropertiesEqualToTest.php"      | "AssertClassPropertiesEqualToTest.stdout"      | "AssertClassPropertiesEqualToTest.stderr"      | 1         |
+      | "AssertClassPropertiesIdenticalToTest.php"  | "AssertClassPropertiesIdenticalToTest.stdout"  | "AssertClassPropertiesIdenticalToTest.stderr"  | 1         |
+      | "AssertObjectPropertiesEqualToTest.php"     | "AssertObjectPropertiesEqualToTest.stdout"     | "AssertObjectPropertiesEqualToTest.stderr"     | 1         |
+      | "AssertObjectPropertiesIdenticalToTest.php" | "AssertObjectPropertiesIdenticalToTest.stdout" | "AssertObjectPropertiesIdenticalToTest.stderr" | 1         |
+      | "classPropertiesEqualToTest.php"            | "classPropertiesEqualToTest.stdout"            | "classPropertiesEqualToTest.stderr"            | 1         |
+      | "classPropertiesIdenticalToTest.php"        | "classPropertiesIdenticalToTest.stdout"        | "classPropertiesIdenticalToTest.stderr"        | 1         |
+      | "objectPropertiesEqualToTest.php"           | "objectPropertiesEqualToTest.stdout"           | "objectPropertiesEqualToTest.stderr"           | 1         |
+      | "objectPropertiesIdenticalToTest.php"       | "objectPropertiesIdenticalToTest.stdout"       | "objectPropertiesIdenticalToTest.stderr"       | 1         |

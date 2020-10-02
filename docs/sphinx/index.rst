@@ -7,12 +7,10 @@ PHP-Fox Extensions to PHPUnit
 .. toctree::
    :caption: Table of Contents
    :maxdepth: 3
-   :numbered: 2
+   :numbered: 1
 
-   packages/phpunit-common/index
-   packages/phpunit-inheritance/index
-   packages/phpunit-pcre/index
-   packages/phpunit-properties/index
+   assertions
+   constraints
    devel_guide/index
 
 ******************
