@@ -60,6 +60,7 @@ final class ClassPropertySelector extends AbstractPropertySelector
      * @param mixed $retval
      * @psalm-param array-key $key
      * @psalm-assert class-string $subject
+     *
      * @throws InvalidArgumentException
      */
     protected function selectWithAttribute($subject, $key, &$retval = null): bool
@@ -77,6 +78,9 @@ final class ClassPropertySelector extends AbstractPropertySelector
 
     /**
      * @psalm-assert class-string $subject
+     *
+     * @param mixed $subject
+     *
      * @throws InvalidArgumentException
      */
     private static function assertClassString($subject, int $argument, int $distance = 1): void

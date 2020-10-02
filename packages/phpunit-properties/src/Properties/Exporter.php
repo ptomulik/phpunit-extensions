@@ -79,7 +79,7 @@ final class Exporter extends SebastianBergmannExporter
     }
 
     /**
-     * @param int $indentation
+     * @param int     $indentation
      * @param Context $processed
      */
     private function exportProperties(PropertiesInterface $value, $indentation, $processed = null): string

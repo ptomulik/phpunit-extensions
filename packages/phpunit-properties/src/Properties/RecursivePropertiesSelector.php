@@ -62,7 +62,8 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
     {
         if ($expect instanceof ExpectedPropertiesInterface) {
             return $this->adjustActualValueForExpectedProperties($actual, $expect);
-        } elseif (is_array($expect) && is_array($actual)) {
+        }
+        if (is_array($expect) && is_array($actual)) {
             return $this->adjustActualArrayForExpectedArray($actual, $expect);
         }
 
@@ -70,6 +71,8 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
     }
 
     /**
+     * @param mixed $actual
+     *
      * @return mixed
      */
     private function adjustActualValueForExpectedProperties($actual, ExpectedPropertiesInterface $expect)
@@ -77,6 +80,7 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
         if ($expect->getPropertySelector()->canSelectFrom($actual)) {
             return (new RecursivePropertiesSelector($expect))->selectProperties($actual);
         }
+
         return $actual;
     }
 
@@ -85,6 +89,7 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
         foreach ($actual as $key => &$val) {
             $val = self::adjustActualValue($val, $expect[$key]);
         }
+
         return $actual;
     }
 }
