@@ -21,10 +21,10 @@ use Throwable;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Constraint\AbstractInheritanceConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ExtendsClass
- * @covers \PHPFox\PHPUnit\Constraint\InheritanceConstraintImplementationTrait
  * @covers \PHPFox\PHPUnit\Constraint\InheritanceConstraintTestTrait
+ * @covers \PHPFox\PHPUnit\Inheritance\AbstractConstraint
+ * @covers \PHPFox\PHPUnit\Inheritance\ConstraintImplementationTrait
  *
  * @internal
  */

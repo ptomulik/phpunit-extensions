@@ -10,7 +10,7 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPFox\PHPUnit\Inheritance;
 
 use PHPFox\PHPUnit\StringArgumentValidator;
 
@@ -25,7 +25,7 @@ use PHPFox\PHPUnit\StringArgumentValidator;
  *      private static $inheritance;    // for example $validation = 'class_parents';
  *      private static $supports;       // for example $supports = ['class_exists'];
  */
-trait InheritanceConstraintImplementationTrait
+trait ConstraintImplementationTrait
 {
     /**
      * @throws \PHPFox\PHPUnit\InvalidArgumentException
@@ -55,9 +55,6 @@ trait InheritanceConstraintImplementationTrait
         return self::$negatedVerb;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function inheritance(string $class): array
     {
         return call_user_func(self::$inheritance, $class);

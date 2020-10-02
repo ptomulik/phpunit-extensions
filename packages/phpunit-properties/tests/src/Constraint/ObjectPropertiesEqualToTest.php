@@ -18,10 +18,10 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \PHPFox\PHPUnit\Constraint\AbstractPropertiesConstraint
  * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
  * @covers \PHPFox\PHPUnit\Constraint\ProvObjectPropertiesTrait
+ * @covers \PHPFox\PHPUnit\Properties\AbstractConstraint
  *
  * @internal
  */

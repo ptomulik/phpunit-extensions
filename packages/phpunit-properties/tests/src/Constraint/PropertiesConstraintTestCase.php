@@ -15,6 +15,7 @@ namespace PHPFox\PHPUnit\Constraint;
 use PHPFox\PHPUnit\ExtendsClassTrait;
 use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPFox\PHPUnit\InvalidArgumentException;
+use PHPFox\PHPUnit\Properties\AbstractConstraint;
 use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
@@ -39,10 +40,10 @@ abstract class PropertiesConstraintTestCase extends TestCase
 
     abstract public static function comparatorClass(): string;
 
-    public function testExtendsAbstractPropertiesConstraint(): void
+    public function testExtendsAbstractConstraint(): void
     {
         $class = static::constraintClass();
-        self::assertExtendsClass(AbstractPropertiesConstraint::class, $class);
+        self::assertExtendsClass(AbstractConstraint::class, $class);
     }
 
     public function testImplementsExpectedPropertiesInterface(): void

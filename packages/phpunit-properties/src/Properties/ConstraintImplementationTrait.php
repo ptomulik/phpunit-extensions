@@ -10,7 +10,7 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPFox\PHPUnit\Properties;
 
 use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPFox\PHPUnit\Properties\ComparatorInterface;
@@ -19,7 +19,7 @@ use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
 use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 
-trait NamedPropertiesComparatorTrait
+trait ConstraintImplementationTrait
 {
     public static function create(array $expected, RecursivePropertiesUnwrapperInterface $unwrapper = null): self
     {

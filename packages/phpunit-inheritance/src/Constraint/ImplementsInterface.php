@@ -12,14 +12,15 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\Inheritance\AbstractConstraint;
+use PHPFox\PHPUnit\Inheritance\ConstraintImplementationTrait;
+
 /**
  * Constraint that accepts classes that implement given interface.
- *
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-final class ImplementsInterface extends AbstractInheritanceConstraint
+final class ImplementsInterface extends AbstractConstraint
 {
-    use InheritanceConstraintImplementationTrait;
+    use ConstraintImplementationTrait;
 
     private static $verb = 'implements interface';
     private static $negatedVerb = 'does not implement interface';

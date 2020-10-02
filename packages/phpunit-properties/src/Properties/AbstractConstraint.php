@@ -10,16 +10,8 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPFox\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\Properties\ActualPropertiesInterface;
-use PHPFox\PHPUnit\Properties\CircularDependencyException;
-use PHPFox\PHPUnit\Properties\ComparatorInterface;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
-use PHPFox\PHPUnit\Properties\Exporter;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesSelector;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPUnit\Framework\Constraint\Operator;
@@ -34,7 +26,7 @@ use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-abstract class AbstractPropertiesConstraint extends Constraint implements ExpectedPropertiesInterface
+abstract class AbstractConstraint extends Constraint implements ExpectedPropertiesInterface
 {
     use ExpectedPropertiesDecoratorTrait;
 

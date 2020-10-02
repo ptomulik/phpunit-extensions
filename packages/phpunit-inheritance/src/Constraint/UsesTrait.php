@@ -12,14 +12,15 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\Inheritance\AbstractConstraint;
+use PHPFox\PHPUnit\Inheritance\ConstraintImplementationTrait;
+
 /**
  * Constraint that accepts classes that extend given class.
- *
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-final class UsesTrait extends AbstractInheritanceConstraint
+final class UsesTrait extends AbstractConstraint
 {
-    use InheritanceConstraintImplementationTrait;
+    use ConstraintImplementationTrait;
 
     private static $verb = 'uses trait';
     private static $negatedVerb = 'does not use trait';

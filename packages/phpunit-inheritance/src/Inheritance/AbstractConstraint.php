@@ -10,7 +10,7 @@ declare(strict_types=1);
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPFox\PHPUnit\Inheritance;
 
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
@@ -22,7 +22,7 @@ use PHPUnit\Framework\Constraint\Operator;
  *
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
-abstract class AbstractInheritanceConstraint extends Constraint
+abstract class AbstractConstraint extends Constraint
 {
     /**
      * @var array<string, StringArgumentValidator>
