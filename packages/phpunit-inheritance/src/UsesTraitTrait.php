@@ -35,11 +35,7 @@ trait UsesTraitTrait
      */
     public static function assertUsesTrait(string $trait, $subject, string $message = ''): void
     {
-        static::assertThat(
-            $subject,
-            static::usesTrait($trait),
-            $message
-        );
+        static::assertThat($subject, static::usesTrait($trait), $message);
     }
 
     /**
@@ -53,11 +49,7 @@ trait UsesTraitTrait
      */
     public static function assertNotUsesTrait(string $trait, $subject, string $message = ''): void
     {
-        static::assertThat(
-            $subject,
-            new LogicalNot(static::usesTrait($trait)),
-            $message
-        );
+        static::assertThat($subject, new LogicalNot(static::usesTrait($trait)), $message);
     }
 
     /**

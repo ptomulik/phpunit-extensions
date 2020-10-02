@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\InvalidArgumentException;
-
 /**
  * Constraint that accepts classes that implement given interface.
  *
@@ -21,38 +19,14 @@ use PHPFox\PHPUnit\InvalidArgumentException;
  */
 final class ImplementsInterface extends AbstractInheritanceConstraint
 {
-    /**
-     * @throws InvalidArgumentException
-     *
-     * @psalm-assert class-string $expected
-     */
-    public static function create(string $expected): self
-    {
-        if (!interface_exists($expected)) {
-            $provided = sprintf("'%s'", addslashes($expected));
+    use InheritanceConstraintImplementationTrait;
 
-            throw InvalidArgumentException::fromBackTrace(1, 'an interface-string', $provided);
-        }
-
-        return new self($expected);
-    }
+    private static $verb = 'implements interface';
+    private static $negatedVerb = 'does not implement interface';
+    private static $validatorArgs = ['interface_exists', 'an interface-string'];
 
     /**
-     * Returns short description of what we examine, e.g. ``'impements interface'``.
-     */
-    protected function verb(bool $negated = false): string
-    {
-        if ($negated) {
-            return 'does not implement interface';
-        }
-
-        return 'implements interface';
-    }
-
-    /**
-     * Returns an array of "inherited classes" -- eiher interfaces *$class*
-     * implements, parent classes it extends or traits it uses, depending on
-     * the actual implementation of this constraint.
+     * Returns an array of interfaces $class implements.
      */
     protected function inheritance(string $class): array
     {
@@ -60,13 +34,13 @@ final class ImplementsInterface extends AbstractInheritanceConstraint
     }
 
     /**
-     * Checks if *$string* may be used as an argument to inheritance().
+     * Checks if *$subject* may be used as an argument to inheritance().
      *
-     * @psalm-assert-if-true class-string $class
+     * @psalm-assert-if-true class-string $subject
      */
-    protected function supports(string $class): bool
+    protected function supports(string $subject): bool
     {
-        return class_exists($class) || interface_exists($class);
+        return class_exists($subject) || interface_exists($subject);
     }
 }
 

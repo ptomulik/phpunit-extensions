@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\InvalidArgumentException;
-
 /**
  * Constraint that accepts classes that extend given class.
  *
@@ -21,38 +19,14 @@ use PHPFox\PHPUnit\InvalidArgumentException;
  */
 final class UsesTrait extends AbstractInheritanceConstraint
 {
-    /**
-     * @throws InvalidArgumentException
-     *
-     * @psalm-assert trait-string $expected
-     */
-    public static function create(string $expected): self
-    {
-        if (!trait_exists($expected)) {
-            $provided = sprintf("'%s'", addslashes($expected));
+    use InheritanceConstraintImplementationTrait;
 
-            throw InvalidArgumentException::fromBackTrace(1, 'a trait-string', $provided);
-        }
-
-        return new self($expected);
-    }
+    private static $verb = 'uses trait';
+    private static $negatedVerb = 'does not use trait';
+    private static $validatorArgs = ['trait_exists', 'a trait-string'];
 
     /**
-     * Returns short description of what we examine, e.g. ``'impements interface'``.
-     */
-    protected function verb(bool $negated = false): string
-    {
-        if ($negated) {
-            return 'does not use trait';
-        }
-
-        return 'uses trait';
-    }
-
-    /**
-     * Returns an array of "inherited classes" -- eiher interfaces *$class*
-     * implements, parent classes it extends or traits it uses, depending on
-     * the actual implementation of this constraint.
+     * Returns an array of traits $class uses.
      */
     protected function inheritance(string $class): array
     {
@@ -60,13 +34,13 @@ final class UsesTrait extends AbstractInheritanceConstraint
     }
 
     /**
-     * Checks if *$class* may be used as an argument to inheritance().
+     * Checks if *$subject* may be used as an argument to inheritance().
      *
-     * @psalm-assert-if-true class-string|trait-string $class
+     * @psalm-assert-if-true class-string|trait-string $subject
      */
-    protected function supports(string $class): bool
+    protected function supports(string $subject): bool
     {
-        return class_exists($class) || trait_exists($class);
+        return class_exists($subject) || trait_exists($subject);
     }
 }
 

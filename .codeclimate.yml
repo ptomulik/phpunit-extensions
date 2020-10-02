@@ -15,6 +15,10 @@ exclude_patterns:
   - "**/tests/"
   - "**/behat/"
   - "**/vendor/"
+checks:
+  similar-code:
+    config:
+      threshold: 88
 plugins:
   phpcodesniffer:
     enabled: true
@@ -22,6 +26,8 @@ plugins:
   duplication:
     enabled: true
 ##    config:
+##      debug: true
+##      dump_ast: true
 ##      languages:
 ##        php:
 ##          filters:

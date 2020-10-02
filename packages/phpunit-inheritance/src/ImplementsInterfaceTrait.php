@@ -35,11 +35,7 @@ trait ImplementsInterfaceTrait
      */
     public static function assertImplementsInterface(string $interface, $subject, string $message = ''): void
     {
-        static::assertThat(
-            $subject,
-            static::implementsInterface($interface),
-            $message
-        );
+        static::assertThat($subject, static::implementsInterface($interface), $message);
     }
 
     /**
@@ -53,11 +49,7 @@ trait ImplementsInterfaceTrait
      */
     public static function assertNotImplementsInterface(string $interface, $subject, string $message = ''): void
     {
-        static::assertThat(
-            $subject,
-            new LogicalNot(static::implementsInterface($interface)),
-            $message
-        );
+        static::assertThat($subject, new LogicalNot(static::implementsInterface($interface)), $message);
     }
 
     /**

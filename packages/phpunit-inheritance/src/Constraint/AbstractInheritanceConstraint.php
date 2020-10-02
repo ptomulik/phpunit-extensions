@@ -25,6 +25,11 @@ use PHPUnit\Framework\Constraint\Operator;
 abstract class AbstractInheritanceConstraint extends Constraint
 {
     /**
+     * @var array<string, StringArgumentValidator>
+     */
+    private static $validators = [];
+
+    /**
      * @var string
      * @psalm-readonly
      */
@@ -80,7 +85,12 @@ abstract class AbstractInheritanceConstraint extends Constraint
     /**
      * Returns short description of what we examine, e.g. ``'impements interface'``.
      */
-    abstract protected function verb(bool $negated = false): string;
+    abstract protected function verb(): string;
+
+    /**
+     * Returns short negated description of what we examine, e.g. ``'does not impement interface'``.
+     */
+    abstract protected function negatedVerb(): string;
 
     /**
      * Returns an array of "inherited classes" -- eiher interfaces *$class*
@@ -90,9 +100,9 @@ abstract class AbstractInheritanceConstraint extends Constraint
     abstract protected function inheritance(string $class): array;
 
     /**
-     * Checks if *$string* may be used as an argument to ``inheritance()``.
+     * Checks if *$subject* may be used as an argument to ``inheritance()``.
      */
-    abstract protected function supports(string $string): bool;
+    abstract protected function supports(string $subject): bool;
 
     /**
      * Returns a custom string representation of the constraint object when it
@@ -112,7 +122,7 @@ abstract class AbstractInheritanceConstraint extends Constraint
     final protected function toStringInContext(Operator $operator, $role): string
     {
         if ($operator instanceof LogicalNot) {
-            return sprintf('%s %s', $this->verb(true), $this->expected);
+            return sprintf('%s %s', $this->negatedVerb(), $this->expected);
         }
 
         return '';

@@ -86,7 +86,7 @@ final class ClassPropertySelector extends AbstractPropertySelector
     private static function assertClassString($subject, int $argument, int $distance = 1): void
     {
         if (!is_string($subject) || !class_exists($subject)) {
-            $provided = is_object($subject) ? 'an object '.get_class($object) : gettype($subject);
+            $provided = is_object($subject) ? 'an object '.get_class($subject) : gettype($subject);
 
             throw InvalidArgumentException::fromBackTrace($argument, 'a class', $provided, 1 + $distance);
         }

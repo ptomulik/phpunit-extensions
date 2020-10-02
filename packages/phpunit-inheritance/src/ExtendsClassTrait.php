@@ -35,11 +35,7 @@ trait ExtendsClassTrait
      */
     public static function assertExtendsClass(string $parent, $subject, string $message = ''): void
     {
-        static::assertThat(
-            $subject,
-            static::extendsClass($parent),
-            $message
-        );
+        static::assertThat($subject, static::extendsClass($parent), $message);
     }
 
     /**
@@ -53,11 +49,7 @@ trait ExtendsClassTrait
      */
     public static function assertNotExtendsClass(string $parent, $subject, string $message = ''): void
     {
-        static::assertThat(
-            $subject,
-            new LogicalNot(static::extendsClass($parent)),
-            $message
-        );
+        static::assertThat($subject, new LogicalNot(static::extendsClass($parent)), $message);
     }
 
     /**
