@@ -25,13 +25,13 @@ final class CapturesFilterTest extends TestCase
     {
         return [
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
+                'args'   => [],
                 'expect' => [
                     'flags' => 0,
                 ],
             ],
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [123],
+                'args'   => [123],
                 'expect' => [
                     'flags' => 123,
                 ],
@@ -54,131 +54,131 @@ final class CapturesFilterTest extends TestCase
         return [
             // typical scalar values
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => null,
+                'args'   => [],
+                'value'  => null,
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_UNMATCHED_AS_NULL],
-                'value' => null,
+                'args'   => [PREG_UNMATCHED_AS_NULL],
+                'value'  => null,
                 'expect' => true,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [0xf0f0f0 | PREG_UNMATCHED_AS_NULL],
-                'value' => null,
+                'args'   => [0xf0f0f0 | PREG_UNMATCHED_AS_NULL],
+                'value'  => null,
                 'expect' => true,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => '',
+                'args'   => [],
+                'value'  => '',
                 'expect' => true,
             ],
 
             // typical array values
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => ['', 0],
+                'args'   => [],
+                'value'  => ['', 0],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => ['', 0],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => ['', 0],
                 'expect' => true,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => [null, 0],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => [null, 0],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL],
-                'value' => [null, 0],
+                'args'   => [PREG_OFFSET_CAPTURE | PREG_UNMATCHED_AS_NULL],
+                'value'  => [null, 0],
                 'expect' => true,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_UNMATCHED_AS_NULL],
-                'value' => [null, 0],
+                'args'   => [PREG_UNMATCHED_AS_NULL],
+                'value'  => [null, 0],
                 'expect' => false,
             ],
 
             // abnormal scalars
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => 123,
+                'args'   => [],
+                'value'  => 123,
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => 123.456,
+                'args'   => [],
+                'value'  => 123.456,
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => true,
+                'args'   => [],
+                'value'  => true,
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => false,
+                'args'   => [],
+                'value'  => false,
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'value' => new \stdClass,
+                'args'   => [],
+                'value'  => new \stdClass(),
                 'expect' => false,
             ],
 
             // abnomral arrays
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => [],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => [],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => [''],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => [''],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL],
-                'value' => [null],
+                'args'   => [PREG_OFFSET_CAPTURE | PREG_UNMATCHED_AS_NULL],
+                'value'  => [null],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => ['', ''],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => ['', ''],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => ['', true],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => ['', true],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => ['', false],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => ['', false],
                 'expect' => false,
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'value' => ['', 0, null],
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'value'  => ['', 0, null],
                 'expect' => false,
             ],
         ];
@@ -186,6 +186,7 @@ final class CapturesFilterTest extends TestCase
 
     /**
      * @dataProvider provIsCapture
+     *
      * @param mixed $value
      */
     public function testIsCapture(array $args, $value, bool $expect): void
@@ -197,54 +198,54 @@ final class CapturesFilterTest extends TestCase
     public static function provFilter(): array
     {
         $array = [
-            '""' => '',
-            'null' => null,
-            '"foo"' => 'foo',
-            '["",-1]' => ['', -1],
-            '[""]' => [''],
-            '[null,0]' => [null, -1],
+            '""'        => '',
+            'null'      => null,
+            '"foo"'     => 'foo',
+            '["",-1]'   => ['', -1],
+            '[""]'      => [''],
+            '[null,0]'  => [null, -1],
             '["",0,""]' => ['', 0, ''],
-            'object' => new \stdClass,
+            'object'    => new \stdClass(),
         ];
 
         return [
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [],
-                'array' => $array,
+                'args'   => [],
+                'array'  => $array,
                 'expect' => [
-                    '""' => '',
+                    '""'    => '',
                     '"foo"' => 'foo',
                 ],
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_UNMATCHED_AS_NULL],
-                'array' => $array,
+                'args'   => [PREG_UNMATCHED_AS_NULL],
+                'array'  => $array,
                 'expect' => [
-                    '""' => '',
-                    'null' => null,
+                    '""'    => '',
+                    'null'  => null,
                     '"foo"' => 'foo',
                 ],
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE],
-                'array' => $array,
+                'args'   => [PREG_OFFSET_CAPTURE],
+                'array'  => $array,
                 'expect' => [
-                    '""' => '',
-                    '"foo"' => 'foo',
+                    '""'      => '',
+                    '"foo"'   => 'foo',
                     '["",-1]' => ['', -1],
                 ],
             ],
 
             'CapturesFilterTest.php:'.__LINE__ => [
-                'args' => [PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL],
-                'array' => $array,
+                'args'   => [PREG_OFFSET_CAPTURE | PREG_UNMATCHED_AS_NULL],
+                'array'  => $array,
                 'expect' => [
-                    '""' => '',
-                    'null' => null,
-                    '"foo"' => 'foo',
-                    '["",-1]' => ['', -1],
+                    '""'       => '',
+                    'null'     => null,
+                    '"foo"'    => 'foo',
+                    '["",-1]'  => ['', -1],
                     '[null,0]' => [null, -1],
                 ],
             ],

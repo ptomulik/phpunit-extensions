@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Preg;
 
-
 final class CapturesFilter implements CapturesFilterInterface
 {
     /**
@@ -22,7 +21,7 @@ final class CapturesFilter implements CapturesFilterInterface
     private $flags;
 
     /**
-     * @param int $flags PREG_* flags such as PREG_UNMATCHED_AS_NULL or PREG_OFFSET_CAPTURE.
+     * @param int $flags PREG_* flags such as PREG_UNMATCHED_AS_NULL or PREG_OFFSET_CAPTURE
      */
     public function __construct(int $flags = 0)
     {
@@ -40,7 +39,7 @@ final class CapturesFilter implements CapturesFilterInterface
     /**
      * Filter-out all elements of $array with $this->acceptable().
      *
-     * @return array The filtered array.
+     * @return array the filtered array
      */
     public function filter(array $array): array
     {

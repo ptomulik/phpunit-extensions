@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\Preg\CapturesFilter;
+use PHPFox\PHPUnit\Preg\CapturesFilterInterface;
 use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Comparator\ComparisonFailure;
-use PHPFox\PHPUnit\Preg\CapturesFilterInterface;
-use PHPFox\PHPUnit\Preg\CapturesFilter;
 
 /**
  * Constraint that accepts arrays of matches returned from ``preg_match()``
@@ -46,18 +46,6 @@ final class HasPregCaptures extends Constraint
      */
     private $filter;
 
-    /**
-     * Initializes the constraint.
-     *
-     * @param array $expected an array of expected values
-     */
-    public static function create(array $expected, int $flags = PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL): self
-    {
-//        self::validate($expected);
-
-        return new self($expected, new CapturesFilter($flags));
-    }
-
 //    private static function validate(array $array): self
 //    {
 //        foreach ($array as $key => $value) {
@@ -74,6 +62,18 @@ final class HasPregCaptures extends Constraint
     {
         $this->expected = $expected;
         $this->filter = $filter;
+    }
+
+    /**
+     * Initializes the constraint.
+     *
+     * @param array $expected an array of expected values
+     */
+    public static function create(array $expected, int $flags = PREG_OFFSET_CAPTURE | PREG_UNMATCHED_AS_NULL): self
+    {
+//        self::validate($expected);
+
+        return new self($expected, new CapturesFilter($flags));
     }
 
     /**
@@ -213,6 +213,7 @@ final class HasPregCaptures extends Constraint
         if (is_array($val)) {
             return !empty($val) && is_string($val[0]);
         }
+
         return is_string($val);
     }
 }

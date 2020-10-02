@@ -13,11 +13,6 @@ declare(strict_types=1);
 namespace PHPFox\PHPUnit\Properties;
 
 use PHPFox\PHPUnit\InvalidArgumentException;
-use PHPFox\PHPUnit\Properties\ComparatorInterface;
-use PHPFox\PHPUnit\Properties\ExpectedProperties;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 
 trait ConstraintImplementationTrait
 {

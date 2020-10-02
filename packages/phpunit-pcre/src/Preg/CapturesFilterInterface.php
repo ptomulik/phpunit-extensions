@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Preg;
 
-
 interface CapturesFilterInterface
 {
     /**
@@ -23,7 +22,7 @@ interface CapturesFilterInterface
     /**
      * Filter-out all elements of $array with $this->acceptable().
      *
-     * @return array The filtered array.
+     * @return array the filtered array
      */
     public function filter(array $array): array;
 

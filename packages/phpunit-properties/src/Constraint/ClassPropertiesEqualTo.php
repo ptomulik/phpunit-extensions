@@ -15,9 +15,9 @@ namespace PHPFox\PHPUnit\Constraint;
 use PHPFox\PHPUnit\Properties\AbstractConstraint;
 use PHPFox\PHPUnit\Properties\ClassPropertySelector;
 use PHPFox\PHPUnit\Properties\ComparatorInterface;
+use PHPFox\PHPUnit\Properties\ConstraintImplementationTrait;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
 use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\Properties\ConstraintImplementationTrait;
 
 /**
  * Constraint that accepts classes having properties equal to specified ones.

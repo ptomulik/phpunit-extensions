@@ -14,10 +14,10 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPFox\PHPUnit\Properties\AbstractConstraint;
 use PHPFox\PHPUnit\Properties\ComparatorInterface;
+use PHPFox\PHPUnit\Properties\ConstraintImplementationTrait;
 use PHPFox\PHPUnit\Properties\IdentityComparator;
 use PHPFox\PHPUnit\Properties\ObjectPropertySelector;
 use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
-use PHPFox\PHPUnit\Properties\ConstraintImplementationTrait;
 
 /**
  * Constraint that accepts objects having properties identical to specified ones.

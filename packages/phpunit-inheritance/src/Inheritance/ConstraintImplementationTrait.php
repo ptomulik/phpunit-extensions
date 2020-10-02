@@ -59,6 +59,7 @@ trait ConstraintImplementationTrait
     {
         $value = (self::$inheritance)($class);
         self::assertIsArray($value);
+
         return $value;
     }
 
