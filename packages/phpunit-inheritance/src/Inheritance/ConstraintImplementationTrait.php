@@ -17,7 +17,7 @@ use PHPFox\PHPUnit\StringArgumentValidator;
 /**
  * Implementation of an inheritance constraint class.
  *
- * The trait expects the following static attributes to be present::
+ * The trait expects the following static attributes to be defined::
  *
  *      private static $verb;           // for example $verb = 'extends class';
  *      private static $negatedVerb;    // for example $negatedVerb = 'does not extend class';
@@ -57,13 +57,13 @@ trait ConstraintImplementationTrait
 
     protected function inheritance(string $class): array
     {
-        return call_user_func(self::$inheritance, $class);
+        $value = (self::$inheritance)($class);
+        self::assertIsArray($value);
+        return $value;
     }
 
     /**
      * Checks if *$subject* may be used as an argument to inheritance().
-     *
-     * @psalm-assert-if-true class-string|trait-string $subject
      */
     protected function supports(string $subject): bool
     {
@@ -78,7 +78,17 @@ trait ConstraintImplementationTrait
 
     private static function getValidator(): StringArgumentValidator
     {
-        return new StringArgumentValidator(...self::$validation);
+        return new StringArgumentValidator(self::$validation[0], self::$validation[1]);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    private static function assertIsArray($value): void
+    {
+        if (!is_array($value)) {
+            throw new \Exception('function returned false');
+        }
     }
 }
 

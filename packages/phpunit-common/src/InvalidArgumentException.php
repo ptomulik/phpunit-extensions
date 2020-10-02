@@ -18,7 +18,13 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
     public static function fromBackTrace(int $argument, string $expected, string $provided, int $distance = 1): self
     {
         $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1 + $distance);
+
+        /**
+         * @psalm-var string|null $caller['class']
+         * @psalm-var callable-string $caller['function']
+         */
         $caller = $stack[$distance];
+
         if (null !== ($class = $caller['class'] ?? null)) {
             $scope = $class.'::';
         } else {

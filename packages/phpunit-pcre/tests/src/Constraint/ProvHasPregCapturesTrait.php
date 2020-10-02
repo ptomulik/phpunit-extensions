@@ -196,12 +196,36 @@ trait ProvHasPregCapturesTrait
 
             // other corner cases
             'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => false],
+                'actual' => ['foo' => false],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => false],
+                'actual' => ['foo' => true],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => false],
+                'actual' => ['foo' => [false]],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => false],
+                'actual' => ['foo' => [true]],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
                 'expect' => ['foo' => null],
                 'actual' => ['foo' => null],
             ],
             'ProvHasPregCapturesTrait.php:'.__LINE__ => [
                 'expect' => ['foo' => [null, -1]],
                 'actual' => ['foo' => [null, -1]],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
+                'actual' => ['foo' => ''],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => false],
+                'actual' => ['foo' => []],
             ],
         ];
 
@@ -228,9 +252,12 @@ trait ProvHasPregCapturesTrait
             ],
             'ProvHasPregCapturesTrait.php:'.__LINE__ => [
                 'expect' => ['foo' => true],
+                'actual' => ['foo' => null],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
                 'actual' => ['foo' => [null, -1]],
             ],
-
             'ProvHasPregCapturesTrait.php:'.__LINE__ => [
                 'expect' => ['foo' => 'FOO'],
                 'actual' => [],
@@ -267,12 +294,48 @@ trait ProvHasPregCapturesTrait
                 'actual' => [],
             ],
             'ProvHasPregCapturesTrait.php:'.__LINE__ => [
-                'expect' => ['foo' => [null, -1]],
-                'actual' => ['foo' => null],
+                'expect' => ['foo' => null],
+                'actual' => ['foo' => [null, -1]],
             ],
             'ProvHasPregCapturesTrait.php:'.__LINE__ => [
                 'expect' => ['foo' => [null, -1]],
                 'actual' => [],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => [null, -1]],
+                'actual' => ['foo' => null],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
+                'actual' => ['foo' => false],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
+                'actual' => ['foo' => true],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
+                'actual' => ['foo' => [false]],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
+                'actual' => ['foo' => [true]],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => false],
+                'actual' => ['foo' => ''],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => true],
+                'actual' => ['foo' => []],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => [null, -1]],
+                'actual' => ['foo' => ''],
+            ],
+            'ProvHasPregCapturesTrait.php:'.__LINE__ => [
+                'expect' => ['foo' => [null, -1]],
+                'actual' => ['foo' => []],
             ],
         ];
 

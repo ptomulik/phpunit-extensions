@@ -95,7 +95,7 @@ trait HasPregCapturesTrait
      */
     public static function hasPregCaptures(array $expected): HasPregCaptures
     {
-        return new HasPregCaptures($expected);
+        return HasPregCaptures::create($expected);
     }
 }
 

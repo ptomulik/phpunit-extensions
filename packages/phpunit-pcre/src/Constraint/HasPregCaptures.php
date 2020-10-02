@@ -14,6 +14,8 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use PHPFox\PHPUnit\Preg\CapturesFilterInterface;
+use PHPFox\PHPUnit\Preg\CapturesFilter;
 
 /**
  * Constraint that accepts arrays of matches returned from ``preg_match()``
@@ -35,18 +37,43 @@ use SebastianBergmann\Comparator\ComparisonFailure;
 final class HasPregCaptures extends Constraint
 {
     /**
-     * @var array
+     * @var array<array-key,bool|string|array{0:string|null,1:int}>
      */
     private $expected;
+
+    /**
+     * @var CapturesFilterInterface
+     */
+    private $filter;
 
     /**
      * Initializes the constraint.
      *
      * @param array $expected an array of expected values
      */
-    public function __construct(array $expected)
+    public static function create(array $expected, int $flags = PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL): self
+    {
+//        self::validate($expected);
+
+        return new self($expected, new CapturesFilter($flags));
+    }
+
+//    private static function validate(array $array): self
+//    {
+//        foreach ($array as $key => $value) {
+//            if (!(is_bool($value) || is_string($value) || (is_array($value) && count($value) > 1
+//        }
+//    }
+
+    /**
+     * Initializes the constraint.
+     *
+     * @param array $expected an array of expected values
+     */
+    private function __construct(array $expected, CapturesFilterInterface $filter)
     {
         $this->expected = $expected;
+        $this->filter = $filter;
     }
 
     /**
@@ -110,9 +137,9 @@ final class HasPregCaptures extends Constraint
         if (!is_array($other)) {
             return false;
         }
-        [$expected, $actual] = $this->getArraysForComparison($other);
+        [$expect, $actual] = $this->getArraysForComparison($other);
 
-        return $expected === $actual;
+        return $expect === $actual;
     }
 
     /**
@@ -142,6 +169,7 @@ final class HasPregCaptures extends Constraint
     private function getArraysForComparison(array $matches): array
     {
         [$expect, $actual] = [[], []];
+        $matches = $this->filter->filter($matches);
         foreach ($this->expected as $key => $value) {
             self::updateExpectForComparison($expect, $matches, $key, $value);
             self::updateActualForComparison($actual, $matches, $key);
@@ -157,8 +185,7 @@ final class HasPregCaptures extends Constraint
      */
     private static function updateExpectForComparison(array &$expect, array $matches, $key, $value): void
     {
-        $exists = null !== ($matches[$key] ?? [null, -1])[0];
-        if ($value === $exists) {
+        if ($value === self::isCaptured($matches, $key)) {
             if (array_key_exists($key, $matches)) {
                 $expect[$key] = $matches[$key];
             }
@@ -176,6 +203,17 @@ final class HasPregCaptures extends Constraint
         if (array_key_exists($key, $matches)) {
             $actual[$key] = $matches[$key];
         }
+    }
+
+    private static function isCaptured(array $matches, $key): bool
+    {
+        if (null === ($val = $matches[$key] ?? null)) {
+            return false;
+        }
+        if (is_array($val)) {
+            return !empty($val) && is_string($val[0]);
+        }
+        return is_string($val);
     }
 }
 

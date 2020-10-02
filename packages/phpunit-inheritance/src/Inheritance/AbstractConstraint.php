@@ -25,11 +25,6 @@ use PHPUnit\Framework\Constraint\Operator;
 abstract class AbstractConstraint extends Constraint
 {
     /**
-     * @var array<string, StringArgumentValidator>
-     */
-    private static $validators = [];
-
-    /**
      * @var string
      * @psalm-readonly
      */

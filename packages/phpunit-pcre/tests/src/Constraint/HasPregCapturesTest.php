@@ -34,7 +34,7 @@ final class HasPregCapturesTest extends TestCase
      */
     public function testHasPregCapturesSucceeds(array $expect, $actual): void
     {
-        $constraint = new HasPregCaptures($expect);
+        $constraint = HasPregCaptures::create($expect);
         self::assertThat($actual, $constraint);
     }
 
@@ -46,7 +46,7 @@ final class HasPregCapturesTest extends TestCase
      */
     public function testHasPregCapturesFails(array $expected, $actual, string $message): void
     {
-        $constraint = new HasPregCaptures($expected);
+        $constraint = HasPregCaptures::create($expected);
 
         $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage($message);
@@ -62,7 +62,7 @@ final class HasPregCapturesTest extends TestCase
      */
     public function testNotHasPregCapturesSucceeds(array $expect, $actual): void
     {
-        $constraint = new LogicalNot(new HasPregCaptures($expect));
+        $constraint = new LogicalNot(HasPregCaptures::create($expect));
         self::assertThat($actual, $constraint);
     }
 
@@ -73,7 +73,7 @@ final class HasPregCapturesTest extends TestCase
      */
     public function testNotHasPregCapturesFails(array $expect, $actual, string $message): void
     {
-        $constraint = new LogicalNot(new HasPregCaptures($expect));
+        $constraint = new LogicalNot(HasPregCaptures::create($expect));
 
         $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage($message);
