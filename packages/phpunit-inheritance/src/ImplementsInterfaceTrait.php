@@ -15,13 +15,20 @@ namespace PHPFox\PHPUnit;
 use PHPFox\PHPUnit\Constraint\ImplementsInterface;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
-use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
 trait ImplementsInterfaceTrait
 {
+    /**
+     * Evaluates a \PHPUnit\Framework\Constraint matcher object.
+     *
+     * @param mixed $value
+     *
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     abstract public static function assertThat($value, Constraint $constraint, string $message = ''): void;
 
     /**
@@ -31,7 +38,7 @@ trait ImplementsInterfaceTrait
      * @param mixed  $subject   an object or a class name that is being examined
      * @param string $message   custom message
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public static function assertImplementsInterface(string $interface, $subject, string $message = ''): void
     {
@@ -45,7 +52,7 @@ trait ImplementsInterfaceTrait
      * @param mixed  $subject   an object or a class name that is being examined
      * @param string $message   custom message
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public static function assertNotImplementsInterface(string $interface, $subject, string $message = ''): void
     {

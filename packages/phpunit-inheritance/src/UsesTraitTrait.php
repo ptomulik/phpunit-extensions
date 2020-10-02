@@ -15,13 +15,20 @@ namespace PHPFox\PHPUnit;
 use PHPFox\PHPUnit\Constraint\UsesTrait;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
-use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
 trait UsesTraitTrait
 {
+    /**
+     * Evaluates a \PHPUnit\Framework\Constraint matcher object.
+     *
+     * @param mixed $value
+     *
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     abstract public static function assertThat($value, Constraint $constraint, string $message = ''): void;
 
     /**
@@ -31,7 +38,7 @@ trait UsesTraitTrait
      * @param mixed  $subject an object or a class name that is being examined
      * @param string $message custom message
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public static function assertUsesTrait(string $trait, $subject, string $message = ''): void
     {
@@ -45,7 +52,7 @@ trait UsesTraitTrait
      * @param mixed  $subject an object or a class name that is being examined
      * @param string $message custom message
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public static function assertNotUsesTrait(string $trait, $subject, string $message = ''): void
     {

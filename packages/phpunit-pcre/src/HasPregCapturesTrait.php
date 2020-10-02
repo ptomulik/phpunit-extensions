@@ -15,7 +15,6 @@ namespace PHPFox\PHPUnit;
 use PHPFox\PHPUnit\Constraint\HasPregCaptures;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
-use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -27,7 +26,7 @@ trait HasPregCapturesTrait
      *
      * @param mixed $value
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     abstract public static function assertThat($value, Constraint $constraint, string $message = ''): void;
@@ -54,7 +53,7 @@ trait HasPregCapturesTrait
      * @param string $message
      *                         Additional message
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public static function assertHasPregCaptures(array $expected, array $matches, string $message = ''): void
     {
@@ -71,8 +70,8 @@ trait HasPregCapturesTrait
      * @param string $message
      *                         Additional message
      *
-     * @throws ExpectationFailedException
-     * @throws \PHPUnit\Framework\Exception when a non-string keys are found in *$expected*
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\Exception                  when a non-string keys are found in *$expected*
      */
     public static function assertNotHasPregCaptures(array $expected, array $matches, string $message = ''): void
     {

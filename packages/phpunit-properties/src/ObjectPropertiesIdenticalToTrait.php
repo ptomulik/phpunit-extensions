@@ -15,7 +15,6 @@ namespace PHPFox\PHPUnit;
 use PHPFox\PHPUnit\Constraint\ObjectPropertiesIdenticalTo;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
-use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -27,7 +26,7 @@ trait ObjectPropertiesIdenticalToTrait
      *
      * @param mixed $value
      *
-     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     abstract public static function assertThat($value, Constraint $constraint, string $message = ''): void;
@@ -43,8 +42,8 @@ trait ObjectPropertiesIdenticalToTrait
      * @param string $message
      *                         Optional failure message
      *
-     * @throws ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException when a non-string keys are found in *$expected*
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
      */
     public static function assertObjectPropertiesIdenticalTo(
         array $expected,
@@ -65,8 +64,8 @@ trait ObjectPropertiesIdenticalToTrait
      * @param string $message
      *                         Optional failure message
      *
-     * @throws ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException when a non-string keys are found in *$expected*
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
      */
     public static function assertNotObjectPropertiesIdenticalTo(
         array $expected,
