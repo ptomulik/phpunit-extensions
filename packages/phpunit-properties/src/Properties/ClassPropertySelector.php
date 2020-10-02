@@ -44,11 +44,8 @@ final class ClassPropertySelector extends AbstractPropertySelector
      */
     protected function selectWithMethod($subject, string $method, &$retval = null): bool
     {
-        if (!is_string($subject) || !class_exists($subject)) {
-            $provided = is_object($subject) ? 'an object '.get_class($object) : gettype($subject);
+        self::assertClassString($subject, 1);
 
-            throw InvalidArgumentException::fromBackTrace(1, 'a class', $provided);
-        }
         if (!method_exists($subject, $method)) {
             return false;
         }
@@ -63,14 +60,12 @@ final class ClassPropertySelector extends AbstractPropertySelector
      * @param mixed $retval
      * @psalm-param array-key $key
      * @psalm-assert class-string $subject
+     * @throws InvalidArgumentException
      */
     protected function selectWithAttribute($subject, $key, &$retval = null): bool
     {
-        if (!is_string($subject) || !class_exists($subject)) {
-            $provided = is_object($subject) ? 'an object '.get_class($object) : gettype($subject);
+        self::assertClassString($subject, 1);
 
-            throw InvalidArgumentException::fromBackTrace(1, 'a class', $provided);
-        }
         $key = (string) $key;
         if (!property_exists($subject, $key)) {
             return false;
@@ -78,6 +73,19 @@ final class ClassPropertySelector extends AbstractPropertySelector
         $retval = $subject::${$key};
 
         return true;
+    }
+
+    /**
+     * @psalm-assert class-string $subject
+     * @throws InvalidArgumentException
+     */
+    private static function assertClassString($subject, int $argument, int $distance = 1): void
+    {
+        if (!is_string($subject) || !class_exists($subject)) {
+            $provided = is_object($subject) ? 'an object '.get_class($object) : gettype($subject);
+
+            throw InvalidArgumentException::fromBackTrace($argument, 'a class', $provided, 1 + $distance);
+        }
     }
 }
 

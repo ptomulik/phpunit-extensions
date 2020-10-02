@@ -57,7 +57,7 @@ abstract class AbstractInheritanceConstraint extends Constraint
         if (is_object($other)) {
             $other = get_class($other);
         }
-        if (!is_string($other) || !$this->supportsActual($other)) {
+        if (!is_string($other) || !$this->supports($other)) {
             return false;
         }
 
@@ -92,7 +92,7 @@ abstract class AbstractInheritanceConstraint extends Constraint
     /**
      * Checks if *$string* may be used as an argument to ``inheritance()``.
      */
-    abstract protected function supportsActual(string $string): bool;
+    abstract protected function supports(string $string): bool;
 
     /**
      * Returns a custom string representation of the constraint object when it
@@ -154,7 +154,7 @@ abstract class AbstractInheritanceConstraint extends Constraint
     {
         if (is_object($subject)) {
             $subject = 'object '.get_class($subject);
-        } elseif (!is_string($subject) || !$this->supportsActual($subject)) {
+        } elseif (!is_string($subject) || !$this->supports($subject)) {
             $subject = $this->exporter()->export($subject);
         }
 

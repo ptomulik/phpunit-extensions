@@ -46,36 +46,7 @@ final class Exporter extends SebastianBergmannExporter
     public function recursiveExport(&$value, $indentation, $processed = null)
     {
         if ($value instanceof PropertiesInterface) {
-            $whitespace = str_repeat(' ', (int) (4 * $indentation));
-
-            if (!$processed) {
-                $processed = new Context();
-            }
-
-            $hash = $processed->contains($value);
-
-            if ($hash) {
-                return $this->describe($value);
-            }
-
-            $hash = $processed->add($value);
-            $values = '';
-            $array = $this->toArray($value);
-
-            if (count($array) > 0) {
-                foreach ($array as $k => $v) {
-                    $values .= sprintf(
-                        '%s    %s => %s'."\n",
-                        $whitespace,
-                        $this->recursiveExport($k, $indentation),
-                        $this->recursiveExport($v, $indentation + 1, $processed)
-                    );
-                }
-
-                $values = "\n".$values.$whitespace;
-            }
-
-            return sprintf('%s (%s)', $this->describe($value), $values);
+            return $this->exportProperties($value, $indentation, $processed);
         }
 
         return parent::recursiveExport($value, $indentation, $processed);
@@ -105,6 +76,44 @@ final class Exporter extends SebastianBergmannExporter
         }
 
         return parent::shortenedExport($value);
+    }
+
+    /**
+     * @param int $indentation
+     * @param Context $processed
+     */
+    private function exportProperties(PropertiesInterface $value, $indentation, $processed = null): string
+    {
+        $whitespace = str_repeat(' ', (int) (4 * $indentation));
+
+        if (!$processed) {
+            $processed = new Context();
+        }
+
+        $hash = $processed->contains($value);
+
+        if ($hash) {
+            return $this->describe($value);
+        }
+
+        $hash = $processed->add($value);
+        $values = '';
+        $array = $this->toArray($value);
+
+        if (count($array) > 0) {
+            foreach ($array as $k => $v) {
+                $values .= sprintf(
+                    '%s    %s => %s'."\n",
+                    $whitespace,
+                    $this->recursiveExport($k, $indentation),
+                    $this->recursiveExport($v, $indentation + 1, $processed)
+                );
+            }
+
+            $values = "\n".$values.$whitespace;
+        }
+
+        return sprintf('%s (%s)', $this->describe($value), $values);
     }
 }
 

@@ -60,11 +60,11 @@ final class UsesTrait extends AbstractInheritanceConstraint
     }
 
     /**
-     * Checks if *$class* may be used as an argument to ``getInheritedClassesFor()``.
+     * Checks if *$class* may be used as an argument to inheritance().
      *
      * @psalm-assert-if-true class-string|trait-string $class
      */
-    protected function supportsActual(string $class): bool
+    protected function supports(string $class): bool
     {
         return class_exists($class) || trait_exists($class);
     }

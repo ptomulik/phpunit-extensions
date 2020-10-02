@@ -60,11 +60,11 @@ final class ImplementsInterface extends AbstractInheritanceConstraint
     }
 
     /**
-     * Checks if *$string* may be used as an argument to ``getInheritedClassesFor()``.
+     * Checks if *$string* may be used as an argument to inheritance().
      *
      * @psalm-assert-if-true class-string $class
      */
-    protected function supportsActual(string $class): bool
+    protected function supports(string $class): bool
     {
         return class_exists($class) || interface_exists($class);
     }
