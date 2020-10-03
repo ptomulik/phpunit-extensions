@@ -1,0 +1,30 @@
+name: Documentation
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  build-docs:
+    name: Build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Initialize .env
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - name: Initialize project
+        run: php docker/initialize
+
+      - name: Build API Docs
+        run: docker/docs run --rm sami build
+
+      - name: Build User Docs
+        run: docker/docs run --rm sphinx build
