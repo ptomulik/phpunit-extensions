@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPFox\PHPUnit\Preg\CapturesFilter;
 use PHPFox\PHPUnit\Preg\CapturesFilterInterface;
 use PHPUnit\Framework\Constraint\Constraint;
@@ -37,7 +38,7 @@ use SebastianBergmann\Comparator\ComparisonFailure;
 final class HasPregCaptures extends Constraint
 {
     /**
-     * @var array<array-key,bool|string|array{0:string|null,1:int}>
+     * @var array<array-key,null|string|bool|array{0:string|null,1:int}>
      */
     private $expected;
 
@@ -45,13 +46,6 @@ final class HasPregCaptures extends Constraint
      * @var CapturesFilterInterface
      */
     private $filter;
-
-//    private static function validate(array $array): self
-//    {
-//        foreach ($array as $key => $value) {
-//            if (!(is_bool($value) || is_string($value) || (is_array($value) && count($value) > 1
-//        }
-//    }
 
     /**
      * Initializes the constraint.
@@ -71,7 +65,7 @@ final class HasPregCaptures extends Constraint
      */
     public static function create(array $expected, int $flags = PREG_OFFSET_CAPTURE | PREG_UNMATCHED_AS_NULL): self
     {
-//        self::validate($expected);
+        self::validateExpectations(1, $expected);
 
         return new self($expected, new CapturesFilter($flags));
     }
@@ -159,6 +153,51 @@ final class HasPregCaptures extends Constraint
         }
 
         return $what.' '.$this->toString();
+    }
+
+    /**
+     * @assert array<array-key, null|bool|string|array{0:null|string,1:int}> $array
+     */
+    private static function validateExpectations(int $argument, array $array, int $distance = 1): void
+    {
+        $invalid = [];
+
+        foreach ($array as $key => $value) {
+            if (!self::isValidExpectation($value)) {
+                $invalid[] = is_string($key) ? sprintf("'%s'", addslashes($key)) : (string)$key;
+            }
+        }
+
+        if ($invalid) {
+            throw InvalidArgumentException::fromBackTrace(
+                $argument,
+                'an array of valid expectations',
+                sprintf(
+                    'invalid %s at %s %s',
+                    count($invalid) < 2 ? 'expectation' : 'expectations',
+                    count($invalid) < 2 ? 'key' : 'keys',
+                    implode(', ', $invalid)
+                ),
+                1 + $distance
+            );
+        }
+    }
+
+    /**
+     * @param mixed $value
+     * @assert-if-true null|bool|string|array{0:null|string,1:int} $value
+     */
+    private static function isValidExpectation($value): bool
+    {
+        if (!is_array($value)) {
+            return null === $value
+                || is_bool($value)
+                || is_string($value);
+        }
+
+        return 2 === count($value)
+            && (null === $value[0] || is_string($value[0]))
+            && is_int($value[1]);
     }
 
     /**

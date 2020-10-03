@@ -14,6 +14,7 @@ namespace PHPFox\PHPUnit\Constraint;
 
 use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPUnit\Framework\ExpectationFailedException;
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -79,6 +80,45 @@ final class HasPregCapturesTest extends TestCase
         $this->expectExceptionMessage($message);
 
         $constraint->evaluate($actual);
+    }
+
+    public static function provCreateThrowsInvalidArgumentException(): array
+    {
+        $template = 'Argument #1 of '.HasPregCaptures::class.'::create() '.
+            'must be an array of valid expectations, '.
+            'invalid %s at %s given.';
+
+        return [
+            'HasPregCapturesTest.php:'.__LINE__ => [
+                'args' => [[
+                    'foo' => new \stdClass,
+                ]],
+                'message' => sprintf($template, 'expectation', 'key \'foo\''),
+            ],
+
+            'HasPregCapturesTest.php:'.__LINE__ => [
+                'args' => [[
+                    0 => 123.456,
+                    1 => false,
+                    2 => ['', 1, ''],
+                    3 => ['', 1],
+                    4 => [false, 1],
+                    5 => ['', 123.456],
+                ]],
+                'message' => sprintf($template, 'expectations', 'keys 0, 2, 4, 5'),
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider provCreateThrowsInvalidArgumentException
+     */
+    public function testCreateThrowsInvalidArgumentException(array $args, string $message): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage($message);
+
+        HasPregCaptures::create(...$args);
     }
 }
 
