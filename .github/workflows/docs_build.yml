@@ -47,7 +47,9 @@ jobs:
           name: generated-docs
 
       - name: Display branch
-        run: echo ref: ${{ github.ref }}
+        run: echo hello
+
+##        run: echo ref: ${{ github.ref }}
 
 ##      - name: Deploy
 ##        uses: peaceiris/actions-gh-pages@v3
