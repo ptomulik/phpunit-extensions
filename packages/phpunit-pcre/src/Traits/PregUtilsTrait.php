@@ -32,10 +32,9 @@ trait PregUtilsTrait
      *
      * for each ``$i`` from array_values(*$positions*).
      *
-     * @param array $array
-     *                         An array to take keys from
-     * @param array $positions
-     *                         An array of integer offsets
+     * @param array $array     An array to take keys from
+     * @param array $positions An array of integer offsets
+     * @psalm-param array<array-key,int> $positions
      */
     public static function pregTupleKeysAt(array $array, array $positions): array
     {
@@ -76,9 +75,10 @@ trait PregUtilsTrait
      */
     public static function shiftPregCaptures(array $captures, int $offset, bool $shiftMain = true): array
     {
-        foreach ($captures as $key => $capture) {
-            if ((0 !== $key || $shiftMain) && is_array($capture)) {
-                $captures[$key][1] += $offset;
+        /** @psalm-var mixed $capture */
+        foreach ($captures as $key => &$capture) {
+            if ((0 !== $key || $shiftMain) && is_array($capture) && count($capture) > 1 && is_int($capture[1])) {
+                $capture[1] += $offset;
             }
         }
 
@@ -96,19 +96,31 @@ trait PregUtilsTrait
      * @param mixed $prefixMain
      *
      * @return array returns the transformed captures
+     *
+     * @psalm-param string|bool $prefixMain
      */
     public static function prefixPregCaptures(array $captures, string $prefix, $prefixMain = false): array
     {
         if ($prefixMain) {
             $prefixMain = is_string($prefixMain) ? $prefixMain : $prefix;
-            if (is_array($captures[0] ?? null)) {
-                $captures[0][0] = $prefixMain.$captures[0][0];
-            } elseif (is_string($captures[0] ?? null)) {
-                $captures[0] = $prefixMain.$captures[0];
+            if (array_key_exists(0, $captures)) {
+                self::prefixMainPregCapture($captures[0], $prefixMain);
             }
         }
 
         return static::shiftPregCaptures($captures, strlen($prefix), !(bool) $prefixMain);
+    }
+
+    /**
+     * @param mixed $capture
+     */
+    private static function prefixMainPregCapture(&$capture, string $prefix): void
+    {
+        if (is_array($capture) && array_key_exists(0, $capture) && is_string($capture[0])) {
+            $capture[0] = $prefix.$capture[0];
+        } elseif (is_string($capture)) {
+            $capture = $prefix.$capture;
+        }
     }
 
     /**
