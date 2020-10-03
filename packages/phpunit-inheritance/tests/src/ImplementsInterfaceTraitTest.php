@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * @small
  * @covers \PHPFox\PHPUnit\ImplementsInterfaceTrait
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ImplementsInterfaceTraitTest extends TestCase
 {

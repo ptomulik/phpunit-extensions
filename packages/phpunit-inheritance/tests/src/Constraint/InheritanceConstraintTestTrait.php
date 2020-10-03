@@ -19,7 +19,7 @@ use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount;
 /**
  * @small
  *
- * @internal
+ * @internal This trait is not covered by the backward compatibility promise
  */
 trait InheritanceConstraintTestTrait
 {

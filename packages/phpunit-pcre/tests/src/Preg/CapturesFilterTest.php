@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  * @small
  * @covers \PHPFox\PHPUnit\Preg\CapturesFilter
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class CapturesFilterTest extends TestCase
 {

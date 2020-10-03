@@ -19,7 +19,7 @@ use PHPFox\PHPUnit\Properties\EqualityComparator;
  * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait
  * @covers \PHPFox\PHPUnit\Properties\AbstractConstraint
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ClassPropertiesEqualToTest extends PropertiesConstraintTestCase
 {

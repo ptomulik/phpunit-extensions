@@ -11,7 +11,7 @@
 namespace PHPFox\PHPUnit\Constraint;
 
 /**
- * @internal
+ * @internal This trait is not covered by the backward compatibility promise
  */
 trait ProvHasPregCapturesTrait
 {

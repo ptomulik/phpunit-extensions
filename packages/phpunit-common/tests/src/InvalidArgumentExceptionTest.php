@@ -38,7 +38,7 @@ if (!function_exists('PHPFox\\PHPUnit\\testInvalidArgumentExceptionFromBackTrace
  * @small
  * @covers \PHPFox\PHPUnit\InvalidArgumentException
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class InvalidArgumentExceptionTest extends TestCase
 {

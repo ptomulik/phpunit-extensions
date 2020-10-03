@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  * @small
  * @covers \PHPFox\PHPUnit\Properties\RecursivePropertiesSelector
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class RecursivePropertiesSelectorTest extends TestCase
 {

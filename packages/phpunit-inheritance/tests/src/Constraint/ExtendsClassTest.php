@@ -26,7 +26,7 @@ use Throwable;
  * @covers \PHPFox\PHPUnit\Inheritance\AbstractConstraint
  * @covers \PHPFox\PHPUnit\Inheritance\ConstraintImplementationTrait
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ExtendsClassTest extends TestCase
 {

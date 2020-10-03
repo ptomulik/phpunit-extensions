@@ -13,7 +13,7 @@ namespace PHPFox\PHPUnit\Properties;
 use PHPFox\PHPUnit\InvalidArgumentException;
 
 /**
- * @internal
+ * @internal This trait is not covered by the backward compatibility promise
  */
 trait ConstraintImplementationTrait
 {

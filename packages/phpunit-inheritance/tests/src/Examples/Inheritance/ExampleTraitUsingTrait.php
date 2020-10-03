@@ -13,7 +13,7 @@ namespace PHPFox\PHPUnit\Examples\Inheritance;
 /**
  * Example trait for testing purposes.
  *
- * @internal
+ * @internal This trait is not covered by the backward compatibility promise
  */
 trait ExampleTraitUsingTrait
 {

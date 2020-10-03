@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  * @covers \PHPFox\PHPUnit\Properties\AbstractPropertySelector
  * @covers \PHPFox\PHPUnit\Properties\ClassPropertySelector
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ClassPropertySelectorTest extends TestCase
 {

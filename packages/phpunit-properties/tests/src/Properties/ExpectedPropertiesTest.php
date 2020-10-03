@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * @covers \PHPFox\PHPUnit\Properties\ExpectedProperties
  * @covers \PHPFox\PHPUnit\Properties\ExpectedPropertiesTestTrait
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ExpectedPropertiesTest extends TestCase
 {

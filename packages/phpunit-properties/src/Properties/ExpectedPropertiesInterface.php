@@ -11,7 +11,7 @@
 namespace PHPFox\PHPUnit\Properties;
 
 /**
- * @internal
+ * @internal This interface is not covered by the backward compatibility promise
  */
 interface ExpectedPropertiesInterface extends PropertiesInterface
 {

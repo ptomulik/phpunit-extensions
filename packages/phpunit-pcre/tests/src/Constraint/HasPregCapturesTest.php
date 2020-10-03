@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  * @covers \PHPFox\PHPUnit\Constraint\HasPregCaptures
  * @covers \PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class HasPregCapturesTest extends TestCase
 {

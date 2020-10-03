@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
  * @small
  * @covers \PHPFox\PHPUnit\Properties\ActualProperties
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ActualPropertiesTest extends TestCase
 {

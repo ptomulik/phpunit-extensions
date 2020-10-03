@@ -11,7 +11,7 @@
 namespace PHPFox\PHPUnit\Properties;
 
 /**
- * @internal
+ * @internal This trait is not covered by the backward compatibility promise
  */
 trait ExpectedPropertiesDecoratorTrait
 {

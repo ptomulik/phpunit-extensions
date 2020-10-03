@@ -23,7 +23,7 @@ use PHPFox\PHPUnit\StringArgumentValidator;
  *      private static $inheritance;    // for example $validation = 'class_parents';
  *      private static $supports;       // for example $supports = ['class_exists'];
  *
- * @internal
+ * @internal This trait is not covered by the backward compatibility promise
  */
 trait ConstraintImplementationTrait
 {

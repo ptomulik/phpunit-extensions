@@ -16,7 +16,7 @@ use SebastianBergmann\RecursionContext\Context;
 /**
  * An exporter that handles PropertiesInterface in a special way.
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class Exporter extends SebastianBergmannExporter
 {

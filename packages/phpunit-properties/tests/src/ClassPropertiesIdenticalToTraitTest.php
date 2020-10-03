@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
  * @small
  * @covers \PHPFox\PHPUnit\ClassPropertiesIdenticalToTrait
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ClassPropertiesIdenticalToTraitTest extends TestCase
 {

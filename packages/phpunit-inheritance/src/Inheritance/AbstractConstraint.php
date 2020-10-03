@@ -18,7 +18,7 @@ use PHPUnit\Framework\Constraint\Operator;
  * Abstract base class for inheritance constraints (ExtendsClass,
  * ImplementsInterface, UsesTrait, etc.).
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 abstract class AbstractConstraint extends Constraint
 {

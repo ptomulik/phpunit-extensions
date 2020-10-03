@@ -13,7 +13,7 @@ namespace PHPFox\PHPUnit\Properties;
 /**
  * @extends \IteratorAggregate<array-key, mixed>
  *
- * @internal
+ * @internal This interface is not covered by the backward compatibility promise
  */
 interface PropertiesInterface extends \IteratorAggregate, \ArrayAccess, \Countable
 {

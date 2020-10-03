@@ -18,7 +18,7 @@ use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
  * @small
  * @covers \PHPFox\PHPUnit\Properties\Exporter
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ExporterTest extends TestCase
 {

@@ -13,7 +13,7 @@ namespace PHPFox\PHPUnit\Examples\Inheritance;
 /**
  * Example class for testing purposes.
  *
- * @internal
+ * @internal This class is not covered by the backward compatibility promise
  */
 final class ExampleClassUsingTrait
 {
