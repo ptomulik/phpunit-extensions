@@ -29,31 +29,31 @@ jobs:
       - name: Build user docs
         run: docker/docs run --rm sphinx build
 
-      - name: Upload docs artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: generated-docs
-          path: docs/build/html/
-
-  deploy-docs:
-    name: Deploy Docs
-
-    needs: build-docs
-
-    runs-on: ubuntu-latest
-
-    if: ${{ github.event_name != 'pull_request' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/devel') }}
-    steps:
-      - name: Download docs artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: generated-docs
-          path: ~/generated-docs
+##      - name: Upload docs artifact
+##        uses: actions/upload-artifact@v2
+##        with:
+##          name: generated-docs
+##          path: docs/build/html/
+##
+##  deploy-docs:
+##    name: Deploy Docs
+##
+##    needs: build-docs
+##
+##    runs-on: ubuntu-latest
+##
+##    if: ${{ github.event_name != 'pull_request' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/devel') }}
+##    steps:
+##      - name: Download docs artifact
+##        uses: actions/download-artifact@v2
+##        with:
+##          name: generated-docs
+##          path: ~/generated-docs
 
       - name: Deploy docs on gh-pages
         uses: peaceiris/actions-gh-pages@v3.7.0-8
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ~/generated-docs/
+          publish_dir: ./docs/build/html
           destination_dir: ./docs
 
