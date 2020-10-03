@@ -38,11 +38,6 @@ jobs:
   deploy-docs:
     name: Deploy Docs
 
-    on: push
-      branches:
-        - master
-        - devel
-
     runs-on: ubuntu-latest
 
     steps:
