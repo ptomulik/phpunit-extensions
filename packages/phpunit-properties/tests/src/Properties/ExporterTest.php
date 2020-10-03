@@ -15,7 +15,6 @@ use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Properties\Exporter
  *
  * @internal

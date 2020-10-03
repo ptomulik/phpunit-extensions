@@ -13,7 +13,6 @@ namespace PHPFox\PHPUnit\Constraint;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
  * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait

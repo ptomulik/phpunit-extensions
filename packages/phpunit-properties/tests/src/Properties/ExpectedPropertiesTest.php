@@ -15,7 +15,6 @@ use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Properties\ExpectedProperties
  * @covers \PHPFox\PHPUnit\Properties\ExpectedPropertiesTestTrait
  *

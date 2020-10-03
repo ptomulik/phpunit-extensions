@@ -10,9 +10,6 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
-/**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- */
 final class RecursivePropertiesUnwrapper implements RecursivePropertiesUnwrapperInterface
 {
     public const UNIQUE_TAG = 'unwrapped-properties:$1$zIlgusJc$ZZCyNRPOX1SbpKdzoD2hU/';

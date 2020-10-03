@@ -16,7 +16,6 @@ use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \PHPFox\PHPUnit\Constraint\HasPregCaptures
  * @covers \PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait
  *

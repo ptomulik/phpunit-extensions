@@ -14,9 +14,6 @@ use PHPFox\PHPUnit\Constraint\HasPregCaptures;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
 
-/**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- */
 trait HasPregCapturesTrait
 {
     /**

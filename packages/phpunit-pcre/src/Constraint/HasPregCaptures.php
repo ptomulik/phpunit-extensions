@@ -30,8 +30,6 @@ use SebastianBergmann\Comparator\ComparisonFailure;
  * Boolean expectations (``['foo' => true]`` or ``['foo' => false]``) work
  * properly only with arrays obtained from ``preg_match()`` invoked with
  * ``PREG_UNMATCHED_AS_NULL`` flag.
- *
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
 final class HasPregCaptures extends Constraint
 {

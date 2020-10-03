@@ -21,8 +21,6 @@ use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
  *
  * Objects and classes are examples of subjects that may be examined.
  * Support for other kinds of beings may be implemented if necessary.
- *
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
 abstract class AbstractConstraint extends Constraint implements ExpectedPropertiesInterface
 {

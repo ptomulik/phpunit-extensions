@@ -10,9 +10,6 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
-/**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- */
 final class RecursivePropertiesSelector implements RecursivePropertiesSelectorInterface
 {
     /**

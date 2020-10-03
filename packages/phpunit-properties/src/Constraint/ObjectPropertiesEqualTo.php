@@ -40,8 +40,6 @@ use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
  *              return 'John';
  *          }
  *      }, $matcher);
- *
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  */
 final class ObjectPropertiesEqualTo extends AbstractConstraint
 {
