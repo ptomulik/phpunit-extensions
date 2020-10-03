@@ -1,9 +1,12 @@
 name: Docs Deploy
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - master
+      - devel
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   deploy-docs:
@@ -18,17 +21,21 @@ jobs:
           php-version: 7.4
           coverage: none
 
-      - name: Build API docs
+      - name: Destination Dir
         run: |
-          php docker/initialize
-          docker/docs run --rm sami build
-
-      - name: Build user docs
-        run: docker/docs run --rm sphinx build
-
-      - name: Deploy on gh-pages
-        uses: peaceiris/actions-gh-pages@v3.7.0-8
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build/html
-          destination_dir: ./docs/${{ github.event.release.tag_name }}
+          echo ${{ github.ref }} | sed -e 's:refs/[^/]+/::'
+##
+##      - name: Build API docs
+##        run: |
+##          php docker/initialize
+##          docker/docs run --rm sami build
+##
+##      - name: Build user docs
+##        run: docker/docs run --rm sphinx build
+##
+##      - name: Deploy on gh-pages
+##        uses: peaceiris/actions-gh-pages@v3.7.0-8
+##        with:
+##          github_token: ${{ secrets.GITHUB_TOKEN }}
+##          publish_dir: ./docs/build/html
+##          destination_dir: ./docs/${{ github.event.release.tag_name }}
