@@ -48,11 +48,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: generated-docs
+          path: docs
 
-      - name: Deploy docs on gh-pages
-        uses: peaceiris/actions-gh-pages@v3.7.0-8
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build/html/
-          destination_dir: ./docs
+      - name: List files
+        run: find -type f
+
+##      - name: Deploy docs on gh-pages
+##        uses: peaceiris/actions-gh-pages@v3.7.0-8
+##        with:
+##          github_token: ${{ secrets.GITHUB_TOKEN }}
+##          publish_dir: ./docs/build/html/
+##          destination_dir: ./docs
 
