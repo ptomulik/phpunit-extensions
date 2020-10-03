@@ -12,6 +12,9 @@ namespace PHPFox\PHPUnit\Properties;
 
 use PHPFox\PHPUnit\InvalidArgumentException;
 
+/**
+ * @internal
+ */
 final class ClassPropertySelector extends AbstractPropertySelector
 {
     /**

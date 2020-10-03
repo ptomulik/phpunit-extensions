@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 abstract class AbstractPropertySelector implements PropertySelectorInterface
 {
     /**

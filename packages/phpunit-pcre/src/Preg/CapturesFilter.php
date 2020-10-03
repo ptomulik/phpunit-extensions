@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Preg;
 
+/**
+ * @internal
+ */
 final class CapturesFilter implements CapturesFilterInterface
 {
     /**

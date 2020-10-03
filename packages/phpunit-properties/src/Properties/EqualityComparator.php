@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 final class EqualityComparator implements ComparatorInterface
 {
     /**

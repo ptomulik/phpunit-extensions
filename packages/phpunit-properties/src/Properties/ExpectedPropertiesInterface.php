@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 interface ExpectedPropertiesInterface extends PropertiesInterface
 {
     public function getPropertySelector(): PropertySelectorInterface;

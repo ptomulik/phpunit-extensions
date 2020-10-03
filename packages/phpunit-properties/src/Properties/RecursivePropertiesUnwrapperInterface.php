@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 interface RecursivePropertiesUnwrapperInterface
 {
     public function unwrap(PropertiesInterface $properties): array;

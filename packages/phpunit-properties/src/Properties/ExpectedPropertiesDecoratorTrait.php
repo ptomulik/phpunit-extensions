@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 trait ExpectedPropertiesDecoratorTrait
 {
     abstract public function getExpectedProperties(): ExpectedPropertiesInterface;

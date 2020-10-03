@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 final class ExpectedProperties extends \ArrayObject implements ExpectedPropertiesInterface
 {
     /**

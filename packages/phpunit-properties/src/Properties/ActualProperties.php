@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 final class ActualProperties extends \ArrayObject implements ActualPropertiesInterface
 {
     /**

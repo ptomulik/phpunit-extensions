@@ -22,6 +22,8 @@ use PHPFox\PHPUnit\StringArgumentValidator;
  *      private static $validation;     // for example $validation = ['class_exists', 'a class-string'];
  *      private static $inheritance;    // for example $validation = 'class_parents';
  *      private static $supports;       // for example $supports = ['class_exists'];
+ *
+ * @internal
  */
 trait ConstraintImplementationTrait
 {

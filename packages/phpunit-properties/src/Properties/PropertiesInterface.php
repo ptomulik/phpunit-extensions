@@ -12,6 +12,8 @@ namespace PHPFox\PHPUnit\Properties;
 
 /**
  * @extends \IteratorAggregate<array-key, mixed>
+ *
+ * @internal
  */
 interface PropertiesInterface extends \IteratorAggregate, \ArrayAccess, \Countable
 {

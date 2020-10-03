@@ -12,6 +12,9 @@ namespace PHPFox\PHPUnit\Properties;
 
 use PHPFox\PHPUnit\InvalidArgumentException;
 
+/**
+ * @internal
+ */
 trait ConstraintImplementationTrait
 {
     public static function create(array $expected, RecursivePropertiesUnwrapperInterface $unwrapper = null): self
