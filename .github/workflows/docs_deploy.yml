@@ -25,7 +25,7 @@ jobs:
         run: echo "::set-output name=branch::${{ github.ref }}" | sed -e 's:refs/[^/]\+/::'
 
       - name: Print Dest Dir
-        run: echo ${{ jobs.deploy-docs.steps.branch.branch }}
+        run: echo ${{ steps.branch.outputs.branch }}
 
 ##      - name: Build API docs
 ##        run: |
