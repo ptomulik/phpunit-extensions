@@ -13,6 +13,7 @@ namespace PHPFox\PHPUnit\Preg;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Preg\CapturesFilter
  *
  * @internal

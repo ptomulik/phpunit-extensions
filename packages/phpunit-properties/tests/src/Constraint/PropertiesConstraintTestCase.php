@@ -22,6 +22,9 @@ use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 abstract class PropertiesConstraintTestCase extends TestCase
 {
     use ExtendsClassTrait;

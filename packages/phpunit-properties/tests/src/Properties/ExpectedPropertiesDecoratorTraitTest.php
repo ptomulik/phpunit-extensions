@@ -13,6 +13,7 @@ namespace PHPFox\PHPUnit\Properties;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait
  *
  * @internal

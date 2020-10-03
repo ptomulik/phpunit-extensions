@@ -15,6 +15,7 @@ use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPFox\PHPUnit\Properties\EqualityComparator;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesEqualTo
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
  * @covers \PHPFox\PHPUnit\Constraint\ProvObjectPropertiesTrait

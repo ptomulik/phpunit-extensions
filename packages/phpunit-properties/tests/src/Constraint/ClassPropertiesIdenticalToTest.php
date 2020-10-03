@@ -13,6 +13,7 @@ namespace PHPFox\PHPUnit\Constraint;
 use PHPFox\PHPUnit\Properties\IdentityComparator;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesIdenticalTo
  * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
  * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait

@@ -12,6 +12,8 @@ namespace PHPFox\PHPUnit\Examples\Inheritance;
 
 /**
  * Example trait for testing purposes.
+ *
+ * @internal
  */
 trait ExampleTraitUsingTrait
 {

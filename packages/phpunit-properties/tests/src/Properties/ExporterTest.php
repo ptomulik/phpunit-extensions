@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Properties\Exporter
  *
  * @internal

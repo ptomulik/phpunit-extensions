@@ -10,6 +10,9 @@
 
 namespace PHPFox\PHPUnit\Properties;
 
+/**
+ * @internal
+ */
 trait ExpectedPropertiesTestTrait
 {
     abstract public function createExpectedProperties(

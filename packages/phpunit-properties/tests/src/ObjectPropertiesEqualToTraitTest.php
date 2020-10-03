@@ -15,8 +15,8 @@ use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \PHPFox\PHPUnit\ObjectPropertiesEqualToTrait
  * @small
+ * @covers \PHPFox\PHPUnit\ObjectPropertiesEqualToTrait
  *
  * @internal
  */

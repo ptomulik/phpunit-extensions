@@ -16,6 +16,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Constraint\HasPregCaptures
  * @covers \PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait
  *

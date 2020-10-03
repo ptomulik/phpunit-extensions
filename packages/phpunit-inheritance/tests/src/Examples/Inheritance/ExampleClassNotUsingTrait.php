@@ -12,6 +12,8 @@ namespace PHPFox\PHPUnit\Examples\Inheritance;
 
 /**
  * Example class for testing purposes.
+ *
+ * @internal
  */
 final class ExampleClassNotUsingTrait
 {

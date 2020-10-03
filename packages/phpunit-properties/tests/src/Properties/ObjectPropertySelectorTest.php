@@ -16,6 +16,7 @@ use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Properties\AbstractPropertySelector
  * @covers \PHPFox\PHPUnit\Properties\ObjectPropertySelector
  *

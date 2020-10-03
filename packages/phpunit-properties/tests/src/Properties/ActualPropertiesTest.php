@@ -15,6 +15,7 @@ use PHPFox\PHPUnit\ImplementsInterfaceTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @small
  * @covers \PHPFox\PHPUnit\Properties\ActualProperties
  *
  * @internal
