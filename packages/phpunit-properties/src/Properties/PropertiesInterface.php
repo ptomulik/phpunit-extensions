@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace PHPFox\PHPUnit\Properties;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+ * @extends \IteratorAggregate<array-key, mixed>
  */
 interface PropertiesInterface extends \IteratorAggregate, \ArrayAccess, \Countable
 {

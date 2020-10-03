@@ -101,6 +101,7 @@ final class Exporter extends SebastianBergmannExporter
         $array = $this->toArray($value);
 
         if (count($array) > 0) {
+            /** @psalm-var mixed $v */
             foreach ($array as $k => $v) {
                 $values .= sprintf(
                     '%s    %s => %s'."\n",

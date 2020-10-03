@@ -12,9 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
-/**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- */
 final class ExpectedProperties extends \ArrayObject implements ExpectedPropertiesInterface
 {
     /**
@@ -24,8 +21,7 @@ final class ExpectedProperties extends \ArrayObject implements ExpectedPropertie
     private $propertySelector;
 
     /**
-     * @param mixed $input
-     * @psalm-assert array|object $input
+     * @param array|null|object $input
      */
     public function __construct(PropertySelectorInterface $propertySelector, $input = [])
     {

@@ -43,8 +43,10 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
         $array = [];
         $selector = $this->expected->getPropertySelector();
         // order of keys in $array shall follow the given sequence in $this->expected
+        /** @psalm-var mixed $expect */
         foreach ($this->expected as $key => $expect) {
             if ($selector->selectProperty($subject, $key, $actual)) {
+                /** @psalm-var mixed */
                 $array[$key] = $this->adjustActualValue($actual, $expect);
             }
         }
@@ -86,7 +88,9 @@ final class RecursivePropertiesSelector implements RecursivePropertiesSelectorIn
 
     private function adjustActualArrayForExpectedArray(array $actual, array $expect): array
     {
+        /** @psalm-var mixed $val */
         foreach ($actual as $key => &$val) {
+            /** @psalm-var mixed */
             $val = self::adjustActualValue($val, $expect[$key]);
         }
 

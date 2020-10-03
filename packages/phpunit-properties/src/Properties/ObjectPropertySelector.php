@@ -39,6 +39,7 @@ final class ObjectPropertySelector extends AbstractPropertySelector
     /**
      * @param mixed $subject
      * @param mixed $retval
+     * @param-out mixed $retval
      * @psalm-assert object $subject
      */
     protected function selectWithMethod($subject, string $method, &$retval = null): bool
@@ -49,6 +50,7 @@ final class ObjectPropertySelector extends AbstractPropertySelector
         if (!method_exists($subject, $method)) {
             return false;
         }
+        /** @psalm-var mixed */
         $retval = call_user_func([$subject, $method]);
 
         return true;
@@ -58,6 +60,7 @@ final class ObjectPropertySelector extends AbstractPropertySelector
      * @param mixed $subject
      * @param mixed $key
      * @param mixed $retval
+     * @param-out mixed $retval
      * @psalm-param array-key $key
      * @psalm-assert object $subject
      */
@@ -70,6 +73,7 @@ final class ObjectPropertySelector extends AbstractPropertySelector
         if (!property_exists($subject, $key)) {
             return false;
         }
+        /** @psalm-var mixed */
         $retval = $subject->{$key};
 
         return true;

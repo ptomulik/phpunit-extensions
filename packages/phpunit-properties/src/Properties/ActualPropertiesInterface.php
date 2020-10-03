@@ -12,9 +12,6 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Properties;
 
-/**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- */
 interface ActualPropertiesInterface extends PropertiesInterface
 {
 }
