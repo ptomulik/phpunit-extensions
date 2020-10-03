@@ -6,12 +6,12 @@ final class AssertObjectPropertiesEqualToTest extends PHPUnit\Framework\TestCase
 
     public $attribute = 123;
 
-    public function getValue()
+    public function getValue(): int
     {
         return 321;
     }
 
-    public function testSuccess()
+    public function testSuccess(): void
     {
         // assert that:
         $this->assertObjectPropertiesEqualTo([
@@ -20,7 +20,7 @@ final class AssertObjectPropertiesEqualToTest extends PHPUnit\Framework\TestCase
         ], $this);
     }
 
-    public function testFailure()
+    public function testFailure(): void
     {
         // assert that:
         $this->assertObjectPropertiesEqualTo([

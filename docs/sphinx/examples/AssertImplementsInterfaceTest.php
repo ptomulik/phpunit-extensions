@@ -4,13 +4,13 @@ final class AssertImplementsInterfaceTest extends \PHPUnit\Framework\TestCase
 {
     use \PHPFox\PHPUnit\ImplementsInterfaceTrait;
 
-    public function testAssertImplementsInterface()
+    public function testAssertImplementsInterface(): void
     {
         $this->assertImplementsInterface(\Throwable::class, \RuntimeException::class);
         $this->assertImplementsInterface(\Throwable::class, new \RuntimeException());
     }
 
-    public function testAssertImplementsInterfaceFailure()
+    public function testAssertImplementsInterfaceFailure(): void
     {
         $this->assertImplementsInterface(\Throwable::class, self::class);
     }

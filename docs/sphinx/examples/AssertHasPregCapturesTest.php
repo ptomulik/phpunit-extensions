@@ -15,7 +15,7 @@ final class AssertHasPregCapturesTest extends PHPUnit\Framework\TestCase
         preg_match($this->regexp, $this->subject, $this->matches, PREG_UNMATCHED_AS_NULL);
     }
 
-    public function testAssertHasPregCaptures()
+    public function testAssertHasPregCaptures(): void
     {
         // assert that:
         $this->assertHasPregCaptures([
@@ -26,7 +26,7 @@ final class AssertHasPregCapturesTest extends PHPUnit\Framework\TestCase
         ], $this->matches);
     }
 
-    public function testAssertHasPregCapturesFailure()
+    public function testAssertHasPregCapturesFailure(): void
     {
         // assert that:
         $this->assertHasPregCaptures([

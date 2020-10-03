@@ -6,12 +6,12 @@ final class AssertClassPropertiesEqualToTest extends \PHPUnit\Framework\TestCase
 
     public static $attribute = 123;
 
-    public static function getValue()
+    public static function getValue(): int
     {
         return 321;
     }
 
-    public function testSuccess()
+    public function testSuccess(): void
     {
         // assert that:
         $this->assertClassPropertiesEqualTo([
@@ -20,7 +20,7 @@ final class AssertClassPropertiesEqualToTest extends \PHPUnit\Framework\TestCase
         ], self::class);
     }
 
-    public function testFailure()
+    public function testFailure(): void
     {
         // assert that:
         $this->assertClassPropertiesEqualTo([

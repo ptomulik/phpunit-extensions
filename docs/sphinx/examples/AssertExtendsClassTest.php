@@ -4,13 +4,13 @@ final class AssertExtendsClassTest extends \PHPUnit\Framework\TestCase
 {
     use \PHPFox\PHPUnit\ExtendsClassTrait;
 
-    public function testAssertExtendsClass()
+    public function testAssertExtendsClass(): void
     {
         $this->assertExtendsClass(\Exception::class, \RuntimeException::class);
         $this->assertExtendsClass(\Exception::class, new \RuntimeException());
     }
 
-    public function testAssertExtendsClassFailure()
+    public function testAssertExtendsClassFailure(): void
     {
         $this->assertExtendsClass(\Exception::class, self::class);
     }

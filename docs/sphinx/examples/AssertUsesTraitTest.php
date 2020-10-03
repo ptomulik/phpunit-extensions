@@ -9,13 +9,13 @@ final class AssertUsesTraitTest extends \PHPUnit\Framework\TestCase
     use \PHPFox\PHPUnit\UsesTraitTrait;
     use ExampleTraitForAssertUsesTraitTest;
 
-    public function testAssertUsesTrait()
+    public function testAssertUsesTrait(): void
     {
         $this->assertUsesTrait(ExampleTraitForAssertUsesTraitTest::class, self::class);
         $this->assertUsesTrait(ExampleTraitForAssertUsesTraitTest::class, $this);
     }
 
-    public function testAssertUsesTraitFailure()
+    public function testAssertUsesTraitFailure(): void
     {
         $this->assertUsesTrait(ExampleTraitForAssertUsesTraitTest::class, \RuntimeException::class);
     }

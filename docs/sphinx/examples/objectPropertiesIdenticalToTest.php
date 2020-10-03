@@ -6,12 +6,12 @@ final class objectPropertiesIdenticalToTest extends \PHPUnit\Framework\TestCase
 
     public $attribute = 123;
 
-    public function getValue()
+    public function getValue(): int
     {
         return 321;
     }
 
-    public function testSuccess()
+    public function testSuccess(): void
     {
         // assert that:
         $this->assertThat($this, $this->objectPropertiesIdenticalTo([
@@ -20,7 +20,7 @@ final class objectPropertiesIdenticalToTest extends \PHPUnit\Framework\TestCase
         ]));
     }
 
-    public function testFailure()
+    public function testFailure(): void
     {
         // assert that:
         $this->assertThat($this, $this->objectPropertiesIdenticalTo([

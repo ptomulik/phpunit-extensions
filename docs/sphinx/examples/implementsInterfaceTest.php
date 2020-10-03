@@ -4,13 +4,13 @@ final class implementsInterfaceTest extends \PHPUnit\Framework\TestCase
 {
     use \PHPFox\PHPUnit\ImplementsInterfaceTrait;
 
-    public function testImplementsInterface()
+    public function testImplementsInterface(): void
     {
         $this->assertThat(\RuntimeException::class, $this->implementsInterface(\Throwable::class));
         $this->assertThat(new \RuntimeException(), $this->implementsInterface(\Throwable::class));
     }
 
-    public function testImplementsInterfaceFailure()
+    public function testImplementsInterfaceFailure(): void
     {
         $this->assertThat(self::class, $this->implementsInterface(\Throwable::class));
     }

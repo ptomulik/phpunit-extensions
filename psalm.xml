@@ -13,12 +13,11 @@
         <directory name="packages/phpunit-inheritance" />
         <directory name="packages/phpunit-pcre" />
         <directory name="packages/phpunit-properties" />
-        <directory name="docs/sphinx/examples" />
         <ignoreFiles>
-          <directory name="packages/phpunit-common/tests" />
-          <directory name="packages/phpunit-inheritance/tests" />
-          <directory name="packages/phpunit-pcre/tests" />
-          <directory name="packages/phpunit-properties/tests" />
+            <directory name="packages/phpunit-common/tests" />
+            <directory name="packages/phpunit-inheritance/tests" />
+            <directory name="packages/phpunit-pcre/tests" />
+            <directory name="packages/phpunit-properties/tests" />
         </ignoreFiles>
     </projectFiles>
 </psalm>
