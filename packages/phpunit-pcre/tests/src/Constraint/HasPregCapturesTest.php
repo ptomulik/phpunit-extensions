@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace PHPFox\PHPUnit\Constraint;
 
+use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\Constraint\LogicalNot;
 use PHPUnit\Framework\ExpectationFailedException;
-use PHPFox\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -91,7 +91,7 @@ final class HasPregCapturesTest extends TestCase
         return [
             'HasPregCapturesTest.php:'.__LINE__ => [
                 'args' => [[
-                    'foo' => new \stdClass,
+                    'foo' => new \stdClass(),
                 ]],
                 'message' => sprintf($template, 'expectation', 'key \'foo\''),
             ],

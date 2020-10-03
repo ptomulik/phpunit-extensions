@@ -164,7 +164,7 @@ final class HasPregCaptures extends Constraint
 
         foreach ($array as $key => $value) {
             if (!self::isValidExpectation($value)) {
-                $invalid[] = is_string($key) ? sprintf("'%s'", addslashes($key)) : (string)$key;
+                $invalid[] = is_string($key) ? sprintf("'%s'", addslashes($key)) : (string) $key;
             }
         }
 
