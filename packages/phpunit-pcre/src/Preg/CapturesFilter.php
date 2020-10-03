@@ -40,6 +40,7 @@ final class CapturesFilter implements CapturesFilterInterface
      * Filter-out all elements of $array with $this->acceptable().
      *
      * @return array the filtered array
+     * @psalm-return array<array-key, string|null|array{0:string|null,1:int}>
      */
     public function filter(array $array): array
     {
