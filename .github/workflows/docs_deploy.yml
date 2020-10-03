@@ -23,7 +23,7 @@ jobs:
 
       - name: Destination Dir
         run: |
-          echo ${{ github.ref }} | sed -e 's:refs/[^/]+/::'
+          echo ${{ github.ref }} | sed -e 's:refs/[^/]\+/::'
 ##
 ##      - name: Build API docs
 ##        run: |
