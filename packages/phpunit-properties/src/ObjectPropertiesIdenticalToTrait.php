@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit;
+namespace PHPTailors\PHPUnit;
 
-use PHPFox\PHPUnit\Constraint\ObjectPropertiesIdenticalTo;
+use PHPTailors\PHPUnit\Constraint\ObjectPropertiesIdenticalTo;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
 
@@ -38,7 +38,7 @@ trait ObjectPropertiesIdenticalToTrait
      *                         Optional failure message
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
+     * @throws \PHPTailors\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
      */
     public static function assertObjectPropertiesIdenticalTo(
         array $expected,
@@ -60,7 +60,7 @@ trait ObjectPropertiesIdenticalToTrait
      *                         Optional failure message
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
+     * @throws \PHPTailors\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
      */
     public static function assertNotObjectPropertiesIdenticalTo(
         array $expected,
@@ -76,7 +76,7 @@ trait ObjectPropertiesIdenticalToTrait
      * @param array $expected
      *                        An array of key => value pairs with expected values of attributes
      *
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException when non-string keys are found in *$expected*
+     * @throws \PHPTailors\PHPUnit\InvalidArgumentException when non-string keys are found in *$expected*
      */
     public static function objectPropertiesIdenticalTo(array $expected): ObjectPropertiesIdenticalTo
     {

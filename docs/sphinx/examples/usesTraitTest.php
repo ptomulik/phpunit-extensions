@@ -6,7 +6,7 @@ trait ExampleTraitForUsesTraitTest
 
 final class UsesTraitTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\UsesTraitTrait;
+    use \PHPTailors\PHPUnit\UsesTraitTrait;
     use ExampleTraitForUsesTraitTest;
 
     public function testUsesTrait(): void

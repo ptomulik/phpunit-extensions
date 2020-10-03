@@ -1,22 +1,23 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Properties;
+namespace PHPTailors\PHPUnit\Properties;
 
 use PHPUnit\Framework\TestCase;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait
+ * @covers \PHPTailors\PHPUnit\Properties\ExpectedPropertiesDecoratorTrait
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ExpectedPropertiesDecoratorTraitTest extends TestCase
 {

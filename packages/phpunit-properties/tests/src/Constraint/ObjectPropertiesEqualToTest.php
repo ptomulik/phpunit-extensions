@@ -1,27 +1,28 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\ExtendsClassTrait;
-use PHPFox\PHPUnit\ImplementsInterfaceTrait;
-use PHPFox\PHPUnit\Properties\EqualityComparator;
+use PHPTailors\PHPUnit\ExtendsClassTrait;
+use PHPTailors\PHPUnit\ImplementsInterfaceTrait;
+use PHPTailors\PHPUnit\Properties\EqualityComparator;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Constraint\ObjectPropertiesEqualTo
- * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
- * @covers \PHPFox\PHPUnit\Constraint\ProvObjectPropertiesTrait
- * @covers \PHPFox\PHPUnit\Properties\AbstractConstraint
+ * @covers \PHPTailors\PHPUnit\Constraint\ObjectPropertiesEqualTo
+ * @covers \PHPTailors\PHPUnit\Constraint\PropertiesConstraintTestCase
+ * @covers \PHPTailors\PHPUnit\Constraint\ProvObjectPropertiesTrait
+ * @covers \PHPTailors\PHPUnit\Properties\AbstractConstraint
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ObjectPropertiesEqualToTest extends PropertiesConstraintTestCase
 {

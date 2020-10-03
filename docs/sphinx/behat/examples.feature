@@ -1,6 +1,6 @@
 Feature: Examples
   @phpunit-inheritance
-  Scenario Outline: Examples for php-fox/phpunit-inheritance
+  Scenario Outline: Examples for php-tailors/phpunit-inheritance
     Given I tested <example_file> with PHPUnit
     Then I should see PHPUnit stdout from <stdout_file>
     And I should see stderr from <stderr_file>
@@ -16,7 +16,7 @@ Feature: Examples
       | "usesTraitTest.php"                 | "usesTraitTest.stdout"                 | "usesTraitTest.stderr"                 | 1         |
 
   @phpunit-pcre
-  Scenario Outline: Examples for php-fox/phpunit-pcre
+  Scenario Outline: Examples for php-tailors/phpunit-pcre
     Given I tested <example_file> with PHPUnit
     Then I should see PHPUnit stdout from <stdout_file>
     And I should see stderr from <stderr_file>
@@ -28,7 +28,7 @@ Feature: Examples
       | "hasPregCapturesTest.php"        | "hasPregCapturesTest.stdout"       | "hasPregCapturesTest.stderr"       | 1         |
 
   @phpunit-properties
-  Scenario Outline: Examples for php-fox/phpunit-properties
+  Scenario Outline: Examples for php-tailors/phpunit-properties
     Given I tested <example_file> with PHPUnit
     Then I should see PHPUnit stdout from <stdout_file>
     And I should see stderr from <stderr_file>

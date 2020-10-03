@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace PHPFox\PHPUnit\Docs\Behat;
+namespace PHPTailors\PHPUnit\Docs\Behat;
 
 use Behat\Behat\Context\Context;
 use PHPUnit\Framework\Assert;

@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-class PHPFoxDockerInitializer
+class PHPTailorsDockerInitializer
 {
     public function __construct(array $config = [])
     {
@@ -43,9 +43,9 @@ class PHPFoxDockerInitializer
             '@PROJECT@'         => 'phpunit-extensions',
             '@UID@'             => (string)getmyuid(),
             '@GID@'             => (string)getmygid(),
-            '@USER@'            => 'php-fox',
-            '@GROUP@'           => 'php-fox',
-            '@HOME@'            => '/home/php-fox',
+            '@USER@'            => 'php-tailors',
+            '@GROUP@'           => 'php-tailors',
+            '@HOME@'            => '/home/php-tailors',
             '@CODE@'            => '/code',
             '@PHP_TAG@'         => 'cli',
             '@APACHE_TAG@'      => 'apache',
@@ -69,6 +69,6 @@ class PHPFoxDockerInitializer
     }
 };
 
-(new PHPFoxDockerInitializer)->run();
+(new PHPTailorsDockerInitializer)->run();
 
 // vim: syntax=php sw=4 ts=4 et:

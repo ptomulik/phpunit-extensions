@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 $header = <<<'EOF'
-This file is part of php-fox/phpunit-extensions.
+This file is part of php-tailors/phpunit-extensions.
 
 (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
 

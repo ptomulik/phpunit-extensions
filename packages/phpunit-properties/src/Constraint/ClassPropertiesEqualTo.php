@@ -1,21 +1,21 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Properties\AbstractConstraint;
-use PHPFox\PHPUnit\Properties\ClassPropertySelector;
-use PHPFox\PHPUnit\Properties\ComparatorInterface;
-use PHPFox\PHPUnit\Properties\ConstraintImplementationTrait;
-use PHPFox\PHPUnit\Properties\EqualityComparator;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
+use PHPTailors\PHPUnit\Properties\AbstractConstraint;
+use PHPTailors\PHPUnit\Properties\ClassPropertySelector;
+use PHPTailors\PHPUnit\Properties\ComparatorInterface;
+use PHPTailors\PHPUnit\Properties\ConstraintImplementationTrait;
+use PHPTailors\PHPUnit\Properties\EqualityComparator;
+use PHPTailors\PHPUnit\Properties\PropertySelectorInterface;
 
 /**
  * Constraint that accepts classes having properties equal to specified ones.

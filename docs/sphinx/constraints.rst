@@ -4,7 +4,7 @@ Constraints
 ===========
 
 This section lists the various constraint methods provided by sub-packages of
-php-fox/phpunit-extensions. The methods may be added to your test class by
+php-tailors/phpunit-extensions. The methods may be added to your test class by
 including appropriate trait as shown in prerequisite tables below.
 
 .. _constraints.classPropertiesEqualTo:
@@ -18,9 +18,9 @@ classPropertiesEqualTo
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ClassPropertiesEqualToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ClassPropertiesEqualToTrait`
 
 Synopsis:
 
@@ -28,7 +28,7 @@ Synopsis:
 
   function classPropertiesEqualTo(array $expected)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\ClassPropertiesEqualTo` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\ClassPropertiesEqualTo` constraint.
 
 The constraint accepts classes having selected properties equal to
 ``$expected``.
@@ -57,9 +57,9 @@ classPropertiesIdenticalTo
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ClassPropertiesIdenticalToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ClassPropertiesIdenticalToTrait`
 
 Synopsis:
 
@@ -67,7 +67,7 @@ Synopsis:
 
   function classPropertiesIdenticalTo(array $expected)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\ClassPropertiesIdenticalTo` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\ClassPropertiesIdenticalTo` constraint.
 
 The constraint accepts classes having selected properties identical to
 ``$expected``.
@@ -96,9 +96,9 @@ extendsClass
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-inheritance
+     - php-tailors/phpunit-inheritance
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ExtendsClassTrait`
+     - :class:`PHPTailors\\PHPUnit\\ExtendsClassTrait`
 
 Synopsis:
 
@@ -106,7 +106,7 @@ Synopsis:
 
   function extendsClass(string $parent)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\ExtendsClass` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\ExtendsClass` constraint.
 
 The constraint accepts objects (and classes) that extend ``$parent`` class. The
 examined ``$subject`` may be an ``object`` or a class name as ``string``:
@@ -141,9 +141,9 @@ hasPregCaptures
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-pcre
+     - php-tailors/phpunit-pcre
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\HasPregCapturesTrait`
+     - :class:`PHPTailors\\PHPUnit\\HasPregCapturesTrait`
 
 Synopsis:
 
@@ -151,7 +151,7 @@ Synopsis:
 
   function hasPregCaptures(array $expected)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\HasPregCaptures` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\HasPregCaptures` constraint.
 
 The constraint accepts arrays of matches returned from ``preg_match()`` having
 capture groups as specified in ``$expected``. Only entries present in
@@ -187,9 +187,9 @@ implementsInterface
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-inheritance
+     - php-tailors/phpunit-inheritance
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ImplementsInterfaceTrait`
+     - :class:`PHPTailors\\PHPUnit\\ImplementsInterfaceTrait`
 
 Synopsis:
 
@@ -197,7 +197,7 @@ Synopsis:
 
   function implementsInterface(array $interface)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\ImplementsInterface` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\ImplementsInterface` constraint.
 
 The constraint accepts objects (and classes/interfaces) that implement given
 ``$interface``.
@@ -223,9 +223,9 @@ objectPropertiesEqualTo
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ObjectPropertiesEqualToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ObjectPropertiesEqualToTrait`
 
 Synopsis:
 
@@ -233,7 +233,7 @@ Synopsis:
 
   function objectPropertiesEqualTo(array $expected)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\ObjectPropertiesEqualTo` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\ObjectPropertiesEqualTo` constraint.
 
 The constraint accepts objects having selected properties equal to
 ``$expected``.
@@ -262,9 +262,9 @@ objectPropertiesIdenticalTo
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ObjectPropertiesIdenticalToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ObjectPropertiesIdenticalToTrait`
 
 Synopsis:
 
@@ -272,7 +272,7 @@ Synopsis:
 
   function objectPropertiesIdenticalTo(array $expected)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\ObjectPropertiesIdenticalTo` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\ObjectPropertiesIdenticalTo` constraint.
 
 The constraint accepts objects having selected properties identical to
 ``$expected``.
@@ -300,9 +300,9 @@ usesTrait
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-inheritance
+     - php-tailors/phpunit-inheritance
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\UsesTraitTrait`
+     - :class:`PHPTailors\\PHPUnit\\UsesTraitTrait`
 
 Synopsis:
 
@@ -310,7 +310,7 @@ Synopsis:
 
   function usesTrait(array $trait)
 
-Creates :class:`PHPFox\\PHPUnit\\Constraint\\UsesTrait` constraint.
+Creates :class:`PHPTailors\\PHPUnit\\Constraint\\UsesTrait` constraint.
 
 The constraint accepts objects (and classes) that use given ``$trait``.
 

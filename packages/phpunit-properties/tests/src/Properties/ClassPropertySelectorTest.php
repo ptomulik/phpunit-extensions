@@ -1,26 +1,27 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Properties;
+namespace PHPTailors\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\ExtendsClassTrait;
-use PHPFox\PHPUnit\ImplementsInterfaceTrait;
-use PHPFox\PHPUnit\InvalidArgumentException;
+use PHPTailors\PHPUnit\ExtendsClassTrait;
+use PHPTailors\PHPUnit\ImplementsInterfaceTrait;
+use PHPTailors\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Properties\AbstractPropertySelector
- * @covers \PHPFox\PHPUnit\Properties\ClassPropertySelector
+ * @covers \PHPTailors\PHPUnit\Properties\AbstractPropertySelector
+ * @covers \PHPTailors\PHPUnit\Properties\ClassPropertySelector
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ClassPropertySelectorTest extends TestCase
 {

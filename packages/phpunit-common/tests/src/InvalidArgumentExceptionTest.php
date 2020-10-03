@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit;
+namespace PHPTailors\PHPUnit;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-if (!function_exists('PHPFox\\PHPUnit\\testInvalidArgumentExceptionFromBackTrace')) {
+if (!function_exists('PHPTailors\\PHPUnit\\testInvalidArgumentExceptionFromBackTrace')) {
     function testInvalidArgumentExceptionFromBackTrace(
         int $argument,
         string $expected,
@@ -36,9 +36,10 @@ if (!function_exists('PHPFox\\PHPUnit\\testInvalidArgumentExceptionFromBackTrace
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\InvalidArgumentException
+ * @covers \PHPTailors\PHPUnit\InvalidArgumentException
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class InvalidArgumentExceptionTest extends TestCase
 {

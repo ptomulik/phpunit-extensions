@@ -1,25 +1,26 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit;
+namespace PHPTailors\PHPUnit;
 
-use PHPFox\PHPUnit\Constraint\ExtendsClass;
-use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
+use PHPTailors\PHPUnit\Constraint\ExtendsClass;
+use PHPTailors\PHPUnit\Examples\Inheritance\ExampleTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\ExtendsClassTrait
+ * @covers \PHPTailors\PHPUnit\ExtendsClassTrait
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ExtendsClassTraitTest extends TestCase
 {

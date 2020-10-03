@@ -2,7 +2,7 @@
 
 final class AssertExtendsClassTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\ExtendsClassTrait;
+    use \PHPTailors\PHPUnit\ExtendsClassTrait;
 
     public function testAssertExtendsClass(): void
     {

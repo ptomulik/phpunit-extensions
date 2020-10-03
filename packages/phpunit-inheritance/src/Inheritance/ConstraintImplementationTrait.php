@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Inheritance;
+namespace PHPTailors\PHPUnit\Inheritance;
 
-use PHPFox\PHPUnit\StringArgumentValidator;
+use PHPTailors\PHPUnit\StringArgumentValidator;
 
 /**
  * Implementation of an inheritance constraint class.
@@ -24,11 +24,12 @@ use PHPFox\PHPUnit\StringArgumentValidator;
  *      private static $supports;       // for example $supports = ['class_exists'];
  *
  * @internal This trait is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 trait ConstraintImplementationTrait
 {
     /**
-     * @throws \PHPFox\PHPUnit\InvalidArgumentException
+     * @throws \PHPTailors\PHPUnit\InvalidArgumentException
      *
      * @psalm-assert class-string $expected
      */

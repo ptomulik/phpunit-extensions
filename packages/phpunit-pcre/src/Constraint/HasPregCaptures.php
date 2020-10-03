@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\InvalidArgumentException;
-use PHPFox\PHPUnit\Preg\CapturesFilter;
-use PHPFox\PHPUnit\Preg\CapturesFilterInterface;
+use PHPTailors\PHPUnit\InvalidArgumentException;
+use PHPTailors\PHPUnit\Preg\CapturesFilter;
+use PHPTailors\PHPUnit\Preg\CapturesFilterInterface;
 use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Comparator\ComparisonFailure;
 

@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Inheritance;
+namespace PHPTailors\PHPUnit\Inheritance;
 
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot;
@@ -19,6 +19,7 @@ use PHPUnit\Framework\Constraint\Operator;
  * ImplementsInterface, UsesTrait, etc.).
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 abstract class AbstractConstraint extends Constraint
 {

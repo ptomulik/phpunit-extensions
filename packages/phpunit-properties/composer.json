@@ -1,13 +1,13 @@
 {
-    "name": "php-fox/phpunit-properties",
+    "name": "php-tailors/phpunit-properties",
     "description": "Assertions on object properties for PHPUnit-based tests",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "support": {
-      "issues": "https://github.com/php-fox/phpunit-extensions/issues",
-      "source": "https://github.com/php-fox/phpunit-extensions"
+      "issues": "https://github.com/php-tailors/phpunit-extensions/issues",
+      "source": "https://github.com/php-tailors/phpunit-extensions"
     },
     "authors": [
         {
@@ -17,22 +17,22 @@
     ],
     "require": {
         "php": ">=7.3",
-        "php-fox/phpunit-common": "*",
+        "php-tailors/phpunit-common": "*",
         "sebastian/recursion-context": "^4.0.3",
         "sebastian/exporter": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": ">=9.3",
-        "php-fox/phpunit-inheritance": "*"
+        "php-tailors/phpunit-inheritance": "*"
     },
     "autoload": {
       "psr-4" : {
-        "PHPFox\\PHPUnit\\" : "src/"
+        "PHPTailors\\PHPUnit\\" : "src/"
       }
     },
     "autoload-dev": {
       "psr-4" : {
-        "PHPFox\\PHPUnit\\" : "tests/src/"
+        "PHPTailors\\PHPUnit\\" : "tests/src/"
       }
     }
 }

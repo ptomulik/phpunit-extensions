@@ -2,8 +2,8 @@ ARG FOX_IMG
 FROM ${FOX_IMG}
 MAINTAINER Paweł Tomulik <ptomulik@meil.pw.edu.pl>
 
-ARG FOX_USER='php-fox'
-ARG FOX_GROUP='php-fox'
+ARG FOX_USER='php-tailors'
+ARG FOX_GROUP='php-tailors'
 ARG FOX_UID=6789
 ARG FOX_GID=6789
 ARG FOX_HOME=/home/${FOX_USER}

@@ -2,7 +2,7 @@
 
 final class AssertImplementsInterfaceTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\ImplementsInterfaceTrait;
+    use \PHPTailors\PHPUnit\ImplementsInterfaceTrait;
 
     public function testAssertImplementsInterface(): void
     {

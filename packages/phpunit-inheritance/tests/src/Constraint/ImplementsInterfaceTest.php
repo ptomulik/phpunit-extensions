@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
 use Exception;
 use Iterator;
-use PHPFox\PHPUnit\Examples\Inheritance\ExampleTrait;
-use PHPFox\PHPUnit\InvalidArgumentException;
+use PHPTailors\PHPUnit\Examples\Inheritance\ExampleTrait;
+use PHPTailors\PHPUnit\InvalidArgumentException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Throwable;
@@ -21,12 +21,13 @@ use Traversable;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Constraint\ImplementsInterface
- * @covers \PHPFox\PHPUnit\Constraint\InheritanceConstraintTestTrait
- * @covers \PHPFox\PHPUnit\Inheritance\AbstractConstraint
- * @covers \PHPFox\PHPUnit\Inheritance\ConstraintImplementationTrait
+ * @covers \PHPTailors\PHPUnit\Constraint\ImplementsInterface
+ * @covers \PHPTailors\PHPUnit\Constraint\InheritanceConstraintTestTrait
+ * @covers \PHPTailors\PHPUnit\Inheritance\AbstractConstraint
+ * @covers \PHPTailors\PHPUnit\Inheritance\ConstraintImplementationTrait
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ImplementsInterfaceTest extends TestCase
 {

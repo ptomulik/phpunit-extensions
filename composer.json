@@ -1,8 +1,8 @@
 {
-    "name": "php-fox/phpunit-extensions",
+    "name": "php-tailors/phpunit-extensions",
     "autoload": {
         "psr-4": {
-            "PHPFox\\PHPUnit\\": [
+            "PHPTailors\\PHPUnit\\": [
                 "packages/phpunit-common/src/",
                 "packages/phpunit-inheritance/src/",
                 "packages/phpunit-pcre/src/",
@@ -12,20 +12,20 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PHPFox\\PHPUnit\\": [
+            "PHPTailors\\PHPUnit\\": [
                 "packages/phpunit-common/tests/src/",
                 "packages/phpunit-inheritance/tests/src/",
                 "packages/phpunit-pcre/tests/src/",
                 "packages/phpunit-properties/tests/src/"
             ],
-            "PHPFox\\PHPUnit\\Docs\\Behat\\": "docs/sphinx/behat/"
+            "PHPTailors\\PHPUnit\\Docs\\Behat\\": "docs/sphinx/behat/"
         }
     },
     "replace": {
-        "php-fox/phpunit-common": "self.version",
-        "php-fox/phpunit-inheritance": "self.version",
-        "php-fox/phpunit-pcre": "self.version",
-        "php-fox/phpunit-properties": "self.version"
+        "php-tailors/phpunit-common": "self.version",
+        "php-tailors/phpunit-inheritance": "self.version",
+        "php-tailors/phpunit-pcre": "self.version",
+        "php-tailors/phpunit-properties": "self.version"
     },
     "description": "Extensions to PHPUnit framework",
     "require": {

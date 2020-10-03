@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Properties;
+namespace PHPTailors\PHPUnit\Properties;
 
 use SebastianBergmann\Exporter\Exporter as SebastianBergmannExporter;
 use SebastianBergmann\RecursionContext\Context;
@@ -17,6 +17,7 @@ use SebastianBergmann\RecursionContext\Context;
  * An exporter that handles PropertiesInterface in a special way.
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class Exporter extends SebastianBergmannExporter
 {

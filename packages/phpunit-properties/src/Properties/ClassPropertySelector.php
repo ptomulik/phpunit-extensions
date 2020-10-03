@@ -1,19 +1,20 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Properties;
+namespace PHPTailors\PHPUnit\Properties;
 
-use PHPFox\PHPUnit\InvalidArgumentException;
+use PHPTailors\PHPUnit\InvalidArgumentException;
 
 /**
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ClassPropertySelector extends AbstractPropertySelector
 {

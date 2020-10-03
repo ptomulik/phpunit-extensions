@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Inheritance\AbstractConstraint;
-use PHPFox\PHPUnit\Inheritance\ConstraintImplementationTrait;
+use PHPTailors\PHPUnit\Inheritance\AbstractConstraint;
+use PHPTailors\PHPUnit\Inheritance\ConstraintImplementationTrait;
 
 /**
  * Constraint that accepts classes that extend given class.

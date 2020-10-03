@@ -1,25 +1,26 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit;
+namespace PHPTailors\PHPUnit;
 
-use PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait;
+use PHPTailors\PHPUnit\Constraint\ProvHasPregCapturesTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Constraint\ProvHasPregCapturesTrait
- * @covers \PHPFox\PHPUnit\HasPregCapturesTrait
+ * @covers \PHPTailors\PHPUnit\Constraint\ProvHasPregCapturesTrait
+ * @covers \PHPTailors\PHPUnit\HasPregCapturesTrait
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class HasPregCapturesTraitTest extends TestCase
 {

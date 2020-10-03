@@ -1,21 +1,21 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Properties\AbstractConstraint;
-use PHPFox\PHPUnit\Properties\ComparatorInterface;
-use PHPFox\PHPUnit\Properties\ConstraintImplementationTrait;
-use PHPFox\PHPUnit\Properties\IdentityComparator;
-use PHPFox\PHPUnit\Properties\ObjectPropertySelector;
-use PHPFox\PHPUnit\Properties\PropertySelectorInterface;
+use PHPTailors\PHPUnit\Properties\AbstractConstraint;
+use PHPTailors\PHPUnit\Properties\ComparatorInterface;
+use PHPTailors\PHPUnit\Properties\ConstraintImplementationTrait;
+use PHPTailors\PHPUnit\Properties\IdentityComparator;
+use PHPTailors\PHPUnit\Properties\ObjectPropertySelector;
+use PHPTailors\PHPUnit\Properties\PropertySelectorInterface;
 
 /**
  * Constraint that accepts objects having properties identical to specified ones.

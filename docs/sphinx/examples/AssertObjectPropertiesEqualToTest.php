@@ -2,7 +2,7 @@
 
 final class AssertObjectPropertiesEqualToTest extends PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\ObjectPropertiesEqualToTrait;
+    use \PHPTailors\PHPUnit\ObjectPropertiesEqualToTrait;
 
     public $attribute = 123;
 

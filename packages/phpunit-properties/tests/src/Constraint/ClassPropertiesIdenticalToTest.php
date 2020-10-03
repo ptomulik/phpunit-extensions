@@ -1,25 +1,26 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\Properties\IdentityComparator;
+use PHPTailors\PHPUnit\Properties\IdentityComparator;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\Constraint\ClassPropertiesIdenticalTo
- * @covers \PHPFox\PHPUnit\Constraint\PropertiesConstraintTestCase
- * @covers \PHPFox\PHPUnit\Constraint\ProvClassPropertiesTrait
- * @covers \PHPFox\PHPUnit\Properties\AbstractConstraint
+ * @covers \PHPTailors\PHPUnit\Constraint\ClassPropertiesIdenticalTo
+ * @covers \PHPTailors\PHPUnit\Constraint\PropertiesConstraintTestCase
+ * @covers \PHPTailors\PHPUnit\Constraint\ProvClassPropertiesTrait
+ * @covers \PHPTailors\PHPUnit\Properties\AbstractConstraint
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class ClassPropertiesIdenticalToTest extends PropertiesConstraintTestCase
 {

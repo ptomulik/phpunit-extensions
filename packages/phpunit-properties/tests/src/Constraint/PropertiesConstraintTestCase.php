@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit\Constraint;
+namespace PHPTailors\PHPUnit\Constraint;
 
-use PHPFox\PHPUnit\ExtendsClassTrait;
-use PHPFox\PHPUnit\ImplementsInterfaceTrait;
-use PHPFox\PHPUnit\InvalidArgumentException;
-use PHPFox\PHPUnit\Properties\AbstractConstraint;
-use PHPFox\PHPUnit\Properties\ExpectedPropertiesInterface;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapper;
-use PHPFox\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
+use PHPTailors\PHPUnit\ExtendsClassTrait;
+use PHPTailors\PHPUnit\ImplementsInterfaceTrait;
+use PHPTailors\PHPUnit\InvalidArgumentException;
+use PHPTailors\PHPUnit\Properties\AbstractConstraint;
+use PHPTailors\PHPUnit\Properties\ExpectedPropertiesInterface;
+use PHPTailors\PHPUnit\Properties\RecursivePropertiesUnwrapper;
+use PHPTailors\PHPUnit\Properties\RecursivePropertiesUnwrapperInterface;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\UnaryOperator;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -24,6 +24,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 abstract class PropertiesConstraintTestCase extends TestCase
 {

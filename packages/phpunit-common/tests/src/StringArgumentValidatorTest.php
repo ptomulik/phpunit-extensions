@@ -1,22 +1,23 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of php-fox/phpunit-extensions.
+ * This file is part of php-tailors/phpunit-extensions.
  *
  * (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  *
  * Distributed under MIT license.
  */
 
-namespace PHPFox\PHPUnit;
+namespace PHPTailors\PHPUnit;
 
 use PHPUnit\Framework\TestCase;
 
 /**
  * @small
- * @covers \PHPFox\PHPUnit\StringArgumentValidator
+ * @covers \PHPTailors\PHPUnit\StringArgumentValidator
  *
  * @internal This class is not covered by the backward compatibility promise
+ * @psalm-internal PHPTailors\PHPUnit
  */
 final class StringArgumentValidatorTest extends TestCase
 {

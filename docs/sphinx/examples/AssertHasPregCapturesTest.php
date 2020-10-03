@@ -2,7 +2,7 @@
 
 final class AssertHasPregCapturesTest extends PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\HasPregCapturesTrait;
+    use \PHPTailors\PHPUnit\HasPregCapturesTrait;
 
     private $regexp;
     private $subject;

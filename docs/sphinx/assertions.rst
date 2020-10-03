@@ -4,7 +4,7 @@ Assertions
 ==========
 
 This section lists the various assertion methods that are provided by
-sub-packages of php-fox/phpunit-extensions. Assertions may be added to your
+sub-packages of php-tailors/phpunit-extensions. Assertions may be added to your
 test class by including appropriate trait as shown in prerequisite tables
 below.
 
@@ -19,9 +19,9 @@ assertClassPropertiesEqualTo()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ClassPropertiesEqualToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ClassPropertiesEqualToTrait`
 
 Synopsis:
 
@@ -74,9 +74,9 @@ assertClassPropertiesIdenticalTo()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ClassPropertiesIdenticalToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ClassPropertiesIdenticalToTrait`
 
 Synopsis:
 
@@ -131,9 +131,9 @@ assertExtendsClass()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-inheritance
+     - php-tailors/phpunit-inheritance
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ExtendsClassTrait`
+     - :class:`PHPTailors\\PHPUnit\\ExtendsClassTrait`
 
 Synopsis:
 
@@ -183,9 +183,9 @@ assertHasPregCaptures()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-pcre
+     - php-tailors/phpunit-pcre
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\HasPregCapturesTrait`
+     - :class:`PHPTailors\\PHPUnit\\HasPregCapturesTrait`
 
 Synopsis:
 
@@ -243,9 +243,9 @@ assertImplementsInterface()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-inheritance
+     - php-tailors/phpunit-inheritance
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ImplementsInterfaceTrait`
+     - :class:`PHPTailors\\PHPUnit\\ImplementsInterfaceTrait`
 
 Synopsis:
 
@@ -296,9 +296,9 @@ assertObjectPropertiesEqualTo()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ObjectPropertiesEqualToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ObjectPropertiesEqualToTrait`
 
 Synopsis:
 
@@ -349,9 +349,9 @@ assertObjectPropertiesIdenticalTo()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-properties
+     - php-tailors/phpunit-properties
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\ObjectPropertiesIdenticalToTrait`
+     - :class:`PHPTailors\\PHPUnit\\ObjectPropertiesIdenticalToTrait`
 
 Synopsis:
 
@@ -402,9 +402,9 @@ assertUsesTrait()
    :header-rows: 0
 
    * - Package
-     - php-fox/phpunit-inheritance
+     - php-tailors/phpunit-inheritance
    * - Trait
-     - :class:`PHPFox\\PHPUnit\\UsesTraitTrait`
+     - :class:`PHPTailors\\PHPUnit\\UsesTraitTrait`
 
 
 Synopsis:

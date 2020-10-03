@@ -2,7 +2,7 @@
 
 final class extendsClassTest extends \PHPUnit\Framework\TestCase
 {
-    use \PHPFox\PHPUnit\ExtendsClassTrait;
+    use \PHPTailors\PHPUnit\ExtendsClassTrait;
 
     public function testExtendsClass(): void
     {
