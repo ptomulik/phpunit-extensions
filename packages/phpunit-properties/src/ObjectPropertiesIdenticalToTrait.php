@@ -38,7 +38,7 @@ trait ObjectPropertiesIdenticalToTrait
      *                         Optional failure message
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPTailors\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
+     * @throws \PHPTailors\PHPUnit\InvalidArgumentException  when a non-string keys are found in *$expected*
      */
     public static function assertObjectPropertiesIdenticalTo(
         array $expected,
@@ -60,7 +60,7 @@ trait ObjectPropertiesIdenticalToTrait
      *                         Optional failure message
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPTailors\PHPUnit\InvalidArgumentException      when a non-string keys are found in *$expected*
+     * @throws \PHPTailors\PHPUnit\InvalidArgumentException  when a non-string keys are found in *$expected*
      */
     public static function assertNotObjectPropertiesIdenticalTo(
         array $expected,
