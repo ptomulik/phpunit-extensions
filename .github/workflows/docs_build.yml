@@ -38,6 +38,8 @@ jobs:
   deploy-docs:
     name: Deploy Docs
 
+    needs: build-docs
+
     runs-on: ubuntu-latest
 
     steps:
