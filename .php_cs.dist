@@ -34,7 +34,10 @@ return PhpCsFixer\Config::create()
                 '=>' => 'align_single_space_minimal',
                 '='  => 'single_space'
             ],
-        ]
+        ],
+        // 'phpdoc_to_comment' => true, didn't play well with annotations we
+        // needed for psalm
+        'phpdoc_to_comment' => false,
     ])
 ;
 // vim: syntax=php sw=4 ts=4 et:

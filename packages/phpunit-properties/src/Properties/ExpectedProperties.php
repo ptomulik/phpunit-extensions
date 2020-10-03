@@ -21,7 +21,7 @@ final class ExpectedProperties extends \ArrayObject implements ExpectedPropertie
     private $propertySelector;
 
     /**
-     * @param array|null|object $input
+     * @param null|array|object $input
      */
     public function __construct(PropertySelectorInterface $propertySelector, $input = [])
     {
