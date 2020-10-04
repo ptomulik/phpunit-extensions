@@ -55,7 +55,7 @@ final class InvalidArgumentExceptionTest extends TestCase
     /**
      * @dataProvider provFromBackTrace
      */
-    public function testFromBackTraceFromMethod(int $argument, string $expected, string $provided): void
+    public function testFromBackTrace(int $argument, string $expected, string $provided): void
     {
         $message = sprintf(
             'Argument #%d of %s() must be %s, %s given.',
