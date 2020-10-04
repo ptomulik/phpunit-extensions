@@ -20,8 +20,7 @@ jobs:
         if: startsWith(github.ref, 'refs/heads/')
         run: |
           BRANCH_NAME="${GITHUB_REF##refs/heads/}"
-          echo "::set-output name=dest_dir::${BRANCH_NAME}"
-          echo "::set-output name=deploy_tag_name::deploy-${BRANCH_NAME}"
+          echo "::set-output name=branch_name::${BRANCH_NAME}"
           echo "BRANCH_NAME=${BRANCH_NAME}"
 
       - id: tag_info
