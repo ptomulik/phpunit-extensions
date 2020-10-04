@@ -5,7 +5,8 @@ on:
     branches:
       - master
       - devel
-      - '[0-9]+.[0-9]+'
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   deploy-docs:
@@ -14,10 +15,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - id: variables
-        name: Create Some Variables
+      - id: prepare_info
+        name: Prepare branch/tag info
+        if: startsWith(github.ref, 'refs/heads/')
         run: |
-          echo "::set-output name=branch::${{ github.ref }}" | sed -e 's:refs/[^/]\+/::'
+          BRANCH_NAME="${GITHUB_REF##refs/heads/}"
+          echo "::set-output name=dest_dir::${BRANCH_NAME}"
+          echo "::set-output name=deploy_tag_name::deploy-${BRANCH_NAME}"
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG_NAME="${GITHUB_REF##refs/tags/}"
+          echo "::set-output name=dest_dir::${TAG_NAME}" | sed -e 's:^\([0-9]\+\.[0-9]\+\).*:\1:'
+          echo "::set-output name=tag_name::${TAG_NAME}"
+          echo "::set-output name=deploy_tag_name::doc-${TAG_NAME}"
 
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
@@ -38,5 +48,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build/html
-          destination_dir: ./docs/${{ steps.variables.outputs.branch }}
+          destination_dir: ./docs/${{ steps.prepare_info.outputs.dest_dir}}
           force_orphan: false
+          tag_name: ${{ steps.prepare_info.outputs.deploy_tag_name }}
+          tag_message: "deployment of ${{ steps.prepare_info.outputs.tag_name }} docs"
