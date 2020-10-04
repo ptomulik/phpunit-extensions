@@ -8,6 +8,10 @@
 
 Additional constraints and assertions for use with [phpunit](https://phpunit.de).
 
+## Under development
+
+The project is in initial phase. No releases yet!
+
 ## Online documentation
 
 - https://php-tailors.github.io/phpunit-extensions/docs
