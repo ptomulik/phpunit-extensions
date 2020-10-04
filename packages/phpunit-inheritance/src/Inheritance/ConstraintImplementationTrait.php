@@ -10,6 +10,7 @@
 
 namespace PHPTailors\PHPUnit\Inheritance;
 
+use PHPTailors\PHPUnit\InvalidReturnValueException;
 use PHPTailors\PHPUnit\StringArgumentValidator;
 
 /**
@@ -59,7 +60,7 @@ trait ConstraintImplementationTrait
     protected function inheritance(string $class): array
     {
         $value = (self::$inheritance)($class);
-        self::assertIsArray($value);
+        self::assertReturnValueIsArray([self::class, '$inheritance'], $value);
 
         return $value;
     }
@@ -84,12 +85,17 @@ trait ConstraintImplementationTrait
     }
 
     /**
+     * @param mixed $function
      * @param mixed $value
+     *
+     * @psalm-template ValueType $value
+     * @psalm-param ValueType $value
+     * @param-out ValueType $value
      */
-    private static function assertIsArray($value): void
+    private static function assertReturnValueIsArray($function, &$value): void
     {
         if (!is_array($value)) {
-            throw new \Exception('function returned false');
+            throw InvalidReturnValueException::fromExpectedTypeAndActualValue($function, 'array', $value);
         }
     }
 }

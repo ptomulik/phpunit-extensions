@@ -10,29 +10,7 @@
 
 namespace PHPTailors\PHPUnit;
 
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-
-//if (!function_exists('PHPTailors\\PHPUnit\\testInvalidReturnValueExceptionFromExpectedAndActual')) {
-//    function testInvalidReturnValueExceptionFromExpectedAndActual(
-//        int $argument,
-//        string $expected,
-//        string $actual
-//    ): InvalidReturnValueException {
-//        $message = sprintf(
-//            'Argument #%d of %s() must be %s, %s given.',
-//            $argument,
-//            __FUNCTION__,
-//            $expected,
-//            $actual
-//        );
-//
-//        $exception = InvalidReturnValueException::fromExpectedAndActual($argument, $expected, $actual);
-//        Assert::assertSame($message, $exception->getMessage());
-//
-//        return InvalidReturnValueException::fromExpectedAndActual($argument, $expected, $actual, 2);
-//    }
-//}
 
 /**
  * @small
@@ -47,19 +25,38 @@ final class InvalidReturnValueExceptionTest extends TestCase
     {
         return [
             'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
-                'a string', 'integer',
+                'sprintf', 'a string', 'integer',
+            ],
+
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                'inexistentFunction', 'a string', 'integer',
+            ],
+
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                function (string $s): string { return 2; }, 'a string', 'integer',
+            ],
+
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                123, 'a string', 'integer',
+            ],
+
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                null, 'a string', 'integer',
             ],
         ];
     }
 
     /**
      * @dataProvider provFromExpectedAndActual
+     *
+     * @param array{0:string|object,1:string}|string|callable $function
      */
-    public function testFromExpectedAndActual(string $expected, string $actual): void
+    public function testFromExpectedAndActual($function, string $expected, string $actual): void
     {
-        $message = sprintf('Return value of %s() must be %s, %s returned', 'foo', $expected, $actual);
+        $name = self::getFunctionName($function);
+        $message = sprintf('Return value of %s() must be %s, %s returned', $name, $expected, $actual);
 
-        $exception = InvalidReturnValueException::fromExpectedAndActual('foo', $expected, $actual);
+        $exception = InvalidReturnValueException::fromExpectedAndActual($name, $expected, $actual);
         self::assertSame($message, $exception->getMessage());
     }
 
@@ -67,13 +64,23 @@ final class InvalidReturnValueExceptionTest extends TestCase
     {
         return [
             'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
-                'string', 123,
+                'sprintf', 'string', 123,
             ],
             'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
-                'string', null,
+                'inexistentFunction', 'string', 123,
             ],
             'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
-                'string', new \stdClass(),
+                [self::class, 'provFromExpectedTypeAndActualValue'], 'string', null,
+            ],
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                [self::class, 'inexistentMethod'], 'string', null,
+            ],
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                '', 'string', new \stdClass(),
+            ],
+
+            'InvalidReturnValueExceptionTest.php:'.__LINE__ => [
+                function (string $s): string { return 2; }, 'a string', 2,
             ],
         ];
     }
@@ -81,15 +88,30 @@ final class InvalidReturnValueExceptionTest extends TestCase
     /**
      * @dataProvider provFromExpectedTypeAndActualValue
      *
-     * @param mixed $actual
+     * @param array{0:string|object,1:string}|string|callable $function
+     * @param mixed                                           $actual
      */
-    public function testFromExpectedTypeAndActualValue(string $expected, $actual): void
+    public function testFromExpectedTypeAndActualValue($function, string $expected, $actual): void
     {
+        $name = self::getFunctionName($function);
         $actualType = is_object($actual) ? 'object' : gettype($actual);
-        $message = sprintf('Return value of %s() must be of the type %s, %s returned', 'foo', $expected, $actualType);
+        $message = sprintf('Return value of %s() must be of the type %s, %s returned', $name, $expected, $actualType);
 
-        $exception = InvalidReturnValueException::fromExpectedTypeAndActualValue('foo', $expected, $actual);
+        $exception = InvalidReturnValueException::fromExpectedTypeAndActualValue($name, $expected, $actual);
         self::assertSame($message, $exception->getMessage());
+    }
+
+    protected static function getFunctionName($function): string
+    {
+        if (is_string($function)) {
+            $name = $function;
+        } elseif (is_array($function)) {
+            $name = sprintf('%s::%s', is_object($function[0]) ? get_class($function[0]) : $function[0], $function[1]);
+        } else {
+            is_callable($function, true, $name);
+        }
+
+        return $name;
     }
 }
 
