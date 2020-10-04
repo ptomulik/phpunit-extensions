@@ -36,12 +36,12 @@ jobs:
       - id: dest_dir
         name: Determine DEST_DIR
         run: |
-          if [ ! -z "${{ steps.tag_info.outputs.tag_name }}" ]; then
-            DEST_DIR=`echo ${{ steps.tag_info.outputs.tag_name }} | sed -e 's:^\([0-9]\+\.[0-9]\+\).*:\1:'`;
-          elsif [ ! -z "${{ steps.branch_info.outputs.branch_name }}" ]; then
-            DEST_DIR=${{ steps.branch_info.outputs.branch_name }};
-          else
-            DEST_DIR=tmp
+          if [ ! -z "${{ steps.tag_info.outputs.tag_name }}" ]; then \
+            DEST_DIR=`echo ${{ steps.tag_info.outputs.tag_name }} | sed -e 's:^\([0-9]\+\.[0-9]\+\).*:\1:'`; \
+          elif [ ! -z "${{ steps.branch_info.outputs.branch_name }}" ]; then \
+            DEST_DIR=${{ steps.branch_info.outputs.branch_name }}; \
+          else \
+            DEST_DIR=tmp \
           fi
           echo "::set-output name=dest_dir::${DEST_DIR}"
           echo "DEST_DIR=${DEST_DIR}"
